@@ -26,6 +26,17 @@
 		065E444315B9DE0700EEECD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441615B9DE0700EEECD8 /* Foundation.framework */; };
 		065E444B15B9DE0700EEECD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065E444915B9DE0700EEECD8 /* InfoPlist.strings */; };
 		065E444E15B9DE0700EEECD8 /* AC234Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E444D15B9DE0700EEECD8 /* AC234Tests.m */; };
+		06BB993415BDCE09007B6685 /* AC234.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993315BDCE09007B6685 /* AC234.xcdatamodel */; };
+		06BB993815BDCE45007B6685 /* ACGlobalInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993715BDCE45007B6685 /* ACGlobalInfos.m */; };
+		06BB993C15BDCEC0007B6685 /* ACCoreDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993B15BDCEC0007B6685 /* ACCoreDataStore.m */; };
+		06BB994115BDD014007B6685 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB994015BDD014007B6685 /* KeychainItemWrapper.m */; };
+		06BB994515BDD148007B6685 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994215BDD148007B6685 /* CFNetwork.framework */; };
+		06BB994715BDD148007B6685 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994415BDD148007B6685 /* CoreMedia.framework */; };
+		06BB994A15BDD196007B6685 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994815BDD196007B6685 /* AVFoundation.framework */; };
+		06BB994B15BDD196007B6685 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994915BDD196007B6685 /* Security.framework */; };
+		06BB994E15BDD1F6007B6685 /* libxml2.2.7.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */; };
+		06BB994F15BDD1F6007B6685 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */; };
+		06BB995915BDDFC4007B6685 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994315BDD148007B6685 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +76,20 @@
 		065E444A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065E444C15B9DE0700EEECD8 /* AC234Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC234Tests.h; sourceTree = "<group>"; };
 		065E444D15B9DE0700EEECD8 /* AC234Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AC234Tests.m; sourceTree = "<group>"; };
+		06BB993315BDCE09007B6685 /* AC234.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AC234.xcdatamodel; sourceTree = "<group>"; };
+		06BB993615BDCE45007B6685 /* ACGlobalInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGlobalInfos.h; sourceTree = "<group>"; };
+		06BB993715BDCE45007B6685 /* ACGlobalInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGlobalInfos.m; sourceTree = "<group>"; };
+		06BB993A15BDCEC0007B6685 /* ACCoreDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACCoreDataStore.h; path = Classes/Model/ACCoreDataStore.h; sourceTree = "<group>"; };
+		06BB993B15BDCEC0007B6685 /* ACCoreDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACCoreDataStore.m; path = Classes/Model/ACCoreDataStore.m; sourceTree = "<group>"; };
+		06BB993F15BDD014007B6685 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainItemWrapper.h; path = Classes/Security/KeychainItemWrapper.h; sourceTree = "<group>"; };
+		06BB994015BDD014007B6685 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainItemWrapper.m; path = Classes/Security/KeychainItemWrapper.m; sourceTree = "<group>"; };
+		06BB994215BDD148007B6685 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		06BB994315BDD148007B6685 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		06BB994415BDD148007B6685 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		06BB994815BDD196007B6685 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		06BB994915BDD196007B6685 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.7.3.dylib; path = usr/lib/libxml2.2.7.3.dylib; sourceTree = SDKROOT; };
+		06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +97,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				065E441515B9DE0700EEECD8 /* UIKit.framework in Frameworks */,
+				06BB994E15BDD1F6007B6685 /* libxml2.2.7.3.dylib in Frameworks */,
+				06BB995915BDDFC4007B6685 /* CoreData.framework in Frameworks */,
+				06BB994715BDD148007B6685 /* CoreMedia.framework in Frameworks */,
+				06BB994515BDD148007B6685 /* CFNetwork.framework in Frameworks */,
+				06BB994A15BDD196007B6685 /* AVFoundation.framework in Frameworks */,
+				06BB994B15BDD196007B6685 /* Security.framework in Frameworks */,
 				065E441715B9DE0700EEECD8 /* Foundation.framework in Frameworks */,
+				065E441515B9DE0700EEECD8 /* UIKit.framework in Frameworks */,
 				065E441915B9DE0700EEECD8 /* CoreGraphics.framework in Frameworks */,
+				06BB994F15BDD1F6007B6685 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +145,13 @@
 		065E441315B9DE0700EEECD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */,
+				06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */,
+				06BB994815BDD196007B6685 /* AVFoundation.framework */,
+				06BB994915BDD196007B6685 /* Security.framework */,
+				06BB994215BDD148007B6685 /* CFNetwork.framework */,
+				06BB994315BDD148007B6685 /* CoreData.framework */,
+				06BB994415BDD148007B6685 /* CoreMedia.framework */,
 				065E441415B9DE0700EEECD8 /* UIKit.framework */,
 				065E441615B9DE0700EEECD8 /* Foundation.framework */,
 				065E441815B9DE0700EEECD8 /* CoreGraphics.framework */,
@@ -124,18 +163,20 @@
 		065E441A15B9DE0700EEECD8 /* AC234 */ = {
 			isa = PBXGroup;
 			children = (
+				06BB993D15BDCF0B007B6685 /* Icons */,
+				06BB993915BDCEAE007B6685 /* Model */,
+				06BB993E15BDD004007B6685 /* Security */,
+				06BB993615BDCE45007B6685 /* ACGlobalInfos.h */,
+				06BB993715BDCE45007B6685 /* ACGlobalInfos.m */,
+				06BB993315BDCE09007B6685 /* AC234.xcdatamodel */,
 				065E442315B9DE0700EEECD8 /* ACAppDelegate.h */,
 				065E442415B9DE0700EEECD8 /* ACAppDelegate.m */,
 				065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */,
 				065E442915B9DE0700EEECD8 /* MainStoryboard_iPad.storyboard */,
 				065E442C15B9DE0700EEECD8 /* ACFirstViewController.h */,
 				065E442D15B9DE0700EEECD8 /* ACFirstViewController.m */,
-				065E442F15B9DE0700EEECD8 /* first.png */,
-				065E443115B9DE0700EEECD8 /* first@2x.png */,
 				065E443315B9DE0700EEECD8 /* ACSecondViewController.h */,
 				065E443415B9DE0700EEECD8 /* ACSecondViewController.m */,
-				065E443615B9DE0700EEECD8 /* second.png */,
-				065E443815B9DE0700EEECD8 /* second@2x.png */,
 				065E441B15B9DE0700EEECD8 /* Supporting Files */,
 			);
 			path = AC234;
@@ -169,6 +210,35 @@
 				065E444915B9DE0700EEECD8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06BB993915BDCEAE007B6685 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06BB993A15BDCEC0007B6685 /* ACCoreDataStore.h */,
+				06BB993B15BDCEC0007B6685 /* ACCoreDataStore.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		06BB993D15BDCF0B007B6685 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				065E442F15B9DE0700EEECD8 /* first.png */,
+				065E443115B9DE0700EEECD8 /* first@2x.png */,
+				065E443615B9DE0700EEECD8 /* second.png */,
+				065E443815B9DE0700EEECD8 /* second@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		06BB993E15BDD004007B6685 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				06BB993F15BDD014007B6685 /* KeychainItemWrapper.h */,
+				06BB994015BDD014007B6685 /* KeychainItemWrapper.m */,
+			);
+			name = Security;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +357,10 @@
 				065E442515B9DE0700EEECD8 /* ACAppDelegate.m in Sources */,
 				065E442E15B9DE0700EEECD8 /* ACFirstViewController.m in Sources */,
 				065E443515B9DE0700EEECD8 /* ACSecondViewController.m in Sources */,
+				06BB993415BDCE09007B6685 /* AC234.xcdatamodel in Sources */,
+				06BB993815BDCE45007B6685 /* ACGlobalInfos.m in Sources */,
+				06BB993C15BDCEC0007B6685 /* ACCoreDataStore.m in Sources */,
+				06BB994115BDD014007B6685 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +540,7 @@
 				065E445315B9DE0700EEECD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		065E445415B9DE0700EEECD8 /* Build configuration list for PBXNativeTarget "AC234Tests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +549,7 @@
 				065E445615B9DE0700EEECD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
