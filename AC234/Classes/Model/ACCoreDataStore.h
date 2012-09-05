@@ -1,5 +1,5 @@
 //
-//  ACMementoStore.h
+//  ACCoreDataStore.h
 //  AC234
 //
 //  Created by Stéphane Rossé on 23.01.12.
@@ -11,17 +11,21 @@
 @interface ACCoreDataStore : NSObject {
     
     NSString *databaseFilename;
-
+    NSManagedObjectModel *managedObjectModel;
+    NSManagedObjectContext *managedObjectContext;
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+    
 }
 
 @property (nonatomic, strong) NSString *databaseFilename;
 
-@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, readonly) NSManagedObjectModel *managedObjectModel;
+@property (strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (id)initWithFile:(NSString*)name;
 - (NSString *)applicationCachesDirectory;
+
 - (void)deleteStore;
 - (void)stopStore;
 

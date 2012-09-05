@@ -11,9 +11,9 @@
 @implementation ACCoreDataStore
 
 @synthesize databaseFilename;
-@synthesize managedObjectModel=_managedObjectModel, managedObjectContext=_managedObjectContext, persistentStoreCoordinator=_persistentStoreCoordinator;
-
-//@synthesize databaseFilename;
+@synthesize managedObjectModel = _managedObjectModel,
+    managedObjectContext = _managedObjectContext,
+    persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (id)initWithFile:(NSString*)name {
     self = [super init];
@@ -42,6 +42,7 @@
 	if (coordinator != nil) {
 		_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator: coordinator];
+        [_managedObjectContext setUndoManager:NULL];
 	}
 	return _managedObjectContext;
 }
@@ -54,7 +55,7 @@
 	if (_managedObjectModel != nil) {
 		return _managedObjectModel;
 	}
-	_managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
+	_managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
 	return _managedObjectModel;
 }
 
