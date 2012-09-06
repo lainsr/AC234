@@ -22,6 +22,7 @@
     BOOL rotating;
     NSUInteger kNumberOfPages;
     NSString *currentDirPath;
+    NSString *selectedFile;
     NSMutableArray *filteredImageFullPathArray;
 	
 	UIBarButtonItem *playButton;
@@ -36,7 +37,6 @@
 	
 	IBOutlet UIScrollView *scrollView;
 	IBOutlet UIPageControl *pageControl;
-	IBOutlet UINavigationController *navigationController;
     
     ACImageViewController *imageController1;
     ACImageViewController *imageController2;
@@ -56,6 +56,7 @@
 @property (nonatomic) BOOL pageControlUsed;
 @property (nonatomic) BOOL rotating;
 @property (nonatomic) NSUInteger kNumberOfPages;
+@property (nonatomic, retain) NSString *selectedFile;
 @property (nonatomic, retain) NSString *currentDirPath;
 @property (nonatomic, retain) NSMutableArray *filteredImageFullPathArray;
 
@@ -71,7 +72,6 @@
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @property (nonatomic, retain) ACImageViewController *imageController1;
 @property (nonatomic, retain) ACImageViewController *imageController2;
@@ -90,7 +90,8 @@
 - (IBAction)changePage:(id)sender;
 
 - (void)selectFile:(NSString *)file;
-- (void)loadFile:(NSString *)file inFolder:(NSString *)dirPath withContent:(NSMutableArray *)imageFullPathArray;
+- (void)load;
+- (void)setFile:(NSString *)file inFolder:(NSString *)dirPath withContent:(NSMutableArray *)imageFullPathArray;
 
 - (void)play;
 - (void)pause;

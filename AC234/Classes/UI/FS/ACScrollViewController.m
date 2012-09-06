@@ -36,9 +36,9 @@
 //better performance by caching a set of controllers
 //@synthesize deviceToSelect;
 @synthesize playButton, pauseButton, forwardButton, rewindButton, airplayButton, flexItemLeft, flexItemRight, fixItemLeft, fixItemRight;
-@synthesize scrollView, pageControl, navigationController;
+@synthesize scrollView, pageControl;
 @synthesize prevViewController, currentViewController, nextViewController;
-@synthesize pageControlUsed, rotating, kNumberOfPages, currentDirPath, filteredImageFullPathArray;
+@synthesize pageControlUsed, rotating, kNumberOfPages, currentDirPath, selectedFile, filteredImageFullPathArray;
 @synthesize imageController1, imageController2, imageController3;
 @synthesize movieController1, movieController2, movieController3;
 
@@ -109,34 +109,17 @@
 	self.scrollView.delegate = self;
 	
     //allocate the pool of image controllers
-    /*
-    ACImageViewController *ctrl1 = [[ACImageViewController alloc] init];
-	self.imageController1 = ctrl1;
-	[self.imageController1 setNavigationController:self.navigationController];
+    self.imageController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
+    self.imageController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
+    self.imageController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
 	
-    ACImageViewController *ctrl2 = [[ACImageViewController alloc] init];
-    self.imageController2 = ctrl2;
-	[self.imageController2 setNavigationController:self.navigationController];
-	
-    ACImageViewController *ctrl3 = [[ACImageViewController alloc] init];
-    self.imageController3 = ctrl3;
-	[self.imageController3 setNavigationController:self.navigationController];
-	//allocate the pool of movie controllers
-	
-    ACMovieViewController *ctrl4 = [[ACMovieViewController alloc] init];
-    self.movieController1 = ctrl4;
-	[self.movieController1 setNavigationController:self.navigationController];
-	
-    ACMovieViewController *ctrl5 = [[ACMovieViewController alloc] init];
-    self.movieController2 = ctrl5;
-	[movieController2 setNavigationController:self.navigationController];
-	
-    ACMovieViewController *ctrl6 = [[ACMovieViewController alloc] init];
-    self.movieController3 = ctrl6;
-	[self.movieController3 setNavigationController:self.navigationController];
-    */
+    //allocate the pool of movie controllers
+    self.movieController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
+    self.movieController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
+    self.movieController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
 	
 	[self setWantsFullScreenLayout:YES];
+    [self load];
 }
 
 - (void)viewDidUnload {
@@ -344,9 +327,10 @@
 	return currentDirPath;
 }
 
-- (void)loadFile:(NSString *)file inFolder:(NSString*)dirPath withContent:(NSMutableArray *)imageFullPathArray {
 
-	if(currentDirPath == nil || ![currentDirPath isEqualToString:dirPath]) {
+- (void)setFile:(NSString *)file inFolder:(NSString*)dirPath withContent:(NSMutableArray *)imageFullPathArray {
+    [self setSelectedFile:file];
+    if(currentDirPath == nil || ![currentDirPath isEqualToString:dirPath]) {
 		struct stat st_buf;
 		NSMutableArray *filteredList = [[NSMutableArray alloc] initWithCapacity:[imageFullPathArray count]];
         self.filteredImageFullPathArray = filteredList;
@@ -360,55 +344,57 @@
 			}
 		}
 		if(dirPath == nil) {
-            self.currentDirPath = nil; 
+            self.currentDirPath = nil;
         } else {
             NSString *newDirPath = [dirPath copyWithZone:nil];
             self.currentDirPath = newDirPath;
         }
         
         kNumberOfPages = [filteredImageFullPathArray count];
-		
-		scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, 200);
-		pageControl.numberOfPages = kNumberOfPages;
-		[imageController1 setNumberOfPages:kNumberOfPages];
-		[imageController2 setNumberOfPages:kNumberOfPages];
-		[imageController3 setNumberOfPages:kNumberOfPages];
-		[movieController1 setNumberOfPages:kNumberOfPages];
-		[movieController2 setNumberOfPages:kNumberOfPages];
-		[movieController3 setNumberOfPages:kNumberOfPages];
 	}
+}
 
-	int index = 0;
-	if(file != nil) {
-		int count = 0;
-		for(NSString *imageFullPath in filteredImageFullPathArray) {
-			if (file != nil && [file isEqualToString:imageFullPath]) {
-					index = count;
-					break;
-			}
-			count++;
-		}
-	}
-	pageControl.currentPage = index;
-	
-	//init with the most common
-	currentViewController = imageController1;
-	prevViewController = imageController2;
-	nextViewController = imageController3;
-	
-	//check
-	prevViewController = [self replace:prevViewController forFileAt:index-1];
-	currentViewController = [self replace:currentViewController forFileAt:index];
-	nextViewController = [self replace:nextViewController forFileAt:index+1];
-	
-	[self loadScrollViewWithPage:index controller:currentViewController async:NO];
-	if(index >= 0) {
-		CGRect frame = [self snapImageAt:index];
-		[scrollView scrollRectToVisible:frame animated:NO];
-	}
-	//preload the previous and next images
-	[self loadScrollViewWithPage:index + 1 controller:nextViewController async:YES];
-	[self loadScrollViewWithPage:index - 1 controller:prevViewController async:YES];
+- (void)load {
+    self.scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, 200);
+    self.pageControl.numberOfPages = kNumberOfPages;
+    [self.imageController1 setNumberOfPages:kNumberOfPages];
+    [self.imageController2 setNumberOfPages:kNumberOfPages];
+    [self.imageController3 setNumberOfPages:kNumberOfPages];
+    [self.movieController1 setNumberOfPages:kNumberOfPages];
+    [self.movieController2 setNumberOfPages:kNumberOfPages];
+    [self.movieController3 setNumberOfPages:kNumberOfPages];
+        
+    int index = 0;
+    if([self selectedFile] != nil) {
+        int count = 0;
+        for(NSString *imageFullPath in filteredImageFullPathArray) {
+            if ([self selectedFile] != nil && [[self selectedFile] isEqualToString:imageFullPath]) {
+                index = count;
+                break;
+            }
+            count++;
+        }
+    }
+    self.pageControl.currentPage = index;
+        
+    //init with the most common
+    self.currentViewController = self.imageController1;
+    self.prevViewController = self.imageController2;
+    self.nextViewController = self.imageController3;
+        
+    //check
+    self.prevViewController = [self replace:self.prevViewController forFileAt:index-1];
+    self.currentViewController = [self replace:self.currentViewController forFileAt:index];
+    self.nextViewController = [self replace:self.nextViewController forFileAt:index+1];
+        
+    [self loadScrollViewWithPage:index controller:self.currentViewController async:NO];
+    if(index >= 0) {
+        CGRect frame = [self snapImageAt:index];
+        [scrollView scrollRectToVisible:frame animated:NO];
+    }
+    //preload the previous and next images
+    [self loadScrollViewWithPage:index + 1 controller:self.nextViewController async:YES];
+    [self loadScrollViewWithPage:index - 1 controller:self.prevViewController async:YES];
     //push the file to devices
     [self sendToDevice:index];
 }

@@ -23,7 +23,8 @@ typedef enum {
     int lastCellForRow;
     int firstRowToThumbnail;
     int numOfThumbnailPerCell;
-        
+      
+    BOOL hasChanged;
     BOOL editMode;
     CellRenderType cellStyle;
         
@@ -47,6 +48,7 @@ typedef enum {
 @property(readwrite) int firstRowToThumbnail;
 @property(readwrite) int numOfThumbnailPerCell;
 
+@property(readwrite) BOOL hasChanged;
 @property(readwrite) BOOL editMode;
 @property(readwrite) CellRenderType cellStyle;
 

@@ -14,18 +14,33 @@
 		065E442115B9DE0700EEECD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E442015B9DE0700EEECD8 /* main.m */; };
 		065E442515B9DE0700EEECD8 /* ACAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E442415B9DE0700EEECD8 /* ACAppDelegate.m */; };
 		065E442815B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */; };
-		065E442B15B9DE0700EEECD8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065E442915B9DE0700EEECD8 /* MainStoryboard_iPad.storyboard */; };
-		065E442E15B9DE0700EEECD8 /* ACFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E442D15B9DE0700EEECD8 /* ACFirstViewController.m */; };
-		065E443015B9DE0700EEECD8 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 065E442F15B9DE0700EEECD8 /* first.png */; };
-		065E443215B9DE0700EEECD8 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065E443115B9DE0700EEECD8 /* first@2x.png */; };
-		065E443515B9DE0700EEECD8 /* ACSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E443415B9DE0700EEECD8 /* ACSecondViewController.m */; };
-		065E443715B9DE0700EEECD8 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 065E443615B9DE0700EEECD8 /* second.png */; };
-		065E443915B9DE0700EEECD8 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065E443815B9DE0700EEECD8 /* second@2x.png */; };
 		065E444115B9DE0700EEECD8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E444015B9DE0700EEECD8 /* SenTestingKit.framework */; };
 		065E444215B9DE0700EEECD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441415B9DE0700EEECD8 /* UIKit.framework */; };
 		065E444315B9DE0700EEECD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441615B9DE0700EEECD8 /* Foundation.framework */; };
 		065E444B15B9DE0700EEECD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065E444915B9DE0700EEECD8 /* InfoPlist.strings */; };
 		065E444E15B9DE0700EEECD8 /* AC234Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E444D15B9DE0700EEECD8 /* AC234Tests.m */; };
+		06ADFA8015EE99EB00CD59EA /* ACSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA7F15EE99EB00CD59EA /* ACSlideViewController.m */; };
+		06ADFA8715EE9A7300CD59EA /* ACFolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8215EE9A7200CD59EA /* ACFolderController.m */; };
+		06ADFA8815EE9A7300CD59EA /* ACLargeFolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8415EE9A7200CD59EA /* ACLargeFolderController.m */; };
+		06ADFA8915EE9A7300CD59EA /* ACScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */; };
+		06ADFA8C15EE9AA000CD59EA /* ACFolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */; };
+		06ADFA8F15EE9AD100CD59EA /* ACThumbnailsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */; };
+		06ADFA9315EE9B1000CD59EA /* ACLRUDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA9215EE9B1000CD59EA /* ACLRUDictionary.m */; };
+		06ADFA9A15EE9BAB00CD59EA /* ACImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA9715EE9BAB00CD59EA /* ACImageViewController.m */; };
+		06ADFA9B15EE9BAB00CD59EA /* ACMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA9915EE9BAB00CD59EA /* ACMovieViewController.m */; };
+		06ADFA9E15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA9D15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.m */; };
+		06ADFAA115EE9C2100CD59EA /* ACLargeThumbnailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAA015EE9C2100CD59EA /* ACLargeThumbnailListCell.m */; };
+		06ADFAA415EE9C4A00CD59EA /* ACWithHUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAA315EE9C4A00CD59EA /* ACWithHUIViewController.m */; };
+		06ADFAA715EE9C7400CD59EA /* ACHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAA615EE9C7400CD59EA /* ACHUDView.m */; };
+		06ADFAAB15EEA2DA00CD59EA /* ACToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAAA15EEA2DA00CD59EA /* ACToolbar.m */; };
+		06ADFAB415EFED0E00CD59EA /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAAD15EFED0E00CD59EA /* File.m */; };
+		06ADFAB515EFED0E00CD59EA /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAAF15EFED0E00CD59EA /* Folder.m */; };
+		06ADFAB615EFED0E00CD59EA /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAB115EFED0E00CD59EA /* Image.m */; };
+		06ADFAB715EFED0E00CD59EA /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAB315EFED0E00CD59EA /* Movie.m */; };
+		06ADFABA15EFFA1900CD59EA /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFAB915EFFA1900CD59EA /* ImageToDataTransformer.m */; };
+		06ADFABD15EFFD1900CD59EA /* ACScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFABC15EFFD1900CD59EA /* ACScaler.m */; };
+		06ADFAC215F003A100CD59EA /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ADFAC015F003A100CD59EA /* Home.png */; };
+		06ADFAC315F003A100CD59EA /* Home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ADFAC115F003A100CD59EA /* Home@2x.png */; };
 		06BB993415BDCE09007B6685 /* AC234.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993315BDCE09007B6685 /* AC234.xcdatamodel */; };
 		06BB993815BDCE45007B6685 /* ACGlobalInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993715BDCE45007B6685 /* ACGlobalInfos.m */; };
 		06BB993C15BDCEC0007B6685 /* ACCoreDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993B15BDCEC0007B6685 /* ACCoreDataStore.m */; };
@@ -37,6 +52,26 @@
 		06BB994E15BDD1F6007B6685 /* libxml2.2.7.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */; };
 		06BB994F15BDD1F6007B6685 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */; };
 		06BB995915BDDFC4007B6685 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994315BDD148007B6685 /* CoreData.framework */; };
+		06C7378B15F7E89000C52EA0 /* ACSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */; };
+		06ED873415F37B9200683933 /* ListWithBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED873315F37B9200683933 /* ListWithBack.png */; };
+		06ED873815F396B500683933 /* ACFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ED873715F396B500683933 /* ACFileListController.m */; };
+		06ED873A15F3B65400683933 /* LargeWithBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED873915F3B65400683933 /* LargeWithBack.png */; };
+		06ED874115F3FBB700683933 /* PasswordField.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED873D15F3FBB700683933 /* PasswordField.png */; };
+		06ED874215F3FBB700683933 /* PasswordField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED873E15F3FBB700683933 /* PasswordField@2x.png */; };
+		06ED874315F3FBB700683933 /* PasswordFieldFilled.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED873F15F3FBB700683933 /* PasswordFieldFilled.png */; };
+		06ED874415F3FBB700683933 /* PasswordFieldFilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED874015F3FBB700683933 /* PasswordFieldFilled@2x.png */; };
+		06ED874715F3FC1C00683933 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED874515F3FC1C00683933 /* Settings.png */; };
+		06ED874815F3FC1C00683933 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED874615F3FC1C00683933 /* Settings@2x.png */; };
+		06ED875815F695EE00683933 /* Folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875115F695ED00683933 /* Folder.png */; };
+		06ED875915F695EE00683933 /* Folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875215F695ED00683933 /* Folder@2x.png */; };
+		06ED875A15F695EE00683933 /* FolderLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875315F695ED00683933 /* FolderLarge.png */; };
+		06ED875B15F695EE00683933 /* FolderLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875415F695ED00683933 /* FolderLarge@2x.png */; };
+		06ED875C15F695EE00683933 /* Green-noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875515F695EE00683933 /* Green-noise.png */; };
+		06ED875D15F695EE00683933 /* Green-noise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875615F695EE00683933 /* Green-noise@2x.png */; };
+		06ED875E15F695EE00683933 /* Unkown.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875715F695EE00683933 /* Unkown.png */; };
+		06F8019715BF2C48000DD680 /* ACPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019615BF2C48000DD680 /* ACPasswordController.m */; };
+		06F8019B15BF2CA4000DD680 /* ACPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */; };
+		06F801A015BF2DE2000DD680 /* ACStaticIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019F15BF2DE2000DD680 /* ACStaticIcons.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,21 +96,55 @@
 		065E442315B9DE0700EEECD8 /* ACAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppDelegate.h; sourceTree = "<group>"; };
 		065E442415B9DE0700EEECD8 /* ACAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppDelegate.m; sourceTree = "<group>"; };
 		065E442715B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		065E442A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		065E442C15B9DE0700EEECD8 /* ACFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFirstViewController.h; sourceTree = "<group>"; };
-		065E442D15B9DE0700EEECD8 /* ACFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFirstViewController.m; sourceTree = "<group>"; };
-		065E442F15B9DE0700EEECD8 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		065E443115B9DE0700EEECD8 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		065E443315B9DE0700EEECD8 /* ACSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACSecondViewController.h; sourceTree = "<group>"; };
-		065E443415B9DE0700EEECD8 /* ACSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACSecondViewController.m; sourceTree = "<group>"; };
-		065E443615B9DE0700EEECD8 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		065E443815B9DE0700EEECD8 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		065E443F15B9DE0700EEECD8 /* AC234Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AC234Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		065E444015B9DE0700EEECD8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		065E444815B9DE0700EEECD8 /* AC234Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AC234Tests-Info.plist"; sourceTree = "<group>"; };
 		065E444A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065E444C15B9DE0700EEECD8 /* AC234Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC234Tests.h; sourceTree = "<group>"; };
 		065E444D15B9DE0700EEECD8 /* AC234Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AC234Tests.m; sourceTree = "<group>"; };
+		06ADFA7E15EE99EB00CD59EA /* ACSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSlideViewController.h; path = Classes/UI/FS/ACSlideViewController.h; sourceTree = "<group>"; };
+		06ADFA7F15EE99EB00CD59EA /* ACSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSlideViewController.m; path = Classes/UI/FS/ACSlideViewController.m; sourceTree = "<group>"; };
+		06ADFA8115EE9A7200CD59EA /* ACFolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFolderController.h; path = Classes/UI/FS/ACFolderController.h; sourceTree = "<group>"; };
+		06ADFA8215EE9A7200CD59EA /* ACFolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACFolderController.m; path = Classes/UI/FS/ACFolderController.m; sourceTree = "<group>"; };
+		06ADFA8315EE9A7200CD59EA /* ACLargeFolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACLargeFolderController.h; path = Classes/UI/FS/ACLargeFolderController.h; sourceTree = "<group>"; };
+		06ADFA8415EE9A7200CD59EA /* ACLargeFolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACLargeFolderController.m; path = Classes/UI/FS/ACLargeFolderController.m; sourceTree = "<group>"; };
+		06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACScrollViewController.h; path = Classes/UI/FS/ACScrollViewController.h; sourceTree = "<group>"; };
+		06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACScrollViewController.m; path = Classes/UI/FS/ACScrollViewController.m; sourceTree = "<group>"; };
+		06ADFA8A15EE9AA000CD59EA /* ACFolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFolderListCell.h; path = Classes/UI/FS/ACFolderListCell.h; sourceTree = "<group>"; };
+		06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACFolderListCell.m; path = Classes/UI/FS/ACFolderListCell.m; sourceTree = "<group>"; };
+		06ADFA8D15EE9AD100CD59EA /* ACThumbnailsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACThumbnailsTableController.h; path = Classes/UI/FS/ACThumbnailsTableController.h; sourceTree = "<group>"; };
+		06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACThumbnailsTableController.m; path = Classes/UI/FS/ACThumbnailsTableController.m; sourceTree = "<group>"; };
+		06ADFA9115EE9B1000CD59EA /* ACLRUDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACLRUDictionary.h; path = Classes/Thumbnail/ACLRUDictionary.h; sourceTree = "<group>"; };
+		06ADFA9215EE9B1000CD59EA /* ACLRUDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACLRUDictionary.m; path = Classes/Thumbnail/ACLRUDictionary.m; sourceTree = "<group>"; };
+		06ADFA9415EE9B3800CD59EA /* ACController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACController.h; path = Classes/UI/ACController.h; sourceTree = "<group>"; };
+		06ADFA9615EE9BAB00CD59EA /* ACImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACImageViewController.h; path = Classes/UI/MediaView/ACImageViewController.h; sourceTree = "<group>"; };
+		06ADFA9715EE9BAB00CD59EA /* ACImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACImageViewController.m; path = Classes/UI/MediaView/ACImageViewController.m; sourceTree = "<group>"; };
+		06ADFA9815EE9BAB00CD59EA /* ACMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACMovieViewController.h; path = Classes/UI/MediaView/ACMovieViewController.h; sourceTree = "<group>"; };
+		06ADFA9915EE9BAB00CD59EA /* ACMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACMovieViewController.m; path = Classes/UI/MediaView/ACMovieViewController.m; sourceTree = "<group>"; };
+		06ADFA9C15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACLoadThumbnailsOperation.h; path = Classes/Thumbnail/ACLoadThumbnailsOperation.h; sourceTree = "<group>"; };
+		06ADFA9D15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACLoadThumbnailsOperation.m; path = Classes/Thumbnail/ACLoadThumbnailsOperation.m; sourceTree = "<group>"; };
+		06ADFA9F15EE9C2100CD59EA /* ACLargeThumbnailListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACLargeThumbnailListCell.h; path = Classes/UI/FS/ACLargeThumbnailListCell.h; sourceTree = "<group>"; };
+		06ADFAA015EE9C2100CD59EA /* ACLargeThumbnailListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACLargeThumbnailListCell.m; path = Classes/UI/FS/ACLargeThumbnailListCell.m; sourceTree = "<group>"; };
+		06ADFAA215EE9C4A00CD59EA /* ACWithHUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACWithHUIViewController.h; path = Classes/UI/ACWithHUIViewController.h; sourceTree = "<group>"; };
+		06ADFAA315EE9C4A00CD59EA /* ACWithHUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACWithHUIViewController.m; path = Classes/UI/ACWithHUIViewController.m; sourceTree = "<group>"; };
+		06ADFAA515EE9C7400CD59EA /* ACHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACHUDView.h; path = Classes/UI/ACHUDView.h; sourceTree = "<group>"; };
+		06ADFAA615EE9C7400CD59EA /* ACHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACHUDView.m; path = Classes/UI/ACHUDView.m; sourceTree = "<group>"; };
+		06ADFAA915EEA2DA00CD59EA /* ACToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACToolbar.h; path = Classes/UI/Utils/ACToolbar.h; sourceTree = "<group>"; };
+		06ADFAAA15EEA2DA00CD59EA /* ACToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACToolbar.m; path = Classes/UI/Utils/ACToolbar.m; sourceTree = "<group>"; };
+		06ADFAAC15EFED0E00CD59EA /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = Classes/Model/File.h; sourceTree = "<group>"; };
+		06ADFAAD15EFED0E00CD59EA /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = File.m; path = Classes/Model/File.m; sourceTree = "<group>"; };
+		06ADFAAE15EFED0E00CD59EA /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Classes/Model/Folder.h; sourceTree = "<group>"; };
+		06ADFAAF15EFED0E00CD59EA /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Folder.m; path = Classes/Model/Folder.m; sourceTree = "<group>"; };
+		06ADFAB015EFED0E00CD59EA /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = Classes/Model/Image.h; sourceTree = "<group>"; };
+		06ADFAB115EFED0E00CD59EA /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Image.m; path = Classes/Model/Image.m; sourceTree = "<group>"; };
+		06ADFAB215EFED0E00CD59EA /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Movie.h; path = Classes/Model/Movie.h; sourceTree = "<group>"; };
+		06ADFAB315EFED0E00CD59EA /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Movie.m; path = Classes/Model/Movie.m; sourceTree = "<group>"; };
+		06ADFAB815EFFA0C00CD59EA /* ImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageToDataTransformer.h; path = Classes/Model/ImageToDataTransformer.h; sourceTree = "<group>"; };
+		06ADFAB915EFFA1900CD59EA /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageToDataTransformer.m; path = Classes/Model/ImageToDataTransformer.m; sourceTree = "<group>"; };
+		06ADFABB15EFFD1900CD59EA /* ACScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACScaler.h; path = Classes/Thumbnail/ACScaler.h; sourceTree = "<group>"; };
+		06ADFABC15EFFD1900CD59EA /* ACScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACScaler.m; path = Classes/Thumbnail/ACScaler.m; sourceTree = "<group>"; };
+		06ADFAC015F003A100CD59EA /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Home.png; path = Art/Home.png; sourceTree = "<group>"; };
+		06ADFAC115F003A100CD59EA /* Home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home@2x.png"; path = "Art/Home@2x.png"; sourceTree = "<group>"; };
 		06BB993315BDCE09007B6685 /* AC234.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AC234.xcdatamodel; sourceTree = "<group>"; };
 		06BB993615BDCE45007B6685 /* ACGlobalInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGlobalInfos.h; sourceTree = "<group>"; };
 		06BB993715BDCE45007B6685 /* ACGlobalInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGlobalInfos.m; sourceTree = "<group>"; };
@@ -90,6 +159,32 @@
 		06BB994915BDD196007B6685 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.7.3.dylib; path = usr/lib/libxml2.2.7.3.dylib; sourceTree = SDKROOT; };
 		06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSettingsViewController.h; path = Classes/UI/Settings/ACSettingsViewController.h; sourceTree = "<group>"; };
+		06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSettingsViewController.m; path = Classes/UI/Settings/ACSettingsViewController.m; sourceTree = "<group>"; };
+		06ED873315F37B9200683933 /* ListWithBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ListWithBack.png; path = Art/ListWithBack.png; sourceTree = "<group>"; };
+		06ED873615F396B500683933 /* ACFileListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFileListController.h; path = Classes/UI/FS/ACFileListController.h; sourceTree = "<group>"; };
+		06ED873715F396B500683933 /* ACFileListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACFileListController.m; path = Classes/UI/FS/ACFileListController.m; sourceTree = "<group>"; };
+		06ED873915F3B65400683933 /* LargeWithBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LargeWithBack.png; path = Art/LargeWithBack.png; sourceTree = "<group>"; };
+		06ED873D15F3FBB700683933 /* PasswordField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PasswordField.png; path = Art/PasswordField.png; sourceTree = "<group>"; };
+		06ED873E15F3FBB700683933 /* PasswordField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PasswordField@2x.png"; path = "Art/PasswordField@2x.png"; sourceTree = "<group>"; };
+		06ED873F15F3FBB700683933 /* PasswordFieldFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PasswordFieldFilled.png; path = Art/PasswordFieldFilled.png; sourceTree = "<group>"; };
+		06ED874015F3FBB700683933 /* PasswordFieldFilled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PasswordFieldFilled@2x.png"; path = "Art/PasswordFieldFilled@2x.png"; sourceTree = "<group>"; };
+		06ED874515F3FC1C00683933 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Settings.png; path = Art/Settings.png; sourceTree = "<group>"; };
+		06ED874615F3FC1C00683933 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings@2x.png"; path = "Art/Settings@2x.png"; sourceTree = "<group>"; };
+		06ED874915F553F100683933 /* ACThumbnailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACThumbnailCell.h; path = Classes/UI/FS/ACThumbnailCell.h; sourceTree = "<group>"; };
+		06ED875115F695ED00683933 /* Folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Folder.png; path = Art/Folder.png; sourceTree = "<group>"; };
+		06ED875215F695ED00683933 /* Folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Folder@2x.png"; path = "Art/Folder@2x.png"; sourceTree = "<group>"; };
+		06ED875315F695ED00683933 /* FolderLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FolderLarge.png; path = Art/FolderLarge.png; sourceTree = "<group>"; };
+		06ED875415F695ED00683933 /* FolderLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FolderLarge@2x.png"; path = "Art/FolderLarge@2x.png"; sourceTree = "<group>"; };
+		06ED875515F695EE00683933 /* Green-noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-noise.png"; path = "Art/Green-noise.png"; sourceTree = "<group>"; };
+		06ED875615F695EE00683933 /* Green-noise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-noise@2x.png"; path = "Art/Green-noise@2x.png"; sourceTree = "<group>"; };
+		06ED875715F695EE00683933 /* Unkown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Unkown.png; path = Art/Unkown.png; sourceTree = "<group>"; };
+		06F8019515BF2C48000DD680 /* ACPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPasswordController.h; path = Classes/Security/ACPasswordController.h; sourceTree = "<group>"; };
+		06F8019615BF2C48000DD680 /* ACPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPasswordController.m; path = Classes/Security/ACPasswordController.m; sourceTree = "<group>"; };
+		06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ACPasswordView.xib; path = Resources/ACPasswordView.xib; sourceTree = "<group>"; };
+		06F8019C15BF2D09000DD680 /* ACPasswordDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPasswordDelegate.h; path = Classes/Security/ACPasswordDelegate.h; sourceTree = "<group>"; };
+		06F8019E15BF2DE2000DD680 /* ACStaticIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACStaticIcons.h; path = Classes/UI/ACStaticIcons.h; sourceTree = "<group>"; };
+		06F8019F15BF2DE2000DD680 /* ACStaticIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACStaticIcons.m; path = Classes/UI/ACStaticIcons.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,20 +258,17 @@
 		065E441A15B9DE0700EEECD8 /* AC234 */ = {
 			isa = PBXGroup;
 			children = (
-				06BB993D15BDCF0B007B6685 /* Icons */,
 				06BB993915BDCEAE007B6685 /* Model */,
 				06BB993E15BDD004007B6685 /* Security */,
+				06ADFA9015EE9AFD00CD59EA /* Thumbnail */,
+				06F8019915BF2C8F000DD680 /* Resources */,
+				06F8019D15BF2DC9000DD680 /* UI */,
 				06BB993615BDCE45007B6685 /* ACGlobalInfos.h */,
 				06BB993715BDCE45007B6685 /* ACGlobalInfos.m */,
 				06BB993315BDCE09007B6685 /* AC234.xcdatamodel */,
 				065E442315B9DE0700EEECD8 /* ACAppDelegate.h */,
 				065E442415B9DE0700EEECD8 /* ACAppDelegate.m */,
 				065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */,
-				065E442915B9DE0700EEECD8 /* MainStoryboard_iPad.storyboard */,
-				065E442C15B9DE0700EEECD8 /* ACFirstViewController.h */,
-				065E442D15B9DE0700EEECD8 /* ACFirstViewController.m */,
-				065E443315B9DE0700EEECD8 /* ACSecondViewController.h */,
-				065E443415B9DE0700EEECD8 /* ACSecondViewController.m */,
 				065E441B15B9DE0700EEECD8 /* Supporting Files */,
 			);
 			path = AC234;
@@ -212,33 +304,160 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		06ADFA7C15EE99A100CD59EA /* FS */ = {
+			isa = PBXGroup;
+			children = (
+				06ED874915F553F100683933 /* ACThumbnailCell.h */,
+				06ADFA9F15EE9C2100CD59EA /* ACLargeThumbnailListCell.h */,
+				06ADFAA015EE9C2100CD59EA /* ACLargeThumbnailListCell.m */,
+				06ADFA8D15EE9AD100CD59EA /* ACThumbnailsTableController.h */,
+				06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */,
+				06ADFA8A15EE9AA000CD59EA /* ACFolderListCell.h */,
+				06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */,
+				06ADFA8115EE9A7200CD59EA /* ACFolderController.h */,
+				06ADFA8215EE9A7200CD59EA /* ACFolderController.m */,
+				06ADFA8315EE9A7200CD59EA /* ACLargeFolderController.h */,
+				06ADFA8415EE9A7200CD59EA /* ACLargeFolderController.m */,
+				06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */,
+				06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */,
+				06ADFA7E15EE99EB00CD59EA /* ACSlideViewController.h */,
+				06ADFA7F15EE99EB00CD59EA /* ACSlideViewController.m */,
+				06ED873615F396B500683933 /* ACFileListController.h */,
+				06ED873715F396B500683933 /* ACFileListController.m */,
+			);
+			name = FS;
+			sourceTree = "<group>";
+		};
+		06ADFA9015EE9AFD00CD59EA /* Thumbnail */ = {
+			isa = PBXGroup;
+			children = (
+				06ADFABB15EFFD1900CD59EA /* ACScaler.h */,
+				06ADFABC15EFFD1900CD59EA /* ACScaler.m */,
+				06ADFA9C15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.h */,
+				06ADFA9D15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.m */,
+				06ADFA9115EE9B1000CD59EA /* ACLRUDictionary.h */,
+				06ADFA9215EE9B1000CD59EA /* ACLRUDictionary.m */,
+			);
+			name = Thumbnail;
+			sourceTree = "<group>";
+		};
+		06ADFA9515EE9B7A00CD59EA /* MediaView */ = {
+			isa = PBXGroup;
+			children = (
+				06ADFA9415EE9B3800CD59EA /* ACController.h */,
+				06ADFA9615EE9BAB00CD59EA /* ACImageViewController.h */,
+				06ADFA9715EE9BAB00CD59EA /* ACImageViewController.m */,
+				06ADFA9815EE9BAB00CD59EA /* ACMovieViewController.h */,
+				06ADFA9915EE9BAB00CD59EA /* ACMovieViewController.m */,
+				06ADFAA215EE9C4A00CD59EA /* ACWithHUIViewController.h */,
+				06ADFAA315EE9C4A00CD59EA /* ACWithHUIViewController.m */,
+			);
+			name = MediaView;
+			sourceTree = "<group>";
+		};
+		06ADFAA815EEA2CB00CD59EA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				06ADFAA915EEA2DA00CD59EA /* ACToolbar.h */,
+				06ADFAAA15EEA2DA00CD59EA /* ACToolbar.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		06ADFABE15F0038900CD59EA /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		06ADFABF15F0039400CD59EA /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				06ED875115F695ED00683933 /* Folder.png */,
+				06ED875215F695ED00683933 /* Folder@2x.png */,
+				06ED875315F695ED00683933 /* FolderLarge.png */,
+				06ED875415F695ED00683933 /* FolderLarge@2x.png */,
+				06ED875515F695EE00683933 /* Green-noise.png */,
+				06ED875615F695EE00683933 /* Green-noise@2x.png */,
+				06ED875715F695EE00683933 /* Unkown.png */,
+				06ADFAC015F003A100CD59EA /* Home.png */,
+				06ADFAC115F003A100CD59EA /* Home@2x.png */,
+				06ED873915F3B65400683933 /* LargeWithBack.png */,
+				06ED873315F37B9200683933 /* ListWithBack.png */,
+				06ED873D15F3FBB700683933 /* PasswordField.png */,
+				06ED873E15F3FBB700683933 /* PasswordField@2x.png */,
+				06ED873F15F3FBB700683933 /* PasswordFieldFilled.png */,
+				06ED874015F3FBB700683933 /* PasswordFieldFilled@2x.png */,
+				06ED874515F3FC1C00683933 /* Settings.png */,
+				06ED874615F3FC1C00683933 /* Settings@2x.png */,
+			);
+			name = Art;
+			sourceTree = "<group>";
+		};
 		06BB993915BDCEAE007B6685 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06ADFAAC15EFED0E00CD59EA /* File.h */,
+				06ADFAAD15EFED0E00CD59EA /* File.m */,
+				06ADFAAE15EFED0E00CD59EA /* Folder.h */,
+				06ADFAAF15EFED0E00CD59EA /* Folder.m */,
+				06ADFAB015EFED0E00CD59EA /* Image.h */,
+				06ADFAB115EFED0E00CD59EA /* Image.m */,
+				06ADFAB815EFFA0C00CD59EA /* ImageToDataTransformer.h */,
+				06ADFAB915EFFA1900CD59EA /* ImageToDataTransformer.m */,
+				06ADFAB215EFED0E00CD59EA /* Movie.h */,
+				06ADFAB315EFED0E00CD59EA /* Movie.m */,
 				06BB993A15BDCEC0007B6685 /* ACCoreDataStore.h */,
 				06BB993B15BDCEC0007B6685 /* ACCoreDataStore.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		06BB993D15BDCF0B007B6685 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				065E442F15B9DE0700EEECD8 /* first.png */,
-				065E443115B9DE0700EEECD8 /* first@2x.png */,
-				065E443615B9DE0700EEECD8 /* second.png */,
-				065E443815B9DE0700EEECD8 /* second@2x.png */,
-			);
-			name = Icons;
-			sourceTree = "<group>";
-		};
 		06BB993E15BDD004007B6685 /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				06F8019C15BF2D09000DD680 /* ACPasswordDelegate.h */,
+				06F8019515BF2C48000DD680 /* ACPasswordController.h */,
+				06F8019615BF2C48000DD680 /* ACPasswordController.m */,
 				06BB993F15BDD014007B6685 /* KeychainItemWrapper.h */,
 				06BB994015BDD014007B6685 /* KeychainItemWrapper.m */,
 			);
 			name = Security;
+			sourceTree = "<group>";
+		};
+		06C7378815F7E86200C52EA0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */,
+				06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		06F8019915BF2C8F000DD680 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				06ADFABF15F0039400CD59EA /* Art */,
+				06ADFABE15F0038900CD59EA /* XIB */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		06F8019D15BF2DC9000DD680 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				06ADFA7C15EE99A100CD59EA /* FS */,
+				06ADFA9515EE9B7A00CD59EA /* MediaView */,
+				06C7378815F7E86200C52EA0 /* Settings */,
+				06ADFAA815EEA2CB00CD59EA /* Utils */,
+				06F8019E15BF2DE2000DD680 /* ACStaticIcons.h */,
+				06F8019F15BF2DE2000DD680 /* ACStaticIcons.m */,
+				06ADFAA515EE9C7400CD59EA /* ACHUDView.h */,
+				06ADFAA615EE9C7400CD59EA /* ACHUDView.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,11 +533,24 @@
 			files = (
 				065E441F15B9DE0700EEECD8 /* InfoPlist.strings in Resources */,
 				065E442815B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard in Resources */,
-				065E442B15B9DE0700EEECD8 /* MainStoryboard_iPad.storyboard in Resources */,
-				065E443015B9DE0700EEECD8 /* first.png in Resources */,
-				065E443215B9DE0700EEECD8 /* first@2x.png in Resources */,
-				065E443715B9DE0700EEECD8 /* second.png in Resources */,
-				065E443915B9DE0700EEECD8 /* second@2x.png in Resources */,
+				06F8019B15BF2CA4000DD680 /* ACPasswordView.xib in Resources */,
+				06ADFAC215F003A100CD59EA /* Home.png in Resources */,
+				06ADFAC315F003A100CD59EA /* Home@2x.png in Resources */,
+				06ED873415F37B9200683933 /* ListWithBack.png in Resources */,
+				06ED873A15F3B65400683933 /* LargeWithBack.png in Resources */,
+				06ED874115F3FBB700683933 /* PasswordField.png in Resources */,
+				06ED874215F3FBB700683933 /* PasswordField@2x.png in Resources */,
+				06ED874315F3FBB700683933 /* PasswordFieldFilled.png in Resources */,
+				06ED874415F3FBB700683933 /* PasswordFieldFilled@2x.png in Resources */,
+				06ED874715F3FC1C00683933 /* Settings.png in Resources */,
+				06ED874815F3FC1C00683933 /* Settings@2x.png in Resources */,
+				06ED875815F695EE00683933 /* Folder.png in Resources */,
+				06ED875915F695EE00683933 /* Folder@2x.png in Resources */,
+				06ED875A15F695EE00683933 /* FolderLarge.png in Resources */,
+				06ED875B15F695EE00683933 /* FolderLarge@2x.png in Resources */,
+				06ED875C15F695EE00683933 /* Green-noise.png in Resources */,
+				06ED875D15F695EE00683933 /* Green-noise@2x.png in Resources */,
+				06ED875E15F695EE00683933 /* Unkown.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,12 +587,34 @@
 			files = (
 				065E442115B9DE0700EEECD8 /* main.m in Sources */,
 				065E442515B9DE0700EEECD8 /* ACAppDelegate.m in Sources */,
-				065E442E15B9DE0700EEECD8 /* ACFirstViewController.m in Sources */,
-				065E443515B9DE0700EEECD8 /* ACSecondViewController.m in Sources */,
 				06BB993415BDCE09007B6685 /* AC234.xcdatamodel in Sources */,
 				06BB993815BDCE45007B6685 /* ACGlobalInfos.m in Sources */,
 				06BB993C15BDCEC0007B6685 /* ACCoreDataStore.m in Sources */,
 				06BB994115BDD014007B6685 /* KeychainItemWrapper.m in Sources */,
+				06F8019715BF2C48000DD680 /* ACPasswordController.m in Sources */,
+				06F801A015BF2DE2000DD680 /* ACStaticIcons.m in Sources */,
+				06ADFA8015EE99EB00CD59EA /* ACSlideViewController.m in Sources */,
+				06ADFA8715EE9A7300CD59EA /* ACFolderController.m in Sources */,
+				06ADFA8815EE9A7300CD59EA /* ACLargeFolderController.m in Sources */,
+				06ADFA8915EE9A7300CD59EA /* ACScrollViewController.m in Sources */,
+				06ADFA8C15EE9AA000CD59EA /* ACFolderListCell.m in Sources */,
+				06ADFA8F15EE9AD100CD59EA /* ACThumbnailsTableController.m in Sources */,
+				06ADFA9315EE9B1000CD59EA /* ACLRUDictionary.m in Sources */,
+				06ADFA9A15EE9BAB00CD59EA /* ACImageViewController.m in Sources */,
+				06ADFA9B15EE9BAB00CD59EA /* ACMovieViewController.m in Sources */,
+				06ADFA9E15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.m in Sources */,
+				06ADFAA115EE9C2100CD59EA /* ACLargeThumbnailListCell.m in Sources */,
+				06ADFAA415EE9C4A00CD59EA /* ACWithHUIViewController.m in Sources */,
+				06ADFAA715EE9C7400CD59EA /* ACHUDView.m in Sources */,
+				06ADFAAB15EEA2DA00CD59EA /* ACToolbar.m in Sources */,
+				06ADFAB415EFED0E00CD59EA /* File.m in Sources */,
+				06ADFAB515EFED0E00CD59EA /* Folder.m in Sources */,
+				06ADFAB615EFED0E00CD59EA /* Image.m in Sources */,
+				06ADFAB715EFED0E00CD59EA /* Movie.m in Sources */,
+				06ADFABA15EFFA1900CD59EA /* ImageToDataTransformer.m in Sources */,
+				06ADFABD15EFFD1900CD59EA /* ACScaler.m in Sources */,
+				06ED873815F396B500683933 /* ACFileListController.m in Sources */,
+				06C7378B15F7E89000C52EA0 /* ACSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,14 +651,6 @@
 				065E442715B9DE0700EEECD8 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		065E442915B9DE0700EEECD8 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				065E442A15B9DE0700EEECD8 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		065E444915B9DE0700EEECD8 /* InfoPlist.strings */ = {

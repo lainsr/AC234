@@ -34,7 +34,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 @implementation ACMovieViewController
 
-@synthesize moviePlayer, moviePlayerView, screenshotView, playButton, navigationController;
+@synthesize moviePlayer, moviePlayerView, screenshotView, playButton;
 @synthesize movieURL, stopped, playing;
 
 - (id)init {
@@ -62,7 +62,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 #pragma mark -
 #pragma mark ACController
-
 - (void)clearView {
 	//
 }

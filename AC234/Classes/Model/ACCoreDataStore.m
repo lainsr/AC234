@@ -1,5 +1,5 @@
 //
-//  ACMementoStore.m
+//  ACCoreDataStore.m
 //  AC234
 //
 //  Created by Stéphane Rossé on 23.01.12.

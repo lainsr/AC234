@@ -8,20 +8,19 @@ Version: 1.0
 #import "ACWithHUIViewController.h"
 
 @interface ACImageViewController : ACWithHUIViewController <ACController> {
-	UIImageView *imageView;
-	UIActivityIndicatorView *activityView;
-	UINavigationController *navigationController;
 	
+    IBOutlet UIImageView *imageView;
+	IBOutlet UIActivityIndicatorView *activityView;
 
 	NSString *loadedImagePath;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityView;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityView;
 
 @property (copy) NSString *loadedImagePath;
 
 - (NSString *)healPath:(NSString*)dirtyPath;
+- (void)mergeChanges:(NSNotification *)notification;
 
 @end

@@ -59,8 +59,7 @@ Version: 1.0
 
 @implementation ACImageViewController
 
-@synthesize loadedImagePath, imageView;
-@synthesize activityView, navigationController;
+@synthesize loadedImagePath, imageView, activityView;
 
 - (id)init {
     self = [super initWithNibName:@"ACImageView" bundle:nil];
@@ -81,6 +80,8 @@ Version: 1.0
 	[super viewDidUnload];
 	self.imageView = nil;
 }
+
+
 
 #pragma mark -
 #pragma mark ACController
@@ -152,20 +153,32 @@ Version: 1.0
 
 - (void)performAsyncLoad:(NSString *)path {
 	path = [self healPath:path];
-    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSManagedObjectContext *defaultContext = [appDelegate.thumbnailStore managedObjectContext];
-	NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-	[localContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-	[defaultContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-	[localContext setParentContext:defaultContext];
-
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+    ACCoreDataStore *thumbnailStore = [appDelegate thumbnailStore];
+    NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [localContext setPersistentStoreCoordinator: [thumbnailStore persistentStoreCoordinator]];
+    [localContext setUndoManager:NULL];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self selector:@selector(mergeChanges:)
+               name:NSManagedObjectContextDidSaveNotification object:localContext];
+    
 	UIImage *image = [ACScaler loadDbImage:path withContext:localContext];
 
-    
     NSString *copyPath = [path copyWithZone:nil];
 	ACImageAndPath *imageAndPath = [[ACImageAndPath alloc] initWithImage:image at:copyPath];
 	[self performSelectorOnMainThread:@selector(loadDidFinishWithData:) withObject:imageAndPath waitUntilDone:NO];
+}
+
+- (void)mergeChanges:(NSNotification *)notification {
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+    ACCoreDataStore *thumbnailStore = [appDelegate thumbnailStore];
+    NSManagedObjectContext *mainContext = [thumbnailStore managedObjectContext];
+    
+    // Merge changes into the main context on the main thread
+    [mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+                    withObject:notification waitUntilDone:NO];
 }
 
 - (void)loadDidFinishWithData:(ACImageAndPath*)imageAndPath {
@@ -175,7 +188,7 @@ Version: 1.0
         }
 		self.imageView.image = [imageAndPath image];
 	}
-	if (!informationsHud.hidden) {
+	if (!self.informationsHud.hidden) {
         if(rotating) {
             [self clipHUDView];
             rotating = NO;

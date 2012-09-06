@@ -8,8 +8,31 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ACAppDelegate : UIResponder <UIApplicationDelegate>
+#import "Folder.h"
+#import "ACCoreDataStore.h"
+#import "ACPasswordDelegate.h"
+#import "ACPasswordController.h"
 
-@property (strong, nonatomic) UIWindow *window;
+@interface ACAppDelegate : UIResponder <UIApplicationDelegate,ACPasswordDelegate> {
+	NSOperationQueue *thumbnailQueue;
+    ACCoreDataStore *thumbnailStore;
+    
+	ACPasswordController *passwordController;
+}
+
+
+@property (nonatomic, strong, readonly) NSOperationQueue *thumbnailQueue;
+@property (nonatomic, strong, readonly) ACCoreDataStore *thumbnailStore;
+
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) IBOutlet ACPasswordController *passwordController;
+
+
+- (NSString *)getLastViewed:(NSString *)folder;
+- (void)setLastViewed:(NSString *)file;
+- (Folder *)getSavedFolder:(NSString *)folder;
+
+- (NSString *)applicationCachesDirectory;
+- (NSString *)applicationDocumentsDirectory;
 
 @end

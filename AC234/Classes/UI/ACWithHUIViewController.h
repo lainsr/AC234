@@ -12,21 +12,23 @@
 
 @interface ACWithHUIViewController : UIViewController {
     BOOL rotating;
-    UILabel *informations;
-	ACHUDView *informationsHud;
     
     NSTimer *myTimer;
     int imageIndex;
 	int numberOfPages;
 	NSString *imagePath;
+    
+    
+    IBOutlet UILabel *informations;
+	IBOutlet ACHUDView *informationsHud;
 }
-
-@property (nonatomic, retain) IBOutlet UILabel *informations;
-@property (nonatomic, retain) IBOutlet ACHUDView *informationsHud;
 
 @property (copy) NSString *imagePath;
 @property (nonatomic) int imageIndex;
 @property (nonatomic) int numberOfPages;
+
+@property (nonatomic, strong) IBOutlet UILabel *informations;
+@property (nonatomic, strong) IBOutlet ACHUDView *informationsHud;
 
 - (void)hideHUDView;
 - (void)clipHUDView;

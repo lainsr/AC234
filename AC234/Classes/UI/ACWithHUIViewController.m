@@ -21,16 +21,14 @@
 
 @implementation ACWithHUIViewController
 
-@synthesize informations, informationsHud;
 @synthesize imagePath, imageIndex, numberOfPages;
+@synthesize informations, informationsHud;
 
 #pragma mark - View lifecycle
 - (void)viewDidUnload {
     self.imagePath = nil;
     self.numberOfPages = 0;
     self.imageIndex = -1;
-    self.informations = nil;
-	self.informationsHud = nil;
     [super viewDidUnload];
 }
 
@@ -56,13 +54,12 @@
 	
     UIApplication *sharedApp = [UIApplication sharedApplication];
     
-	[sharedApp setStatusBarHidden:YES animated:NO];
+	[sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	[self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 - (void)toggleInformations {
-	
 	if(myTimer != nil) {
 		[myTimer invalidate];
 		myTimer = nil;
@@ -93,7 +90,7 @@
             [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
             
 			[sharedApp setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-			[sharedApp setStatusBarHidden:NO animated:NO];
+			[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 			[self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
 			[self.navigationController setNavigationBarHidden:NO animated:YES];
 			[self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];

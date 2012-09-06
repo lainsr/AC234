@@ -29,7 +29,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 
 //headers variables
 @synthesize flipIndicatorButton, organizeButton, addButton, cancelEditButton;
-@synthesize folderList, folderTildePath;
+@synthesize folderList, folderTildePath, hasChanged;
 
 #pragma mark -
 #pragma mark View life cycle
@@ -48,11 +48,18 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString *selectedFolder = (NSString *)sender;
+    NSString *file = (NSString *)sender;
     UIViewController *destinationController = [segue destinationViewController];
     if([destinationController isKindOfClass: [ACScrollViewController class]]) {
         ACScrollViewController *scrollController = (ACScrollViewController *)destinationController;
-        [scrollController selectFile:selectedFolder];
+        if ([self hasChanged]) {
+            [scrollController setFile:file inFolder:folderPath withContent:folderList];
+            [self setHasChanged:NO];//consume the changes and reload the scrollview
+        } else if ([folderPath isEqualToString:[scrollController currentDirectory]]) {
+            [scrollController selectFile:file];
+        } else {
+            [scrollController setFile:file inFolder:folderPath withContent:folderList];
+        } 
     }
 }
 

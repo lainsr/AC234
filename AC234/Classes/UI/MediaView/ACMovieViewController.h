@@ -15,22 +15,24 @@
 @interface ACMovieViewController : ACWithHUIViewController <ACController> {
     BOOL stopped;
     BOOL playing;
+	
+    IBOutlet UIButton *playButton;
     IBOutlet UIImageView *screenshotView;
+    
 	MPMoviePlayerController *moviePlayer;
     MPMoviePlayerViewController *moviePlayerView;
-	IBOutlet UIButton *playButton;
-	UINavigationController *navigationController;
 
 	NSURL *movieURL;
 }
 
 @property (readwrite) BOOL stopped;
 @property (readwrite) BOOL playing;
-@property (nonatomic, retain) IBOutlet UIImageView *screenshotView;
+
 @property (readwrite, retain) MPMoviePlayerController *moviePlayer;
 @property (readwrite, retain) MPMoviePlayerViewController *moviePlayerView;
+
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
-@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UIImageView *screenshotView;
 
 @property (nonatomic, retain) NSURL *movieURL;
 

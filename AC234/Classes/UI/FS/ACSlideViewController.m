@@ -94,8 +94,7 @@ UIBarButtonItem *rightButtonBackup;
     //large images left/right scrollview
     ACScrollViewController *scrollView = [[ACScrollViewController alloc] initWithNibName:@"ACScrollView" bundle:nil];
     self.imagesViewController = scrollView;
-	[self.imagesViewController setNavigationController:navigationController];
-	
+
     if(self.folderList != NULL) {
 		[self.folderController loadFolder:folderPath withImages:folderList fromSlideView:self];
 		[self.largeFolderController loadFolder:folderPath withImages:folderList fromSlideView:self];
@@ -210,14 +209,14 @@ UIBarButtonItem *rightButtonBackup;
 
 - (void)selectFile:(NSString *)file {
 	[navigationController pushViewController:imagesViewController animated:YES];
-	if ([folderController hasChanged]) {
+	/*if ([folderController hasChanged]) {
 		[imagesViewController loadFile:file inFolder:folderPath withContent:folderList];
 		[folderController setHasChanged:NO];//consume the changes and reload the scrollview
 	} else if ([folderPath isEqualToString:[imagesViewController currentDirectory]]) {
 		[imagesViewController selectFile:file];
 	} else {
 		[imagesViewController loadFile:file inFolder:folderPath withContent:folderList];
-	}
+	}*/
 	folders = NO;
 }
 
