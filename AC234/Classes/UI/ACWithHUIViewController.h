@@ -21,6 +21,7 @@
     
     IBOutlet UILabel *informations;
 	IBOutlet ACHUDView *informationsHud;
+    UINavigationController *navigationController;
 }
 
 @property (copy) NSString *imagePath;
@@ -29,6 +30,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *informations;
 @property (nonatomic, strong) IBOutlet ACHUDView *informationsHud;
+@property (nonatomic, strong) UINavigationController *navigationController;
 
 - (void)hideHUDView;
 - (void)clipHUDView;

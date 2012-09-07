@@ -110,13 +110,19 @@
 	
     //allocate the pool of image controllers
     self.imageController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
+    [self.imageController1 setNavigationController:[self navigationController]];
     self.imageController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
+    [self.imageController2 setNavigationController:[self navigationController]];
     self.imageController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
+    [self.imageController3 setNavigationController:[self navigationController]];
 	
     //allocate the pool of movie controllers
     self.movieController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
+    [self.movieController1 setNavigationController:[self navigationController]];
     self.movieController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
+    [self.movieController2 setNavigationController:[self navigationController]];
     self.movieController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
+    [self.movieController3 setNavigationController:[self navigationController]];
 	
 	[self setWantsFullScreenLayout:YES];
     [self load];

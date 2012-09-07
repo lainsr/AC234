@@ -59,8 +59,30 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
             [scrollController selectFile:file];
         } else {
             [scrollController setFile:file inFolder:folderPath withContent:folderList];
-        } 
+        }
+        
+        //hide bars and set them as transparent
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+		[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlackTranslucent];
+		[[self.navigationController toolbar] setBarStyle:UIBarStyleBlackTranslucent];
+		[self.navigationController setDelegate:self];
+		
+        UIApplication *sharedApp = [UIApplication sharedApplication];
+        [sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+		[sharedApp setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
     }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    NSLog(@"Will rotate");
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    NSLog(@"Did rotate");
 }
 
 #pragma mark -
@@ -177,14 +199,20 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 #pragma mark Navigation controller
 - (void)navigationController:(UINavigationController *)navigationCtlr
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-	
-	NSLog(@"willShow");
+	if ([viewController isKindOfClass:[ACFileListController class]]) {
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+		[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlack];
+		[self.navigationController setToolbarHidden:YES animated:NO];
+		
+        UIApplication *sharedApp = [UIApplication sharedApplication];
+        [sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+        [sharedApp setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+	}
 }
 
 - (void)navigationController:(UINavigationController *)navigationCtlr
        didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-	NSLog(@"willShow");
+ 
 }
 
 #pragma mark -

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		065A592215FA781E00C88BBE /* Unkown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592115FA781E00C88BBE /* Unkown@2x.png */; };
+		065A592A15FA790100C88BBE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592415FA790100C88BBE /* Icon-72.png */; };
+		065A592B15FA790100C88BBE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592515FA790100C88BBE /* Icon-Small-50.png */; };
+		065A592C15FA790100C88BBE /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592615FA790100C88BBE /* Icon-Small.png */; };
+		065A592D15FA790100C88BBE /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592715FA790100C88BBE /* Icon-Small@2x.png */; };
+		065A592E15FA790100C88BBE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592815FA790100C88BBE /* Icon.png */; };
+		065A592F15FA790100C88BBE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592915FA790100C88BBE /* Icon@2x.png */; };
 		065E441515B9DE0700EEECD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441415B9DE0700EEECD8 /* UIKit.framework */; };
 		065E441715B9DE0700EEECD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441615B9DE0700EEECD8 /* Foundation.framework */; };
 		065E441915B9DE0700EEECD8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441815B9DE0700EEECD8 /* CoreGraphics.framework */; };
@@ -85,6 +92,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		065A592115FA781E00C88BBE /* Unkown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Unkown@2x.png"; path = "Art/Unkown@2x.png"; sourceTree = "<group>"; };
+		065A592415FA790100C88BBE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Art/Icon-72.png"; sourceTree = "<group>"; };
+		065A592515FA790100C88BBE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Art/Icon-Small-50.png"; sourceTree = "<group>"; };
+		065A592615FA790100C88BBE /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Art/Icon-Small.png"; sourceTree = "<group>"; };
+		065A592715FA790100C88BBE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Art/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		065A592815FA790100C88BBE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Art/Icon.png; sourceTree = "<group>"; };
+		065A592915FA790100C88BBE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Art/Icon@2x.png"; sourceTree = "<group>"; };
 		065E441015B9DE0700EEECD8 /* AC234.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AC234.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065E441415B9DE0700EEECD8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		065E441615B9DE0700EEECD8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -375,6 +389,12 @@
 		06ADFABF15F0039400CD59EA /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				065A592415FA790100C88BBE /* Icon-72.png */,
+				065A592515FA790100C88BBE /* Icon-Small-50.png */,
+				065A592615FA790100C88BBE /* Icon-Small.png */,
+				065A592715FA790100C88BBE /* Icon-Small@2x.png */,
+				065A592815FA790100C88BBE /* Icon.png */,
+				065A592915FA790100C88BBE /* Icon@2x.png */,
 				06ED875115F695ED00683933 /* Folder.png */,
 				06ED875215F695ED00683933 /* Folder@2x.png */,
 				06ED875315F695ED00683933 /* FolderLarge.png */,
@@ -382,6 +402,7 @@
 				06ED875515F695EE00683933 /* Green-noise.png */,
 				06ED875615F695EE00683933 /* Green-noise@2x.png */,
 				06ED875715F695EE00683933 /* Unkown.png */,
+				065A592115FA781E00C88BBE /* Unkown@2x.png */,
 				06ADFAC015F003A100CD59EA /* Home.png */,
 				06ADFAC115F003A100CD59EA /* Home@2x.png */,
 				06ED873915F3B65400683933 /* LargeWithBack.png */,
@@ -551,6 +572,13 @@
 				06ED875C15F695EE00683933 /* Green-noise.png in Resources */,
 				06ED875D15F695EE00683933 /* Green-noise@2x.png in Resources */,
 				06ED875E15F695EE00683933 /* Unkown.png in Resources */,
+				065A592215FA781E00C88BBE /* Unkown@2x.png in Resources */,
+				065A592A15FA790100C88BBE /* Icon-72.png in Resources */,
+				065A592B15FA790100C88BBE /* Icon-Small-50.png in Resources */,
+				065A592C15FA790100C88BBE /* Icon-Small.png in Resources */,
+				065A592D15FA790100C88BBE /* Icon-Small@2x.png in Resources */,
+				065A592E15FA790100C88BBE /* Icon.png in Resources */,
+				065A592F15FA790100C88BBE /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

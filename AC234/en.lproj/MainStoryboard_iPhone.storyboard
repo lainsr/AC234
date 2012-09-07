@@ -143,11 +143,14 @@
                                 <rect key="frame" x="0.0" y="67" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="Z2R-fp-66V" userLabel="Informations" customClass="UILabel">
-                                        <rect key="frame" x="10" y="4.5" width="300" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" id="JRy-3q-LiV" userLabel="Informations">
+                                        <rect key="frame" x="10" y="5" width="300" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="calibratedWhite"/>
                             </view>
@@ -161,7 +164,7 @@
                     <connections>
                         <outlet property="activityView" destination="pE6-J1-jrY" id="gJ0-04-ILh"/>
                         <outlet property="imageView" destination="Ot9-Lj-WWM" id="Azc-0T-MBW"/>
-                        <outlet property="informations" destination="Z2R-fp-66V" id="l1J-zC-9fT"/>
+                        <outlet property="informations" destination="JRy-3q-LiV" id="tts-vf-X5E"/>
                         <outlet property="informationsHud" destination="WyT-A1-gQI" id="Br8-7r-uIe"/>
                         <outlet property="view" destination="3Uc-Jd-0Ta" id="Eg3-v8-rDy"/>
                     </connections>
@@ -328,8 +331,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACImageViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="activityView" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="imageInformations" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageInformationsHud" candidateClass="ACHUDView"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
@@ -337,8 +338,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACMovieViewController.h"/>
             <relationships>
                 <relationship kind="action" name="play"/>
-                <relationship kind="outlet" name="movieInformations" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="movieInformationsHud" candidateClass="ACHUDView"/>
                 <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="screenshotView" candidateClass="UIImageView"/>
             </relationships>
