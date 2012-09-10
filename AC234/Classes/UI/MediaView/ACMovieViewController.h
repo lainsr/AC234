@@ -28,14 +28,14 @@
 @property (readwrite) BOOL stopped;
 @property (readwrite) BOOL playing;
 
-@property (readwrite, retain) MPMoviePlayerController *moviePlayer;
-@property (readwrite, retain) MPMoviePlayerViewController *moviePlayerView;
+@property (readwrite, strong) MPMoviePlayerController *moviePlayer;
+@property (readwrite, strong) MPMoviePlayerViewController *moviePlayerView;
 
-@property (nonatomic, retain) IBOutlet UIButton *playButton;
-@property (nonatomic, retain) IBOutlet UIImageView *screenshotView;
+@property (nonatomic, strong) IBOutlet UIButton *playButton;
+@property (nonatomic, strong) IBOutlet UIImageView *screenshotView;
 
 @property (copy) NSString *imagePath;
-@property (nonatomic, retain) NSURL *movieURL;
+@property (nonatomic, strong) NSURL *movieURL;
 
 - (void)setMoviePlayerUserSettings;
 

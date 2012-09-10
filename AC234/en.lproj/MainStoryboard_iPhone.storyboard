@@ -82,6 +82,75 @@
             </objects>
             <point key="canvasLocation" x="1122" y="-154"/>
         </scene>
+        <!--Search View Controller - Root View Controller-->
+        <scene sceneID="X8u-w6-61b">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MWB-MQ-cv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="6pv-1H-Vzb" customClass="ACSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gfv-H5-KSL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="separatorColor" red="0.1764705882" green="0.1843137255" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" showsScopeBar="YES" id="yeC-Zj-Zqw">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>All</string>
+                                <string>Images</string>
+                                <string>Videos</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="6pv-1H-Vzb" id="K4b-iB-g4z"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SingleIconCell" id="RIQ-cf-Vfw">
+                                <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="UXa-du-feP"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="OJi-fY-GcE" id="0Hb-pF-WD4"/>
+                        <segue destination="dOJ-Kp-7yz" kind="push" identifier="SearchMediaSegue" id="Nqb-a1-kdb"/>
+                    </connections>
+                </tableViewController>
+                <searchDisplayController id="OJi-fY-GcE">
+                    <connections>
+                        <outlet property="delegate" destination="6pv-1H-Vzb" id="VyA-T3-tuK"/>
+                        <outlet property="searchBar" destination="yeC-Zj-Zqw" id="ndU-Hj-Ddi"/>
+                        <outlet property="searchContentsController" destination="6pv-1H-Vzb" id="29x-9W-zaA"/>
+                        <outlet property="searchResultsDataSource" destination="6pv-1H-Vzb" id="8L6-9h-mt0"/>
+                        <outlet property="searchResultsDelegate" destination="6pv-1H-Vzb" id="2Rz-0Y-zU7"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1122" y="451"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xig-Si-dV7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYs-wy-s8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="d21-5T-lBB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="iwv-pQ-cle"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="P1o-wh-009">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6pv-1H-Vzb" kind="relationship" relationship="rootViewController" id="fQt-wb-Cld"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="653" y="451"/>
+        </scene>
         <!--Scroll View Controller-->
         <scene sceneID="UO6-ZD-qWQ">
             <objects>
@@ -232,7 +301,7 @@
                                 <rect key="frame" x="124" y="212" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
+                                <state key="normal" title="Play">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -245,6 +314,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                        </accessibility>
                     </view>
                     <navigationItem key="navigationItem" id="nhV-c1-Wuj"/>
                     <connections>
@@ -304,7 +376,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings.png" id="6"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="653" y="558"/>
+            <point key="canvasLocation" x="653" y="1068"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -321,11 +393,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="1PP-BF-Saf" kind="relationship" relationship="viewControllers" id="Svs-iv-k68"/>
+                        <segue destination="d21-5T-lBB" kind="relationship" relationship="viewControllers" id="nqN-BP-wuP"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="62" y="284"/>
         </scene>
     </scenes>
     <resources>
@@ -357,7 +430,7 @@
         <class className="ACHUDView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACHUDView.h"/>
         </class>
-        <class className="ACImageViewController" superclassName="ACWithHUIViewController">
+        <class className="ACImageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACImageViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="activityView" candidateClass="UIActivityIndicatorView"/>
@@ -396,6 +469,13 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
+        <class className="ACSearchViewController" superclassName="ACThumbnailsTableController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imagesViewController" candidateClass="ACScrollViewController"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
         <class className="ACSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSettingsViewController.h"/>
         </class>
@@ -405,17 +485,13 @@
         <class className="ACToolbar" superclassName="UIToolbar">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACToolbar.h"/>
         </class>
-        <class className="ACWithHUIViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACWithHUIViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="informations" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="informationsHud" candidateClass="ACHUDView"/>
-            </relationships>
-        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nqb-a1-kdb"/>
+    </inferredMetricsTieBreakers>
 </document>

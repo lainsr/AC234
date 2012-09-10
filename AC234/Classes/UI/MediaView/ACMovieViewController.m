@@ -37,24 +37,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 @synthesize moviePlayer, moviePlayerView, screenshotView, playButton;
 @synthesize imagePath, movieURL, stopped, playing;
 
-- (id)init {
-    self = [super initWithNibName:@"ACMovieView" bundle:nil];
-	if (self) {
-		[self setHidesBottomBarWhenPushed:YES];
-		[self setWantsFullScreenLayout:YES];
-        self.view.backgroundColor = [UIColor blackColor];
-	}
-	return self;
-}
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	[super viewDidLoad];
-}
-
-- (void)viewDidUnload {
-	[super viewDidUnload];
-}
 
 - (IBAction)play {
     [self playMovie];

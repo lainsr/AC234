@@ -41,7 +41,7 @@
 @synthesize scrollView, pageControl;
 @synthesize informations, informationsHud;
 @synthesize prevViewController, currentViewController, nextViewController;
-@synthesize pageControlUsed, rotating, kNumberOfPages, currentDirPath, selectedFile, filteredImageFullPathArray;
+@synthesize pageControlUsed, rotating, currentDirPath, selectedFile, filteredImageFullPathArray;
 @synthesize imageController1, imageController2, imageController3;
 @synthesize movieController1, movieController2, movieController3;
 
@@ -52,7 +52,10 @@
 	[self setToolbarItems:items animated:NO];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
+    [singleTap setDelegate:self];
     [self.scrollView addGestureRecognizer:singleTap];
+    
+    [self.informationsHud setHidden:YES];
 	
 	// a page is the width of the scroll view
 	self.scrollView.pagingEnabled = YES;
@@ -72,11 +75,6 @@
     
 	[self setWantsFullScreenLayout:YES];
     [self load];
-}
-
-- (void)viewDidUnload {
-	self.scrollView = nil;
-	[super viewDidUnload];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -137,6 +135,27 @@
     }
 }
 
+/**
+ * http://stackoverflow.com/questions/8957876/how-to-pass-touchupinside-event-to-a-uibutton-without-passing-it-to-parent-view
+ */
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    UIView *gestureView = gestureRecognizer.view;
+    // gestureView is the view that the recognizer is attached to - should be the scroll view
+    
+    CGPoint point = [touch locationInView:gestureView];
+    UIView *touchedView = [gestureView hitTest:point withEvent:nil];
+    // touchedView is the deepest descendant of gestureView that contains point
+    
+    // Block the recognizer if touchedView is a UIButton, or a descendant of a UIButton
+    while (touchedView && touchedView != gestureView) {
+        if ([touchedView isKindOfClass:[UIButton class]]) {
+            return NO;
+        }
+        touchedView = touchedView.superview;
+    }
+    return YES;
+}
+
 - (void)hideHUDView {
 	if (informationsHud.hidden) return;
 	
@@ -164,7 +183,7 @@
 			[infos appendString:@"\n"];
 			[infos appendFormat:@"%i",[pageControl currentPage]];
 			[infos appendString:@" / "];
-			[infos appendFormat:@"%i",kNumberOfPages];
+			[infos appendFormat:@"%i",[pageControl numberOfPages]];
             
 			self.informations.text = infos;
 			self.informationsHud.hidden = NO;
@@ -373,12 +392,11 @@
             NSString *newDirPath = [dirPath copyWithZone:nil];
             self.currentDirPath = newDirPath;
         }
-        
-        kNumberOfPages = [filteredImageFullPathArray count];
 	}
 }
 
 - (void)load {
+    int kNumberOfPages = [filteredImageFullPathArray count];
     self.scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, 200);
     self.pageControl.numberOfPages = kNumberOfPages;
   

@@ -10,6 +10,7 @@
 #import "ACFolderListCell.h"
 #import "ACFileListController.h"
 #import "ACScrollViewController.h"
+#import "ACSearchViewController.h"
 #import "ACLargeThumbnailListCell.h"
 #import "ACThumbnailCell.h"
 
@@ -238,7 +239,9 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         UIApplication *sharedApp = [UIApplication sharedApplication];
         [sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
         [sharedApp setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-	}
+	} else if ([viewController isKindOfClass:[ACSearchViewController class]]) {
+        NSLog(@"");
+    }
 }
 
 - (void)navigationController:(UINavigationController *)navigationCtlr

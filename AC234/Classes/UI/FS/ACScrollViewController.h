@@ -13,7 +13,8 @@
 #import "ACMovieViewController.h"
 //#import "ACDeviceManager.h"
 
-@interface ACScrollViewController : UIViewController <UIScrollViewDelegate, /*ACDeviceManagerDelegate,*/ UIActionSheetDelegate> {
+@interface ACScrollViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate,
+    /*ACDeviceManagerDelegate,*/ UIActionSheetDelegate> {
 	NSTimer *myTimer;
     CGFloat currentPageFraction;
     
@@ -21,7 +22,6 @@
     
     BOOL pageControlUsed;
     BOOL rotating;
-    NSUInteger kNumberOfPages;
     NSString *currentDirPath;
     NSString *selectedFile;
     NSMutableArray *filteredImageFullPathArray;
@@ -59,7 +59,6 @@
 
 @property (nonatomic) BOOL pageControlUsed;
 @property (nonatomic) BOOL rotating;
-@property (nonatomic) NSUInteger kNumberOfPages;
 @property (nonatomic, strong) NSString *selectedFile;
 @property (nonatomic, strong) NSString *currentDirPath;
 @property (nonatomic, strong) NSMutableArray *filteredImageFullPathArray;
