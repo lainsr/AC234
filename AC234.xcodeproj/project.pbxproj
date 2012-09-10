@@ -26,9 +26,6 @@
 		065E444315B9DE0700EEECD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441615B9DE0700EEECD8 /* Foundation.framework */; };
 		065E444B15B9DE0700EEECD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065E444915B9DE0700EEECD8 /* InfoPlist.strings */; };
 		065E444E15B9DE0700EEECD8 /* AC234Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E444D15B9DE0700EEECD8 /* AC234Tests.m */; };
-		06ADFA8015EE99EB00CD59EA /* ACSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA7F15EE99EB00CD59EA /* ACSlideViewController.m */; };
-		06ADFA8715EE9A7300CD59EA /* ACFolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8215EE9A7200CD59EA /* ACFolderController.m */; };
-		06ADFA8815EE9A7300CD59EA /* ACLargeFolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8415EE9A7200CD59EA /* ACLargeFolderController.m */; };
 		06ADFA8915EE9A7300CD59EA /* ACScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */; };
 		06ADFA8C15EE9AA000CD59EA /* ACFolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */; };
 		06ADFA8F15EE9AD100CD59EA /* ACThumbnailsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */; };
@@ -116,12 +113,6 @@
 		065E444A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065E444C15B9DE0700EEECD8 /* AC234Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC234Tests.h; sourceTree = "<group>"; };
 		065E444D15B9DE0700EEECD8 /* AC234Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AC234Tests.m; sourceTree = "<group>"; };
-		06ADFA7E15EE99EB00CD59EA /* ACSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSlideViewController.h; path = Classes/UI/FS/ACSlideViewController.h; sourceTree = "<group>"; };
-		06ADFA7F15EE99EB00CD59EA /* ACSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSlideViewController.m; path = Classes/UI/FS/ACSlideViewController.m; sourceTree = "<group>"; };
-		06ADFA8115EE9A7200CD59EA /* ACFolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFolderController.h; path = Classes/UI/FS/ACFolderController.h; sourceTree = "<group>"; };
-		06ADFA8215EE9A7200CD59EA /* ACFolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACFolderController.m; path = Classes/UI/FS/ACFolderController.m; sourceTree = "<group>"; };
-		06ADFA8315EE9A7200CD59EA /* ACLargeFolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACLargeFolderController.h; path = Classes/UI/FS/ACLargeFolderController.h; sourceTree = "<group>"; };
-		06ADFA8415EE9A7200CD59EA /* ACLargeFolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACLargeFolderController.m; path = Classes/UI/FS/ACLargeFolderController.m; sourceTree = "<group>"; };
 		06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACScrollViewController.h; path = Classes/UI/FS/ACScrollViewController.h; sourceTree = "<group>"; };
 		06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACScrollViewController.m; path = Classes/UI/FS/ACScrollViewController.m; sourceTree = "<group>"; };
 		06ADFA8A15EE9AA000CD59EA /* ACFolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFolderListCell.h; path = Classes/UI/FS/ACFolderListCell.h; sourceTree = "<group>"; };
@@ -324,20 +315,14 @@
 				06ED874915F553F100683933 /* ACThumbnailCell.h */,
 				06ADFA9F15EE9C2100CD59EA /* ACLargeThumbnailListCell.h */,
 				06ADFAA015EE9C2100CD59EA /* ACLargeThumbnailListCell.m */,
-				06ADFA8D15EE9AD100CD59EA /* ACThumbnailsTableController.h */,
-				06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */,
 				06ADFA8A15EE9AA000CD59EA /* ACFolderListCell.h */,
 				06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */,
-				06ADFA8115EE9A7200CD59EA /* ACFolderController.h */,
-				06ADFA8215EE9A7200CD59EA /* ACFolderController.m */,
-				06ADFA8315EE9A7200CD59EA /* ACLargeFolderController.h */,
-				06ADFA8415EE9A7200CD59EA /* ACLargeFolderController.m */,
 				06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */,
 				06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */,
-				06ADFA7E15EE99EB00CD59EA /* ACSlideViewController.h */,
-				06ADFA7F15EE99EB00CD59EA /* ACSlideViewController.m */,
 				06ED873615F396B500683933 /* ACFileListController.h */,
 				06ED873715F396B500683933 /* ACFileListController.m */,
+				06ADFA8D15EE9AD100CD59EA /* ACThumbnailsTableController.h */,
+				06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */,
 			);
 			name = FS;
 			sourceTree = "<group>";
@@ -621,9 +606,6 @@
 				06BB994115BDD014007B6685 /* KeychainItemWrapper.m in Sources */,
 				06F8019715BF2C48000DD680 /* ACPasswordController.m in Sources */,
 				06F801A015BF2DE2000DD680 /* ACStaticIcons.m in Sources */,
-				06ADFA8015EE99EB00CD59EA /* ACSlideViewController.m in Sources */,
-				06ADFA8715EE9A7300CD59EA /* ACFolderController.m in Sources */,
-				06ADFA8815EE9A7300CD59EA /* ACLargeFolderController.m in Sources */,
 				06ADFA8915EE9A7300CD59EA /* ACScrollViewController.m in Sources */,
 				06ADFA8C15EE9AA000CD59EA /* ACFolderListCell.m in Sources */,
 				06ADFA8F15EE9AD100CD59EA /* ACThumbnailsTableController.m in Sources */,

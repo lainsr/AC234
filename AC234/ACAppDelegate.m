@@ -20,77 +20,52 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
 @synthesize thumbnailStore = _thumbnailStore;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     thumbnailQueue = [[NSOperationQueue alloc]init];
 	[thumbnailQueue setMaxConcurrentOperationCount:MAX_OPERATION_QUEUE_SIZE];
     
     _thumbnailStore = [[ACCoreDataStore alloc] initWithFile:@"AC234.sqlite"];
     [_thumbnailStore managedObjectContext];
-    
-    if(YES || [[ACGlobalInfos sharedInstance] isPasswordActivated]) {
-        //_passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
-        //[_passwordController setPasswordDelegate:self];
-        //[_window.rootViewController presentModalViewController:_passwordController animated:NO];
 
-	}
-    
-    // Override point for customization after application launch.
     return YES;
 }
 							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    NSLog(@"applicationWillResignActive");
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (void)applicationWillResignActive:(UIApplication *)application {
+
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    _passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
-    [_passwordController setPasswordDelegate:self];
-    [_window.rootViewController presentModalViewController:_passwordController animated:NO];
-    
-    NSLog(@"applicationDidEnterBackground");
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
+        _passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
+        [_passwordController setPasswordDelegate:self];
+        [_window.rootViewController presentModalViewController:_passwordController animated:NO];
+    }
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    NSLog(@"applicationWillEnterForeground");
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state;
+    // here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    
-    //UIViewController *rootController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    //[[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-    
-    //UIStoryboard *storyboard = rootController.storyboard;
-    
-    //UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"AskPasswordVC"];
-    //[rootController performSegueWithIdentifier:@"AskPassword" sender:self];
-    //[rootController presentModalViewController:loginController animated:YES];
-    
-    //_passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
-    //[_passwordController setPasswordDelegate:self];
-    //[_window.rootViewController presentModalViewController:_passwordController animated:NO];
-    
-    NSLog(@"applicationDidBecomeActive");
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    if(_passwordController == NULL && [[ACGlobalInfos sharedInstance] isPasswordActivated]) {
+        _passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
+        [_passwordController setPasswordDelegate:self];
+        [_window.rootViewController presentModalViewController:_passwordController animated:NO];
+    }
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate.
+    // Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 #pragma mark -
 #pragma mark ACPasswordDelegate
 -(BOOL)passwordSet:(NSString *)password {
 	if([[ACGlobalInfos sharedInstance] checkPassword:password]) {
+        [_window.rootViewController dismissModalViewControllerAnimated:NO];
+        [_passwordController setPasswordDelegate:NULL];
+        _passwordController = NULL;
 		return YES;
 	}
 	return NO;

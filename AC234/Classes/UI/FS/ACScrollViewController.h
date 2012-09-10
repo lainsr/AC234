@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ACController.h"
+#import "ACHUDView.h"
 #import "ACImageViewController.h"
 #import "ACMovieViewController.h"
 //#import "ACDeviceManager.h"
@@ -25,18 +26,21 @@
     NSString *selectedFile;
     NSMutableArray *filteredImageFullPathArray;
 	
-	UIBarButtonItem *playButton;
-	UIBarButtonItem *pauseButton;
-	UIBarButtonItem *forwardButton;
-	UIBarButtonItem *rewindButton;
-	UIBarButtonItem *airplayButton;
-	UIBarButtonItem *flexItemLeft;
-	UIBarButtonItem *fixItemLeft;
-	UIBarButtonItem *flexItemRight;
-	UIBarButtonItem *fixItemRight;
+	IBOutlet UIBarButtonItem *playButton;
+	IBOutlet UIBarButtonItem *pauseButton;
+	IBOutlet UIBarButtonItem *forwardButton;
+	IBOutlet UIBarButtonItem *rewindButton;
+	IBOutlet UIBarButtonItem *airplayButton;
+	IBOutlet UIBarButtonItem *flexItemLeft;
+	IBOutlet UIBarButtonItem *fixItemLeft;
+	IBOutlet UIBarButtonItem *flexItemRight;
+	IBOutlet UIBarButtonItem *fixItemRight;
 	
 	IBOutlet UIScrollView *scrollView;
 	IBOutlet UIPageControl *pageControl;
+    
+    IBOutlet UILabel *informations;
+	IBOutlet ACHUDView *informationsHud;
     
     ACImageViewController *imageController1;
     ACImageViewController *imageController2;
@@ -56,34 +60,37 @@
 @property (nonatomic) BOOL pageControlUsed;
 @property (nonatomic) BOOL rotating;
 @property (nonatomic) NSUInteger kNumberOfPages;
-@property (nonatomic, retain) NSString *selectedFile;
-@property (nonatomic, retain) NSString *currentDirPath;
-@property (nonatomic, retain) NSMutableArray *filteredImageFullPathArray;
+@property (nonatomic, strong) NSString *selectedFile;
+@property (nonatomic, strong) NSString *currentDirPath;
+@property (nonatomic, strong) NSMutableArray *filteredImageFullPathArray;
 
-@property (nonatomic, retain) UIBarButtonItem *playButton;
-@property (nonatomic, retain) UIBarButtonItem *pauseButton;
-@property (nonatomic, retain) UIBarButtonItem *forwardButton;
-@property (nonatomic, retain) UIBarButtonItem *rewindButton;
-@property (nonatomic, retain) UIBarButtonItem *airplayButton;
-@property (nonatomic, retain) UIBarButtonItem *flexItemLeft;
-@property (nonatomic, retain) UIBarButtonItem *fixItemLeft;
-@property (nonatomic, retain) UIBarButtonItem *flexItemRight;
-@property (nonatomic, retain) UIBarButtonItem *fixItemRight;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *playButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *pauseButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *forwardButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *rewindButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *airplayButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *flexItemLeft;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *fixItemLeft;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *flexItemRight;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *fixItemRight;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
-@property (nonatomic, retain) ACImageViewController *imageController1;
-@property (nonatomic, retain) ACImageViewController *imageController2;
-@property (nonatomic, retain) ACImageViewController *imageController3;
+@property (nonatomic, strong) IBOutlet UILabel *informations;
+@property (nonatomic, strong) IBOutlet ACHUDView *informationsHud;
 
-@property (nonatomic, retain) ACMovieViewController *movieController1;
-@property (nonatomic, retain) ACMovieViewController *movieController2;
-@property (nonatomic, retain) ACMovieViewController *movieController3;
+@property (nonatomic, strong) ACImageViewController *imageController1;
+@property (nonatomic, strong) ACImageViewController *imageController2;
+@property (nonatomic, strong) ACImageViewController *imageController3;
 
-@property (nonatomic, retain) UIViewController<ACController> *prevViewController;
-@property (nonatomic, retain) UIViewController<ACController> *currentViewController;
-@property (nonatomic, retain) UIViewController<ACController> *nextViewController;
+@property (nonatomic, strong) ACMovieViewController *movieController1;
+@property (nonatomic, strong) ACMovieViewController *movieController2;
+@property (nonatomic, strong) ACMovieViewController *movieController3;
+
+@property (nonatomic, strong) UIViewController<ACController> *prevViewController;
+@property (nonatomic, strong) UIViewController<ACController> *currentViewController;
+@property (nonatomic, strong) UIViewController<ACController> *nextViewController;
 
 - (NSString *)currentFile;
 - (NSString *)currentDirectory;
@@ -93,11 +100,11 @@
 - (void)load;
 - (void)setFile:(NSString *)file inFolder:(NSString *)dirPath withContent:(NSMutableArray *)imageFullPathArray;
 
-- (void)play;
-- (void)pause;
-- (void)next:(NSTimer *)timer;
-- (void)previous:(NSTimer *)timer;
-- (void)airplay;
+- (IBAction)play;
+- (IBAction)pause;
+- (IBAction)next;
+- (IBAction)previous;
+- (IBAction)airplay;
 
 - (void)clearViewControllers;
 

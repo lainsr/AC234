@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "ACController.h"
-#import "ACWithHUIViewController.h"
 
 
-@interface ACMovieViewController : ACWithHUIViewController <ACController> {
+@interface ACMovieViewController : UIViewController <ACController> {
     BOOL stopped;
     BOOL playing;
 	
@@ -23,6 +22,7 @@
     MPMoviePlayerViewController *moviePlayerView;
 
 	NSURL *movieURL;
+	NSString *imagePath;
 }
 
 @property (readwrite) BOOL stopped;
@@ -34,6 +34,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
 @property (nonatomic, retain) IBOutlet UIImageView *screenshotView;
 
+@property (copy) NSString *imagePath;
 @property (nonatomic, retain) NSURL *movieURL;
 
 - (void)setMoviePlayerUserSettings;
@@ -44,7 +45,5 @@
 
 - (CGFloat)retrievePlaybackTime;
 - (void)savePlaybackTime:(CGFloat)time;
-
-- (void)toggleInformations;
 
 @end

@@ -35,7 +35,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 @implementation ACMovieViewController
 
 @synthesize moviePlayer, moviePlayerView, screenshotView, playButton;
-@synthesize movieURL, stopped, playing;
+@synthesize imagePath, movieURL, stopped, playing;
 
 - (id)init {
     self = [super initWithNibName:@"ACMovieView" bundle:nil];
@@ -67,7 +67,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 }
 
 - (void)willLoad:(NSString *)path at:(int)index {
-    [self setImageIndex:index];
 	[self setImagePath:path];
     
     NSURL *url = [NSURL fileURLWithPath:path];
@@ -77,7 +76,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 }
 
 - (void)didLoad:(NSString *)path at:(int)index {
-	[self setImageIndex:index];
 	[self setImagePath:path];
 	
     NSURL *url = [NSURL fileURLWithPath:path];
@@ -111,12 +109,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 #pragma mark Movie
 
 - (void)playMovie {
-    if (!informationsHud.hidden) {
-		informationsHud.alpha = 0.0;
-		informationsHud.hidden = YES;
-		playButton.hidden = NO;
-	}
-    
     if(self.moviePlayer != NULL) {
         [self setStopped:NO];
         [self setPlaying:YES];
@@ -344,15 +336,6 @@ CGFloat kMovieViewOffsetY = 20.0;
     [self setMoviePlayer:nil];
     [self setMoviePlayerView:nil];
 }
-
-#pragma mark -
-#pragma mark ACWithHUDViewController
-- (void)toggleInformations {
-    if([self moviePlayer] == nil || ![self playing]) {
-        [super toggleInformations];
-    }
-}
-
 
 #pragma mark -
 #pragma mark Settings

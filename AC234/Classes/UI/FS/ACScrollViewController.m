@@ -25,6 +25,8 @@
 - (void)willUnloadScrollViewWithPage:(int)page controller:(UIViewController<ACController> *)controller;
 - (void)diUnloadScrollViewWithPage:(int)page controller:(UIViewController<ACController> *)controller;
 
+- (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture;
+
 - (CGRect)snapImageAt:(int)page;
 
 - (void)sendToDevice:(int)page;
@@ -37,69 +39,20 @@
 //@synthesize deviceToSelect;
 @synthesize playButton, pauseButton, forwardButton, rewindButton, airplayButton, flexItemLeft, flexItemRight, fixItemLeft, fixItemRight;
 @synthesize scrollView, pageControl;
+@synthesize informations, informationsHud;
 @synthesize prevViewController, currentViewController, nextViewController;
 @synthesize pageControlUsed, rotating, kNumberOfPages, currentDirPath, selectedFile, filteredImageFullPathArray;
 @synthesize imageController1, imageController2, imageController3;
 @synthesize movieController1, movieController2, movieController3;
 
-- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
-	self = [super initWithNibName:nibName bundle:nibBundle];
-    if (self) {
-		[self setHidesBottomBarWhenPushed:YES];
-		[self setWantsFullScreenLayout:YES];
-	}
-	return self;
-}
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	//toolbar
-    UIBarButtonItem *play = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(play)];
-	play.style = UIBarButtonItemStylePlain;
-	self.playButton = play;
-
-	
-    UIBarButtonItem *pause = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pause)];
-	self.pauseButton = pause;
-	self.pauseButton.style = UIBarButtonItemStylePlain;
-	
-    UIBarButtonItem *forward = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(next:)];
-	self.forwardButton = forward;
-	self.forwardButton.style = UIBarButtonItemStylePlain;
-	
-    UIBarButtonItem *rewind = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previous:)];
-	self.rewindButton = rewind;
-	self.rewindButton.style = UIBarButtonItemStylePlain;
     
-    UIImage *airplayIcon;
-    //ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
-	//ACDeviceManager *deviceManager = [appDelegate deviceManager];
-    if(YES /*[deviceManager deviceAvailable]*/) {
-        airplayIcon = [UIImage imageNamed:@"display_on.png"];
-    } else {
-        airplayIcon = [UIImage imageNamed:@"display_off.png"];
-    }
-
-    UIBarButtonItem *airplay = [[UIBarButtonItem alloc] initWithImage:airplayIcon style:UIBarButtonItemStylePlain target:self action:@selector(airplay)];
-	self.airplayButton = airplay;
-
-    UIBarButtonItem *flexLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	self.flexItemLeft = flexLeft;
-	
-    UIBarButtonItem *flexRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    self.flexItemRight = flexRight;
-	
-    UIBarButtonItem *fixLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	self.fixItemLeft = fixLeft;
-	[self.fixItemLeft setWidth:26.0f];
-	
-    UIBarButtonItem *fixRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    self.fixItemRight = fixRight;
-	[self.fixItemRight setWidth:18.0f];
-	
-	NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, playButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
+    NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, playButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
 	[self setToolbarItems:items animated:NO];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
+    [self.scrollView addGestureRecognizer:singleTap];
 	
 	// a page is the width of the scroll view
 	self.scrollView.pagingEnabled = YES;
@@ -110,20 +63,13 @@
 	
     //allocate the pool of image controllers
     self.imageController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
-    [self.imageController1 setNavigationController:[self navigationController]];
     self.imageController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
-    [self.imageController2 setNavigationController:[self navigationController]];
     self.imageController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"ImageView"];
-    [self.imageController3 setNavigationController:[self navigationController]];
-	
     //allocate the pool of movie controllers
     self.movieController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
-    [self.movieController1 setNavigationController:[self navigationController]];
     self.movieController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
-    [self.movieController2 setNavigationController:[self navigationController]];
     self.movieController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
-    [self.movieController3 setNavigationController:[self navigationController]];
-	
+    
 	[self setWantsFullScreenLayout:YES];
     [self load];
 }
@@ -143,7 +89,6 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	[self clearViewControllers];
-	[self pause];
 }
 
 - (void)clearViewControllers {
@@ -185,34 +130,105 @@
 }
 
 #pragma mark -
+#pragma mark HUD view
+- (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture {
+    if([gesture state] == UIGestureRecognizerStateEnded) {
+        [self toggleInformations];
+    }
+}
+
+- (void)hideHUDView {
+	if (informationsHud.hidden) return;
+	
+	informationsHud.alpha = 0.00;
+    informationsHud.hidden = YES;
+	
+    UIApplication *sharedApp = [UIApplication sharedApplication];
+	[sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	[self.navigationController setToolbarHidden:YES animated:YES];
+}
+
+- (void)toggleInformations {
+	if(myTimer != nil) {
+		[myTimer invalidate];
+		myTimer = nil;
+	}
+	
+	if (informationsHud.hidden) {
+		NSString *fileName = [[self currentFile] lastPathComponent];
+		if(fileName == nil) {
+			[self hideHUDView];
+		} else {
+			NSMutableString *infos = [[NSMutableString alloc] initWithString:fileName];
+			[infos appendString:@"\n"];
+			[infos appendFormat:@"%i",[pageControl currentPage]];
+			[infos appendString:@" / "];
+			[infos appendFormat:@"%i",kNumberOfPages];
+            
+			self.informations.text = infos;
+			self.informationsHud.hidden = NO;
+			self.informationsHud.alpha = 0.00;//usefull for the first time only
+            
+            myTimer = [NSTimer timerWithTimeInterval:0.15 target:self selector:@selector(showHUDView:) userInfo:nil repeats:NO];
+            [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
+            
+            UIApplication *sharedApp = [UIApplication sharedApplication];
+			[sharedApp setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+			[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+			[self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+			[self.navigationController setNavigationBarHidden:NO animated:YES];
+			[self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];
+			[self.navigationController setToolbarHidden:NO animated:YES];
+		}
+	} else {
+		[self hideHUDView];
+	}
+}
+
+- (void)showHUDView:(NSTimer *)timer {
+    [UIView transitionWithView:self.scrollView  duration:0.1 options:UIViewAnimationOptionTransitionNone
+                    animations:^{
+                        self.informationsHud.alpha = 1.0;
+                        self.informationsHud.hidden = NO;
+                        [self clipHUDView];
+                    }completion:^(BOOL finished){}];
+}
+
+- (void)clipHUDView {
+    CGRect navFrame = [self.navigationController.navigationBar frame];
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+        informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height, navFrame.size.width, 44);
+    } else {
+        informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height, navFrame.size.width, 64);
+    }
+}
+
+#pragma mark -
 #pragma mark Slide show
-- (void)play {
-	[self.imageController1 hideHUDView];
-	[self.imageController2 hideHUDView];
-	[self.imageController3 hideHUDView];
-	[self.movieController1 hideHUDView];
-	[self.movieController2 hideHUDView];
-	[self.movieController3 hideHUDView];
-	[[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-	
-	CGFloat interval = 5.0;
-	myTimer = [NSTimer timerWithTimeInterval:interval target:self selector:@selector(next:) userInfo:nil repeats:YES];
-	[[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
-	
-	NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, pauseButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
+- (IBAction)play {
+    [self hideHUDView];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+
+    myTimer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(next:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
+        
+    NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, pauseButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
 	[self setToolbarItems:items animated:NO];
 }
 
--(void)pause {
-	if(myTimer == nil) return;
-	[myTimer invalidate];
-	myTimer = nil;
-	
-	NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, playButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
+-(IBAction)pause {
+    [myTimer invalidate];
+    myTimer = nil;
+    
+    NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, playButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
 	[self setToolbarItems:items animated:NO];
 }
 
-- (void)next:(NSTimer *)timer {
+- (IBAction)next {
+    [self hideHUDView];
+    
 	int nextIndex = self.pageControl.currentPage + 1;
 	if(filteredImageFullPathArray != nil && nextIndex >= 0 && nextIndex < [filteredImageFullPathArray count]) {
 		pageControl.currentPage = nextIndex;
@@ -227,7 +243,9 @@
     [self sendToDevice:pageControl.currentPage];
 }
 
-- (void)previous:(NSTimer *)timer {
+- (IBAction)previous{
+    [self hideHUDView];
+    
 	int previousIndex = pageControl.currentPage - 1;
 	if(filteredImageFullPathArray != nil && previousIndex >= 0 && previousIndex < [filteredImageFullPathArray count]) {
 		pageControl.currentPage = previousIndex;
@@ -242,7 +260,7 @@
     [self sendToDevice:pageControl.currentPage];
 }
 
-- (void)airplay {
+- (IBAction)airplay {
     /*ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
 	ACDeviceManager *deviceManager = [appDelegate deviceManager];
     if([deviceManager deviceAvailable]) {
@@ -363,13 +381,7 @@
 - (void)load {
     self.scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, 200);
     self.pageControl.numberOfPages = kNumberOfPages;
-    [self.imageController1 setNumberOfPages:kNumberOfPages];
-    [self.imageController2 setNumberOfPages:kNumberOfPages];
-    [self.imageController3 setNumberOfPages:kNumberOfPages];
-    [self.movieController1 setNumberOfPages:kNumberOfPages];
-    [self.movieController2 setNumberOfPages:kNumberOfPages];
-    [self.movieController3 setNumberOfPages:kNumberOfPages];
-        
+  
     int index = 0;
     if([self selectedFile] != nil) {
         int count = 0;
@@ -588,6 +600,7 @@
  
     currentPageFraction = pageFraction;
     if(page != currentPage) {
+        [self hideHUDView];
 		pageControl.currentPage = page;
 	}
 	

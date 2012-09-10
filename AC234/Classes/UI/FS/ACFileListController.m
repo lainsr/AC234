@@ -78,11 +78,42 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    NSLog(@"Will rotate");
+    if ([self cellStyle] != kLarge) {
+        return;
+    }
+    
+    NSIndexPath *indexPath = NULL;
+    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+    if(visiblePaths != nil && [visiblePaths count] > 0) {
+        indexPath = [visiblePaths objectAtIndex:0];
+    }
+    
+    double indexToSelect = -1.0;
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+        if([self numOfThumbnailPerCell] != 4) {
+            if(indexPath != nil) {
+                indexToSelect = floor(((indexPath.row * 3.0) / 4.0) + 0.5);
+            }
+            [self setNumOfThumbnailPerCell:4];
+        }
+    } else if ([self numOfThumbnailPerCell] != 3){
+        if(indexPath != nil) {
+            indexToSelect = floor(((indexPath.row * 4.0) / 3.0) + 0.5);
+        }
+        [self setNumOfThumbnailPerCell:3];
+    }
+    
+    [self.tableView reloadData];
+    if(indexToSelect >= 0.0) {
+        NSUInteger indexArr[] = {0,indexToSelect};
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathWithIndexes:indexArr length:2];
+        [self.tableView selectRowAtIndexPath:(NSIndexPath *)newIndexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+    }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    NSLog(@"Did rotate");
+    //do nothing
 }
 
 #pragma mark -
@@ -298,7 +329,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
             }
             firstRowToThumbnail = -1;
         }
-        
         int numOfThumbnails = [self numOfThumbnailPerCell];
         int thumbnailPosition = rowIndex * numOfThumbnails;
         [cell.thumbnails removeAllObjects];

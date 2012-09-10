@@ -59,16 +59,7 @@ Version: 1.0
 
 @implementation ACImageViewController
 
-@synthesize loadedImagePath, imageView, activityView;
-
-- (id)init {
-    self = [super initWithNibName:@"ACImageView" bundle:nil];
-	if (self) {
-		[self setHidesBottomBarWhenPushed:YES];
-		[self setWantsFullScreenLayout:YES];
-	}
-	return self;
-}
+@synthesize imagePath, loadedImagePath, imageView, activityView;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -78,10 +69,8 @@ Version: 1.0
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
-	self.imageView = nil;
+	[self.imageView setImage:NULL];
 }
-
-
 
 #pragma mark -
 #pragma mark ACController
@@ -95,7 +84,6 @@ Version: 1.0
 		if([imagePath isEqualToString:path]) return;
 		[self setImagePath:path];
 	}
-	[self setImageIndex:index];
 
 	[self.activityView startAnimating];
 	if (self.imageView.image != NULL) {
@@ -108,7 +96,6 @@ Version: 1.0
 	@synchronized(self) {
 		if([imagePath isEqualToString:path]) return;
 		[self setImagePath:path];
-        [self setImageIndex: index];
 	}
 
 	[self.activityView startAnimating];
@@ -188,14 +175,7 @@ Version: 1.0
         }
 		self.imageView.image = [imageAndPath image];
 	}
-	if (!self.informationsHud.hidden) {
-        if(rotating) {
-            [self clipHUDView];
-            rotating = NO;
-        } else {
-            [self hideHUDView];
-        }
-	}
+
 	[self.activityView stopAnimating];
 }
 

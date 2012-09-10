@@ -73,18 +73,14 @@
 			[self hideHUDView];
 		} else {
 			NSMutableString *infos = [[NSMutableString alloc] initWithString:fileName];
-            
 			[infos appendString:@"\n"];
 			[infos appendFormat:@"%i",imageIndex];
 			[infos appendString:@" / "];
 			[infos appendFormat:@"%i",numberOfPages];
-			informations.text = infos;
             
-			informationsHud.hidden = NO;
-			informationsHud.alpha = 0.00;//usefull for the first time only
-            
-            CGRect navFrame = [self.navigationController.navigationBar frame];
-            informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height + 10, navFrame.size.width, 0);
+			self.informations.text = infos;
+			self.informationsHud.hidden = NO;
+			self.informationsHud.alpha = 0.00;//usefull for the first time only
             
             myTimer = [NSTimer timerWithTimeInterval:0.15 target:self selector:@selector(showHUDView:) userInfo:nil repeats:NO];
             [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
@@ -102,22 +98,21 @@
 }
 
 - (void)showHUDView:(NSTimer *)timer {
-    informationsHud.alpha = 1.0;
-    informationsHud.hidden = NO;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.1];
-    [self clipHUDView];
-    [UIView commitAnimations];
+    [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
+                    animations:^{
+                        self.informationsHud.alpha = 1.0;
+                        self.informationsHud.hidden = NO;
+                        [self clipHUDView];
+                    }completion:^(BOOL finished){}];
 }
 
 - (void)clipHUDView {
     CGRect navFrame = [self.navigationController.navigationBar frame];
     UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-        informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height + 10, navFrame.size.width, 44);
+        informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height, navFrame.size.width, 44);
     } else {
-        informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height + 10, navFrame.size.width, 64);
+        informationsHud.frame = CGRectMake(0, 20 + navFrame.size.height, navFrame.size.width, 64);
     }
 }
 

@@ -12,14 +12,6 @@
 
 - (void)clearView;
 
-- (void)hideHUDView;
-
-- (NSNumber *)numberOfPages;
-
-- (void)setNumberOfPages:(int)numberOfPages;
-
-//- (NSString *)imagePath;
-
 - (void)willLoad:(NSString *)path at:(int)index;
 
 - (void)didLoad:(NSString *)path at:(int)index;
