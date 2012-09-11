@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1122" y="-154"/>
         </scene>
-        <!--Search View Controller - Root View Controller-->
+        <!--Search View Controller - Search-->
         <scene sceneID="X8u-w6-61b">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWB-MQ-cv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,7 +117,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="UXa-du-feP"/>
+                    <navigationItem key="navigationItem" title="Search" id="UXa-du-feP"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="OJi-fY-GcE" id="0Hb-pF-WD4"/>
                         <segue destination="dOJ-Kp-7yz" kind="push" identifier="SearchMediaSegue" id="Nqb-a1-kdb"/>
@@ -471,10 +471,6 @@
         </class>
         <class className="ACSearchViewController" superclassName="ACThumbnailsTableController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imagesViewController" candidateClass="ACScrollViewController"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
         </class>
         <class className="ACSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSettingsViewController.h"/>

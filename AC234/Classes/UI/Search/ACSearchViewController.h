@@ -10,18 +10,17 @@
 #import "ACScrollViewController.h"
 #import "ACLoadThumbnailsOperation.h"
 #import "ACThumbnailsTableController.h"
+#import "ACFileListController.h"
 
 @interface ACSearchViewController : ACThumbnailsTableController <UISearchDisplayDelegate, UISearchBarDelegate, UINavigationControllerDelegate> {
-	IBOutlet UISearchBar *searchBar;
-	
 	int lastCellForRow;
 	int firstRowToThumbnail;
 	NSMutableArray	*filteredListContent;	// The content filtered as a result of a search.
+    ACFileListController *subController;
 }
 
-@property (nonatomic, strong) IBOutlet UISearchBar *searchBar;
-
 @property (nonatomic, strong) NSMutableArray *filteredListContent;
+@property (nonatomic, strong) ACFileListController *subController;
 
 - (void)keyboardWillHide:(NSNotification *)notification;
 - (void)hideNavbarAndKeepHidden;

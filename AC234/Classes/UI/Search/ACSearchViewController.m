@@ -17,10 +17,8 @@
 @implementation ACSearchViewController
 
 static NSString *kCellID = @"cellID";
-	
-@synthesize searchBar;
-@synthesize filteredListContent;
 
+@synthesize filteredListContent, subController;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -112,9 +110,11 @@ static NSString *kCellID = @"cellID";
     if ([[NSFileManager defaultManager] fileExistsAtPath:filename isDirectory:&isDir] && !isDir) {
         [self performSegueWithIdentifier:@"SearchMediaSegue" sender:filename];
 	} else {
-        ACFileListController *subController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FileListA"];
-        [[self navigationController] pushViewController:subController animated:YES];
-        [subController loadFolder:filename];
+        if(self.subController == NULL) {
+            self.subController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FileListA"];
+        }
+        [[self navigationController] pushViewController:self.subController animated:YES];
+        [self.subController loadFolder:filename];
         
         //show the bars
         [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
@@ -152,7 +152,6 @@ static NSString *kCellID = @"cellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
 	ACFolderListCell *cell = (ACFolderListCell *)[tableView dequeueReusableCellWithIdentifier:kCellID];
 	if (cell == nil) {
 		cell = [[ACFolderListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellID];
@@ -298,9 +297,10 @@ static NSString *kCellID = @"cellID";
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView {
-	tableView.separatorColor = [ACStaticIcons sepBackground];
-	tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    tableView.backgroundColor = [ACStaticIcons darkBackground];
+    //table view forget its settings3
+    tableView.separatorColor = self.tableView.separatorColor;
+	tableView.separatorStyle = self.tableView.separatorStyle;
+    tableView.backgroundColor = self.tableView.backgroundColor;
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willUnloadSearchResultsTableView:(UITableView *)tableView {

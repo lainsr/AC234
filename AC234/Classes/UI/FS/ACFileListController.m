@@ -31,6 +31,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 //headers variables
 @synthesize flipIndicatorButton, organizeButton, addButton, cancelEditButton;
 @synthesize folderList, folderTildePath, hasChanged;
+@synthesize subController;
 
 #pragma mark -
 #pragma mark View life cycle
@@ -270,9 +271,11 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         if ([[NSFileManager defaultManager] fileExistsAtPath:selectedFolder isDirectory:&isDir] && !isDir) {
             [self performSegueWithIdentifier:@"MediaSegue" sender:selectedFolder];
         } else {
-            ACFileListController *subController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FileListA"];
-            [[self navigationController] pushViewController:subController animated:YES];
-            [subController loadFolder:selectedFolder];
+            if([self subController] == NULL) {
+                self.subController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FileListA"];
+            }
+            [[self navigationController] pushViewController:self.subController animated:YES];
+            [self.subController loadFolder:selectedFolder];
         }
     }
 }
