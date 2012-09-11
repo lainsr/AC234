@@ -231,6 +231,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackTranslucent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="airplayButton" destination="dtG-qb-cnU" id="FzU-wp-KMK"/>
                         <outlet property="fixItemLeft" destination="j8T-SA-YsT" id="AZU-g0-Dtp"/>
                         <outlet property="fixItemRight" destination="3MU-7c-Nz7" id="Xxu-ts-6MK"/>
                         <outlet property="flexItemLeft" destination="uwq-dr-IO3" id="H5y-3t-KJO"/>

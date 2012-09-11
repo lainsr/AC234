@@ -11,9 +11,8 @@
 #import "ACScrollViewController.h"
 #import "ACImageViewController.h"
 #import "ACMovieViewController.h"
-//#import "ACDeviceManager.h"
+#import "ACDeviceManager.h"
 #import "ACAppDelegate.h"
-//#import "BlockActionSheet.h"
 
 @interface ACScrollViewController (PrivateMethods)
 
@@ -35,13 +34,13 @@
 
 @implementation ACScrollViewController
 
-//better performance by caching a set of controllers
-//@synthesize deviceToSelect;
+@synthesize deviceToSelect;
 @synthesize playButton, pauseButton, forwardButton, rewindButton, airplayButton, flexItemLeft, flexItemRight, fixItemLeft, fixItemRight;
 @synthesize scrollView, pageControl;
 @synthesize informations, informationsHud;
 @synthesize prevViewController, currentViewController, nextViewController;
 @synthesize pageControlUsed, rotating, currentDirPath, selectedFile, filteredImageFullPathArray;
+//better performance by caching a set of controllers
 @synthesize imageController1, imageController2, imageController3;
 @synthesize movieController1, movieController2, movieController3;
 
@@ -280,7 +279,7 @@
 }
 
 - (IBAction)airplay {
-    /*ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
 	ACDeviceManager *deviceManager = [appDelegate deviceManager];
     if([deviceManager deviceAvailable]) {
         [deviceManager addDeviceConnectionDelegate:self];
@@ -288,9 +287,9 @@
     } else {
         [deviceManager addDeviceConnectionDelegate:self];
         [deviceManager autoConnect];
-    }*/
+    }
 }
-/*
+
 #pragma mark -
 #pragma mark ACDeviceManagerDelegate
 -(void)deviceDetected:(ACDevice *)device {
@@ -304,24 +303,14 @@
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                    delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    actionSheet.delegate = self;
     
     [actionSheet addButtonWithTitle:[device displayName]];
     [actionSheet addButtonWithTitle:@"iPhone"];
     [actionSheet addButtonWithTitle:cancelStr];
     [actionSheet setCancelButtonIndex:2];
 	[actionSheet showInView:self.view];
-	[actionSheet release];
- 
-    BlockActionSheet *sheet = [BlockActionSheet sheetWithTitle:NULL];
-    [sheet addButtonWithTitle:[device displayName] block:^{
-        [self actionSheetCancel:nil];
-    }];
-    [sheet addButtonWithTitle:@"iPhone" block:^{
-        [self actionSheetCancel:nil];
-    }];
-    [sheet setCancelButtonWithTitle:cancelStr block:nil];
-    [sheet showInView:self.view];
-}*/
+}
 
 -(void)deviceConnected {
     UIImage *airplayIcon = [UIImage imageNamed:@"display_on.png"];
@@ -331,8 +320,17 @@
         NSLog(@"Connect on main thread");
     }
     
-    
     [self sendToDevice:pageControl.currentPage];
+}
+
+- (void)sendToDevice:(int)page {
+    //todo try to push the content a connected device
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+	ACDeviceManager *deviceManager = [appDelegate deviceManager];
+    if([deviceManager deviceAvailable]) {
+        NSString *imagePath = [filteredImageFullPathArray objectAtIndex:page];
+        [deviceManager pushFileToDevice:imagePath];
+    }
 }
 
 -(void)deviceDisconnected {
@@ -343,13 +341,13 @@
 #pragma mark -
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-   /* AC234AppDelegate *appDelegate = (AC234AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
     ACDeviceManager *deviceManager = [appDelegate deviceManager];
     if(buttonIndex == 0) {
         [deviceManager connectToDevice:[self deviceToSelect]];
     } else if (buttonIndex == 1) { 
         [deviceManager stop];
-    }*/
+    }
 }
 
 - (void)actionSheetCancel:(UIActionSheet *)actionSheet {
@@ -566,17 +564,6 @@
 	frame.origin.x = frame.size.width * page;
 	frame.origin.y = 0;
 	return frame;
-}
-
-
-- (void)sendToDevice:(int)page {
-    //todo try to push the content a connected device
-    /*AC234AppDelegate *appDelegate = (AC234AppDelegate *)[[UIApplication sharedApplication] delegate];
-	ACDeviceManager *deviceManager = [appDelegate deviceManager];
-    if([deviceManager deviceAvailable]) {
-        NSString *imagePath = [filteredImageFullPathArray objectAtIndex:page];
-        [deviceManager pushFileToDevice:imagePath];
-    }*/
 }
 
 #pragma mark -

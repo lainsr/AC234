@@ -11,14 +11,14 @@
 #import "ACHUDView.h"
 #import "ACImageViewController.h"
 #import "ACMovieViewController.h"
-//#import "ACDeviceManager.h"
+#import "ACDeviceManager.h"
 
 @interface ACScrollViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate,
-    /*ACDeviceManagerDelegate,*/ UIActionSheetDelegate> {
+    ACDeviceManagerDelegate, UIActionSheetDelegate> {
 	NSTimer *myTimer;
     CGFloat currentPageFraction;
     
-    //ACDevice *deviceToSelect;
+    ACDevice *deviceToSelect;
     
     BOOL pageControlUsed;
     BOOL rotating;
@@ -55,7 +55,7 @@
 	UIViewController<ACController> *nextViewController;
 }
 
-//@property (nonatomic, retain) ACDevice *deviceToSelect;
+@property (nonatomic, retain) ACDevice *deviceToSelect;
 
 @property (nonatomic) BOOL pageControlUsed;
 @property (nonatomic) BOOL rotating;

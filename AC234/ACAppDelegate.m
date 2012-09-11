@@ -18,6 +18,7 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
 @synthesize passwordController =_passwordController;
 @synthesize thumbnailQueue = _thumbnailQueue;
 @synthesize thumbnailStore = _thumbnailStore;
+@synthesize deviceManager = _deviceManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     thumbnailQueue = [[NSOperationQueue alloc]init];
@@ -25,6 +26,9 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
     
     _thumbnailStore = [[ACCoreDataStore alloc] initWithFile:@"AC234.sqlite"];
     [_thumbnailStore managedObjectContext];
+    
+    //instance devices manager
+    _deviceManager = [[ACDeviceManager alloc]init];
 
     return YES;
 }
@@ -130,6 +134,10 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
 
 - (ACCoreDataStore*)thumbnailStore {
     return _thumbnailStore;
+}
+
+- (ACDeviceManager*)deviceManager {
+    return _deviceManager;
 }
 
 /**

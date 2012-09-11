@@ -12,17 +12,19 @@
 #import "ACCoreDataStore.h"
 #import "ACPasswordDelegate.h"
 #import "ACPasswordController.h"
+#import "ACDeviceManager.h"
 
 @interface ACAppDelegate : UIResponder <UIApplicationDelegate,ACPasswordDelegate> {
 	NSOperationQueue *thumbnailQueue;
     ACCoreDataStore *thumbnailStore;
+    ACDeviceManager *deviceManager;
     
 	ACPasswordController *passwordController;
 }
 
-
 @property (nonatomic, strong, readonly) NSOperationQueue *thumbnailQueue;
 @property (nonatomic, strong, readonly) ACCoreDataStore *thumbnailStore;
+@property (nonatomic, strong, readonly) ACDeviceManager *deviceManager;
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) IBOutlet ACPasswordController *passwordController;

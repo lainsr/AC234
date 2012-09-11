@@ -74,6 +74,11 @@
 		06ED875C15F695EE00683933 /* Green-noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875515F695EE00683933 /* Green-noise.png */; };
 		06ED875D15F695EE00683933 /* Green-noise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875615F695EE00683933 /* Green-noise@2x.png */; };
 		06ED875E15F695EE00683933 /* Unkown.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ED875715F695EE00683933 /* Unkown.png */; };
+		06F0E6AF15FFBFA70010D5C6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6AE15FFBFA70010D5C6 /* GCDAsyncSocket.m */; };
+		06F0E6B415FFC0060010D5C6 /* AKAirplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6B115FFC0060010D5C6 /* AKAirplayManager.m */; };
+		06F0E6B515FFC0060010D5C6 /* AKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6B315FFC0060010D5C6 /* AKDevice.m */; };
+		06F0E6C215FFC2860010D5C6 /* ACDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6BF15FFC2860010D5C6 /* ACDevice.m */; };
+		06F0E6C315FFC2860010D5C6 /* ACDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6C115FFC2860010D5C6 /* ACDeviceManager.m */; };
 		06F8019715BF2C48000DD680 /* ACPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019615BF2C48000DD680 /* ACPasswordController.m */; };
 		06F8019B15BF2CA4000DD680 /* ACPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */; };
 		06F801A015BF2DE2000DD680 /* ACStaticIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019F15BF2DE2000DD680 /* ACStaticIcons.m */; };
@@ -187,6 +192,16 @@
 		06ED875515F695EE00683933 /* Green-noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-noise.png"; path = "Art/Green-noise.png"; sourceTree = "<group>"; };
 		06ED875615F695EE00683933 /* Green-noise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-noise@2x.png"; path = "Art/Green-noise@2x.png"; sourceTree = "<group>"; };
 		06ED875715F695EE00683933 /* Unkown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Unkown.png; path = Art/Unkown.png; sourceTree = "<group>"; };
+		06F0E6AD15FFBFA70010D5C6 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Classes/Server/CocoaAsyncSocket/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		06F0E6AE15FFBFA70010D5C6 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Classes/Server/CocoaAsyncSocket/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		06F0E6B015FFC0060010D5C6 /* AKAirplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKAirplayManager.h; path = Classes/Server/AirplayKit/AKAirplayManager.h; sourceTree = "<group>"; };
+		06F0E6B115FFC0060010D5C6 /* AKAirplayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKAirplayManager.m; path = Classes/Server/AirplayKit/AKAirplayManager.m; sourceTree = "<group>"; };
+		06F0E6B215FFC0060010D5C6 /* AKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDevice.h; path = Classes/Server/AirplayKit/AKDevice.h; sourceTree = "<group>"; };
+		06F0E6B315FFC0060010D5C6 /* AKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKDevice.m; path = Classes/Server/AirplayKit/AKDevice.m; sourceTree = "<group>"; };
+		06F0E6BE15FFC2860010D5C6 /* ACDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACDevice.h; path = Classes/Devices/ACDevice.h; sourceTree = "<group>"; };
+		06F0E6BF15FFC2860010D5C6 /* ACDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACDevice.m; path = Classes/Devices/ACDevice.m; sourceTree = "<group>"; };
+		06F0E6C015FFC2860010D5C6 /* ACDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACDeviceManager.h; path = Classes/Devices/ACDeviceManager.h; sourceTree = "<group>"; };
+		06F0E6C115FFC2860010D5C6 /* ACDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACDeviceManager.m; path = Classes/Devices/ACDeviceManager.m; sourceTree = "<group>"; };
 		06F8019515BF2C48000DD680 /* ACPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPasswordController.h; path = Classes/Security/ACPasswordController.h; sourceTree = "<group>"; };
 		06F8019615BF2C48000DD680 /* ACPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPasswordController.m; path = Classes/Security/ACPasswordController.m; sourceTree = "<group>"; };
 		06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ACPasswordView.xib; path = Resources/ACPasswordView.xib; sourceTree = "<group>"; };
@@ -266,10 +281,12 @@
 		065E441A15B9DE0700EEECD8 /* AC234 */ = {
 			isa = PBXGroup;
 			children = (
+				06F0E6B615FFC25F0010D5C6 /* Devices */,
 				06BB993915BDCEAE007B6685 /* Model */,
 				06BB993E15BDD004007B6685 /* Security */,
 				06ADFA9015EE9AFD00CD59EA /* Thumbnail */,
 				06F8019915BF2C8F000DD680 /* Resources */,
+				06F0E69C15FFBC0B0010D5C6 /* Server */,
 				06F8019D15BF2DC9000DD680 /* UI */,
 				06BB993615BDCE45007B6685 /* ACGlobalInfos.h */,
 				06BB993715BDCE45007B6685 /* ACGlobalInfos.m */,
@@ -452,6 +469,46 @@
 				06CB54DF15FE74F3005AB1A9 /* ACSearchViewController.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		06F0E69C15FFBC0B0010D5C6 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				06F0E6AC15FFBF940010D5C6 /* CocoaAsyncSocket */,
+				06F0E69E15FFBC160010D5C6 /* AirplayKit */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		06F0E69E15FFBC160010D5C6 /* AirplayKit */ = {
+			isa = PBXGroup;
+			children = (
+				06F0E6B015FFC0060010D5C6 /* AKAirplayManager.h */,
+				06F0E6B115FFC0060010D5C6 /* AKAirplayManager.m */,
+				06F0E6B215FFC0060010D5C6 /* AKDevice.h */,
+				06F0E6B315FFC0060010D5C6 /* AKDevice.m */,
+			);
+			name = AirplayKit;
+			sourceTree = "<group>";
+		};
+		06F0E6AC15FFBF940010D5C6 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				06F0E6AD15FFBFA70010D5C6 /* GCDAsyncSocket.h */,
+				06F0E6AE15FFBFA70010D5C6 /* GCDAsyncSocket.m */,
+			);
+			name = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		06F0E6B615FFC25F0010D5C6 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				06F0E6BE15FFC2860010D5C6 /* ACDevice.h */,
+				06F0E6BF15FFC2860010D5C6 /* ACDevice.m */,
+				06F0E6C015FFC2860010D5C6 /* ACDeviceManager.h */,
+				06F0E6C115FFC2860010D5C6 /* ACDeviceManager.m */,
+			);
+			name = Devices;
 			sourceTree = "<group>";
 		};
 		06F8019915BF2C8F000DD680 /* Resources */ = {
@@ -639,6 +696,11 @@
 				06C7378B15F7E89000C52EA0 /* ACSettingsViewController.m in Sources */,
 				06CB54E015FE74F3005AB1A9 /* ACSearchViewController.m in Sources */,
 				06CB54E315FE7593005AB1A9 /* ACFileInfo.m in Sources */,
+				06F0E6AF15FFBFA70010D5C6 /* GCDAsyncSocket.m in Sources */,
+				06F0E6B415FFC0060010D5C6 /* AKAirplayManager.m in Sources */,
+				06F0E6B515FFC0060010D5C6 /* AKDevice.m in Sources */,
+				06F0E6C215FFC2860010D5C6 /* ACDevice.m in Sources */,
+				06F0E6C315FFC2860010D5C6 /* ACDeviceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
