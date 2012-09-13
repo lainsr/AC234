@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0632522B16010C4700D46FF6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0632522A16010C4700D46FF6 /* Settings.bundle */; };
 		065A592215FA781E00C88BBE /* Unkown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592115FA781E00C88BBE /* Unkown@2x.png */; };
 		065A592A15FA790100C88BBE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592415FA790100C88BBE /* Icon-72.png */; };
 		065A592B15FA790100C88BBE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592515FA790100C88BBE /* Icon-Small-50.png */; };
@@ -44,6 +45,7 @@
 		06ADFABD15EFFD1900CD59EA /* ACScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFABC15EFFD1900CD59EA /* ACScaler.m */; };
 		06ADFAC215F003A100CD59EA /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ADFAC015F003A100CD59EA /* Home.png */; };
 		06ADFAC315F003A100CD59EA /* Home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06ADFAC115F003A100CD59EA /* Home@2x.png */; };
+		06B62F451602731D00553396 /* ACToggleSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B62F441602731D00553396 /* ACToggleSwitchCell.m */; };
 		06BB993415BDCE09007B6685 /* AC234.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993315BDCE09007B6685 /* AC234.xcdatamodel */; };
 		06BB993815BDCE45007B6685 /* ACGlobalInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993715BDCE45007B6685 /* ACGlobalInfos.m */; };
 		06BB993C15BDCEC0007B6685 /* ACCoreDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BB993B15BDCEC0007B6685 /* ACCoreDataStore.m */; };
@@ -95,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0632522A16010C4700D46FF6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		065A592115FA781E00C88BBE /* Unkown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Unkown@2x.png"; path = "Art/Unkown@2x.png"; sourceTree = "<group>"; };
 		065A592415FA790100C88BBE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Art/Icon-72.png"; sourceTree = "<group>"; };
 		065A592515FA790100C88BBE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Art/Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 		06ADFABC15EFFD1900CD59EA /* ACScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACScaler.m; path = Classes/Thumbnail/ACScaler.m; sourceTree = "<group>"; };
 		06ADFAC015F003A100CD59EA /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Home.png; path = Art/Home.png; sourceTree = "<group>"; };
 		06ADFAC115F003A100CD59EA /* Home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home@2x.png"; path = "Art/Home@2x.png"; sourceTree = "<group>"; };
+		06B62F431602731D00553396 /* ACToggleSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACToggleSwitchCell.h; path = Classes/UI/Settings/ACToggleSwitchCell.h; sourceTree = "<group>"; };
+		06B62F441602731D00553396 /* ACToggleSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACToggleSwitchCell.m; path = Classes/UI/Settings/ACToggleSwitchCell.m; sourceTree = "<group>"; };
 		06BB993315BDCE09007B6685 /* AC234.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AC234.xcdatamodel; sourceTree = "<group>"; };
 		06BB993615BDCE45007B6685 /* ACGlobalInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACGlobalInfos.h; sourceTree = "<group>"; };
 		06BB993715BDCE45007B6685 /* ACGlobalInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACGlobalInfos.m; sourceTree = "<group>"; };
@@ -293,6 +298,7 @@
 				06BB993315BDCE09007B6685 /* AC234.xcdatamodel */,
 				065E442315B9DE0700EEECD8 /* ACAppDelegate.h */,
 				065E442415B9DE0700EEECD8 /* ACAppDelegate.m */,
+				0632522A16010C4700D46FF6 /* Settings.bundle */,
 				065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */,
 				065E441B15B9DE0700EEECD8 /* Supporting Files */,
 			);
@@ -454,6 +460,8 @@
 		06C7378815F7E86200C52EA0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				06B62F431602731D00553396 /* ACToggleSwitchCell.h */,
+				06B62F441602731D00553396 /* ACToggleSwitchCell.m */,
 				06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */,
 				06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */,
 			);
@@ -634,6 +642,7 @@
 				065A592D15FA790100C88BBE /* Icon-Small@2x.png in Resources */,
 				065A592E15FA790100C88BBE /* Icon.png in Resources */,
 				065A592F15FA790100C88BBE /* Icon@2x.png in Resources */,
+				0632522B16010C4700D46FF6 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +710,7 @@
 				06F0E6B515FFC0060010D5C6 /* AKDevice.m in Sources */,
 				06F0E6C215FFC2860010D5C6 /* ACDevice.m in Sources */,
 				06F0E6C315FFC2860010D5C6 /* ACDeviceManager.m in Sources */,
+				06B62F451602731D00553396 /* ACToggleSwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

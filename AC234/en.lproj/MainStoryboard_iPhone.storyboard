@@ -348,36 +348,70 @@
             </objects>
             <point key="canvasLocation" x="653" y="-154"/>
         </scene>
-        <!--Settings View Controller - Second-->
-        <scene sceneID="13">
+        <!--Settings View Controller - Settings-->
+        <scene sceneID="flI-Ao-8wU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
-                <viewController title="Second" id="3" userLabel="Settings View Controller - Second" customClass="ACSettingsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcY-rn-xJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="Settings" title="Settings" id="Ft9-dt-Wcg" customClass="ACSettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hjS-96-SgI">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="22">
-                                <rect key="frame" x="54" y="98" width="212" height="43"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of ACSecondViewController — specified in the app delegate." textAlignment="center" id="23">
-                                <rect key="frame" x="20" y="181" width="280" height="88"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings.png" id="6"/>
-                </viewController>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailsCellIdentifier" textLabel="3Cy-oi-sWb" detailTextLabel="2sx-N5-hKg" style="IBUITableViewCellStyleValue1" id="vVW-d1-DqU">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Cy-oi-sWb">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2sx-N5-hKg">
+                                            <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ft9-dt-Wcg" id="Kje-v4-vV8"/>
+                            <outlet property="delegate" destination="Ft9-dt-Wcg" id="MLy-Wh-gBY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="d6x-Qi-y7Y"/>
+                    <connections>
+                        <outlet property="view" destination="hjS-96-SgI" id="jYa-y0-ueU"/>
+                    </connections>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="653" y="1068"/>
+            <point key="canvasLocation" x="1122" y="1097"/>
+        </scene>
+        <!--Navigation Controller - Settings-->
+        <scene sceneID="9T2-kq-0xr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cmQ-2z-KBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="21S-bj-Oaf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings.png" id="qoO-tW-2ai"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mJ6-E6-6rf">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ft9-dt-Wcg" kind="relationship" relationship="rootViewController" id="jt7-MR-6Qk"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="653" y="1097"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -395,7 +429,7 @@
                     <connections>
                         <segue destination="1PP-BF-Saf" kind="relationship" relationship="viewControllers" id="Svs-iv-k68"/>
                         <segue destination="d21-5T-lBB" kind="relationship" relationship="viewControllers" id="nqN-BP-wuP"/>
-                        <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
+                        <segue destination="21S-bj-Oaf" kind="relationship" relationship="viewControllers" id="SLD-pf-bvJ"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -473,7 +507,7 @@
         <class className="ACSearchViewController" superclassName="ACThumbnailsTableController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSearchViewController.h"/>
         </class>
-        <class className="ACSettingsViewController" superclassName="UIViewController">
+        <class className="ACSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSettingsViewController.h"/>
         </class>
         <class className="ACThumbnailsTableController" superclassName="UITableViewController">
