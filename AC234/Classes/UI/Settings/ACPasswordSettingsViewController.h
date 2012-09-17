@@ -14,4 +14,6 @@
     BOOL activate;
 }
 
+@property (atomic) BOOL activate;
+
 @end

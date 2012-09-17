@@ -16,16 +16,28 @@
 
 static NSString *kCellIdentifier = @"MyCellIdentifier";
 
+@synthesize activate;
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *indexPath = (NSIndexPath *)sender;
     UIViewController *destinationController = [segue destinationViewController];
     if([destinationController isKindOfClass: [ACPasswordController class]]) {
+        ACPasswordSettingsViewController *sourceController = (ACPasswordSettingsViewController*)[segue sourceViewController];
         ACPasswordController *passwordController = (ACPasswordController *)destinationController;
         [passwordController setPasswordDelegate:self];
+        int sectionIndex = [indexPath indexAtPosition:0];
+        if(sectionIndex == 0) {
+            [passwordController setConfirmation:NO];
+            [sourceController setActivate:YES];
+        } else if (sectionIndex == 1) {
+            [passwordController setConfirmation:YES];
+            [sourceController setActivate:NO];
+        }
     }
 }
 
@@ -47,6 +59,7 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
 		[keychainPasswordWrapper setObject:@"AC234" forKey:(__bridge_transfer id)kSecAttrAccount];
 		[keychainPasswordWrapper setObject:password forKey:(__bridge_transfer id)kSecValueData];
 	}
+    [self dismissModalViewControllerAnimated:YES];
 	[self.tableView reloadData];
     return YES;
 }
@@ -65,7 +78,11 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
     
     int sectionIndex = [indexPath indexAtPosition:0];
     if(sectionIndex == 0) {
-        [cell.textLabel setText:@"Activate"];
+        if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
+            [cell.textLabel setText:@"Deactivate"];
+        } else {
+            [cell.textLabel setText:@"Activate"];
+        }
     } else {
         [cell.textLabel setText:@"Change password"];
     }
@@ -74,7 +91,7 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"DeactivatePasswordSegue" sender:self];
+    [self performSegueWithIdentifier:@"DeactivatePasswordSegue" sender:indexPath];
 }
 
 @end

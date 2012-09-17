@@ -6,6 +6,7 @@
 //
 //
 
+#import "ACGlobalInfos.h"
 #import "ACToggleSwitchCell.h"
 #import "ACSettingsViewController.h"
 
@@ -81,7 +82,11 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
     if (sectionIndex == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:kDetailsCellIdentifier];
         [cell.textLabel setText:@"Password"];
-        [cell.detailTextLabel setText:@"Active"];
+        if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
+            [cell.detailTextLabel setText:@"Active"];
+        } else {
+            [cell.detailTextLabel setText:@"Inactive"];
+        }
     } else if(sectionIndex == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:kDetailsCellIdentifier];
         [cell.textLabel setText:@"Thumbnail"];

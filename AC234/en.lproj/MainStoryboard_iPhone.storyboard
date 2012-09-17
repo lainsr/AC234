@@ -542,6 +542,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="textFieldDidChange:" destination="ldv-pG-0PY" eventType="editingChanged" id="cdy-eO-lDh"/>
                                     <action selector="textFieldDidChange:" destination="ldv-pG-0PY" eventType="valueChanged" id="d6q-Yi-LIp"/>
                                     <outlet property="delegate" destination="ldv-pG-0PY" id="lef-OQ-iVP"/>
                                 </connections>
@@ -553,6 +554,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="textFieldDidChange:" destination="ldv-pG-0PY" eventType="editingChanged" id="tQF-ad-iap"/>
                                     <action selector="textFieldDidChange:" destination="ldv-pG-0PY" eventType="valueChanged" id="zHG-96-6Fq"/>
                                     <outlet property="delegate" destination="ldv-pG-0PY" id="tQa-Ux-SEL"/>
                                 </connections>
