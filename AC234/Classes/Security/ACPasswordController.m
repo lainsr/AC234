@@ -23,13 +23,6 @@
 @synthesize confirmationField, confirmationFieldView1, confirmationFieldView2, confirmationFieldView3, confirmationFieldView4, confirmationFieldsView;
 @synthesize passwordDelegate, confirmation, message;
 
-- (id)init {
-    self = [super init];
-	if (self) {
-		//
-	}
-	return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];

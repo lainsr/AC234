@@ -56,6 +56,8 @@
 		06BB994B15BDD196007B6685 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994915BDD196007B6685 /* Security.framework */; };
 		06BB994E15BDD1F6007B6685 /* libxml2.2.7.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */; };
 		06BB995915BDDFC4007B6685 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994315BDD148007B6685 /* CoreData.framework */; };
+		06BF84751603B019002F59C2 /* ACPasswordSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */; };
+		06BF84791603B03D002F59C2 /* ACThumbnailSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */; };
 		06C7378B15F7E89000C52EA0 /* ACSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */; };
 		06CB54DC15FE72EA005AB1A9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */; };
 		06CB54E015FE74F3005AB1A9 /* ACSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB54DF15FE74F3005AB1A9 /* ACSearchViewController.m */; };
@@ -173,6 +175,10 @@
 		06BB994915BDD196007B6685 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.7.3.dylib; path = usr/lib/libxml2.2.7.3.dylib; sourceTree = SDKROOT; };
 		06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		06BF84731603B019002F59C2 /* ACPasswordSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPasswordSettingsViewController.h; path = Classes/UI/Settings/ACPasswordSettingsViewController.h; sourceTree = "<group>"; };
+		06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPasswordSettingsViewController.m; path = Classes/UI/Settings/ACPasswordSettingsViewController.m; sourceTree = "<group>"; };
+		06BF84771603B03D002F59C2 /* ACThumbnailSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACThumbnailSettingsViewController.h; path = Classes/UI/Settings/ACThumbnailSettingsViewController.h; sourceTree = "<group>"; };
+		06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACThumbnailSettingsViewController.m; path = Classes/UI/Settings/ACThumbnailSettingsViewController.m; sourceTree = "<group>"; };
 		06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSettingsViewController.h; path = Classes/UI/Settings/ACSettingsViewController.h; sourceTree = "<group>"; };
 		06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSettingsViewController.m; path = Classes/UI/Settings/ACSettingsViewController.m; sourceTree = "<group>"; };
 		06CB54DE15FE74F3005AB1A9 /* ACSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSearchViewController.h; path = Classes/UI/Search/ACSearchViewController.h; sourceTree = "<group>"; };
@@ -464,6 +470,10 @@
 				06B62F441602731D00553396 /* ACToggleSwitchCell.m */,
 				06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */,
 				06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */,
+				06BF84731603B019002F59C2 /* ACPasswordSettingsViewController.h */,
+				06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */,
+				06BF84771603B03D002F59C2 /* ACThumbnailSettingsViewController.h */,
+				06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -711,6 +721,8 @@
 				06F0E6C215FFC2860010D5C6 /* ACDevice.m in Sources */,
 				06F0E6C315FFC2860010D5C6 /* ACDeviceManager.m in Sources */,
 				06B62F451602731D00553396 /* ACToggleSwitchCell.m in Sources */,
+				06BF84751603B019002F59C2 /* ACPasswordSettingsViewController.m in Sources */,
+				06BF84791603B03D002F59C2 /* ACThumbnailSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

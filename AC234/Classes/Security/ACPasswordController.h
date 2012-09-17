@@ -19,7 +19,7 @@
 	IBOutlet UIImageView *passwordFieldView3;
 	IBOutlet UIImageView *passwordFieldView4;
 	
-	IBOutlet UITextField *confirmationField1;
+	IBOutlet UITextField *confirmationField;
 	
 	IBOutlet UIImageView *confirmationFieldView1;
 	IBOutlet UIImageView *confirmationFieldView2;

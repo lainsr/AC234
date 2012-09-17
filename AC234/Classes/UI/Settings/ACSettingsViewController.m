@@ -35,7 +35,12 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
 #pragma mark .
 #pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    int sectionIndex = [indexPath indexAtPosition:0];
+    if(sectionIndex == 0) {
+        [self performSegueWithIdentifier:@"PasswordSettingsSegue" sender:self];
+    } else if(sectionIndex == 1) {
+        [self performSegueWithIdentifier:@"ThumbnailSettingsSegue" sender:self];
+    }
 }
 
 #pragma mark -
@@ -68,7 +73,6 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
     }
     return NULL;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     int sectionIndex = [indexPath indexAtPosition:0];

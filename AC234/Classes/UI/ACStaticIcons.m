@@ -9,8 +9,6 @@
 #import "ACStaticIcons.h"
 
 
-
-
 @implementation ACStaticIcons
 
 static UIImage* unkonwIcon;
@@ -22,8 +20,6 @@ static UIColor* darkBackground;
 static UIColor* lightBackground;
 static UIColor* sepBackground;
 static UIColor* lightFontColor;
-static UIColor* f1LineColor;
-static UIColor* f2LineColor;
 
 + (void) initialize {
     unkonwIcon = [UIImage imageNamed:@"Unkown.png"];
@@ -36,8 +32,6 @@ static UIColor* f2LineColor;
     lightBackground = [UIColor colorWithRed:22.0/255.0 green:23.0/255.0 blue:25.0/255.0 alpha:1.0];
     sepBackground = [UIColor colorWithRed:45.0/255.0 green:47.0/255.0 blue:49.0/255.0 alpha:1.0];
     lightFontColor = [UIColor colorWithRed:180.0/255.0 green:183.0/255.0 blue:185.0/255.0 alpha:1.0];
-    f1LineColor = [UIColor colorWithRed:180.0/255.0 green:3.0/255.0 blue:5.0/255.0 alpha:1.0];
-    f2LineColor = [UIColor colorWithRed:8.0/255.0 green:183.0/255.0 blue:5.0/255.0 alpha:1.0];
 }
 
 + (UIImage*)unkownIcon {
@@ -66,14 +60,6 @@ static UIColor* f2LineColor;
 
 + (UIColor*) lightFontColor {
     return lightFontColor;
-}
-
-+ (UIColor*) f1LineColor {
-    return f1LineColor;
-}
-
-+ (UIColor*) f2LineColor {
-    return f2LineColor;
 }
 
 + (UIColor*) sepBackground {
