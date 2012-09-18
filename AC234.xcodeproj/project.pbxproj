@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0632522B16010C4700D46FF6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0632522A16010C4700D46FF6 /* Settings.bundle */; };
+		065A566C1608FFF100D4C3D9 /* ACProgressBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A566B1608FFF100D4C3D9 /* ACProgressBarController.m */; };
+		065A56701609023500D4C3D9 /* ACUpdateThumbnailsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A566F1609023500D4C3D9 /* ACUpdateThumbnailsOperation.m */; };
+		065A56731609027B00D4C3D9 /* ACUpdateInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A56721609027B00D4C3D9 /* ACUpdateInfos.m */; };
 		065A592215FA781E00C88BBE /* Unkown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592115FA781E00C88BBE /* Unkown@2x.png */; };
 		065A592A15FA790100C88BBE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592415FA790100C88BBE /* Icon-72.png */; };
 		065A592B15FA790100C88BBE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A592515FA790100C88BBE /* Icon-Small-50.png */; };
@@ -100,6 +103,12 @@
 
 /* Begin PBXFileReference section */
 		0632522A16010C4700D46FF6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		065A566A1608FFF100D4C3D9 /* ACProgressBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACProgressBarController.h; path = Classes/UI/Utils/ACProgressBarController.h; sourceTree = "<group>"; };
+		065A566B1608FFF100D4C3D9 /* ACProgressBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACProgressBarController.m; path = Classes/UI/Utils/ACProgressBarController.m; sourceTree = "<group>"; };
+		065A566E1609023500D4C3D9 /* ACUpdateThumbnailsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACUpdateThumbnailsOperation.h; path = Classes/Thumbnail/ACUpdateThumbnailsOperation.h; sourceTree = "<group>"; };
+		065A566F1609023500D4C3D9 /* ACUpdateThumbnailsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACUpdateThumbnailsOperation.m; path = Classes/Thumbnail/ACUpdateThumbnailsOperation.m; sourceTree = "<group>"; };
+		065A56711609027B00D4C3D9 /* ACUpdateInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACUpdateInfos.h; path = Classes/Thumbnail/ACUpdateInfos.h; sourceTree = "<group>"; };
+		065A56721609027B00D4C3D9 /* ACUpdateInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACUpdateInfos.m; path = Classes/Thumbnail/ACUpdateInfos.m; sourceTree = "<group>"; };
 		065A592115FA781E00C88BBE /* Unkown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Unkown@2x.png"; path = "Art/Unkown@2x.png"; sourceTree = "<group>"; };
 		065A592415FA790100C88BBE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Art/Icon-72.png"; sourceTree = "<group>"; };
 		065A592515FA790100C88BBE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Art/Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -362,12 +371,16 @@
 		06ADFA9015EE9AFD00CD59EA /* Thumbnail */ = {
 			isa = PBXGroup;
 			children = (
+				065A56711609027B00D4C3D9 /* ACUpdateInfos.h */,
+				065A56721609027B00D4C3D9 /* ACUpdateInfos.m */,
 				06ADFABB15EFFD1900CD59EA /* ACScaler.h */,
 				06ADFABC15EFFD1900CD59EA /* ACScaler.m */,
 				06ADFA9C15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.h */,
 				06ADFA9D15EE9BFA00CD59EA /* ACLoadThumbnailsOperation.m */,
 				06ADFA9115EE9B1000CD59EA /* ACLRUDictionary.h */,
 				06ADFA9215EE9B1000CD59EA /* ACLRUDictionary.m */,
+				065A566E1609023500D4C3D9 /* ACUpdateThumbnailsOperation.h */,
+				065A566F1609023500D4C3D9 /* ACUpdateThumbnailsOperation.m */,
 			);
 			name = Thumbnail;
 			sourceTree = "<group>";
@@ -387,6 +400,8 @@
 		06ADFAA815EEA2CB00CD59EA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				065A566A1608FFF100D4C3D9 /* ACProgressBarController.h */,
+				065A566B1608FFF100D4C3D9 /* ACProgressBarController.m */,
 				06ADFAA915EEA2DA00CD59EA /* ACToolbar.h */,
 				06ADFAAA15EEA2DA00CD59EA /* ACToolbar.m */,
 			);
@@ -723,6 +738,9 @@
 				06B62F451602731D00553396 /* ACToggleSwitchCell.m in Sources */,
 				06BF84751603B019002F59C2 /* ACPasswordSettingsViewController.m in Sources */,
 				06BF84791603B03D002F59C2 /* ACThumbnailSettingsViewController.m in Sources */,
+				065A566C1608FFF100D4C3D9 /* ACProgressBarController.m in Sources */,
+				065A56701609023500D4C3D9 /* ACUpdateThumbnailsOperation.m in Sources */,
+				065A56731609027B00D4C3D9 /* ACUpdateInfos.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
