@@ -79,12 +79,12 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
     int sectionIndex = [indexPath indexAtPosition:0];
     if(sectionIndex == 0) {
         if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
-            [cell.textLabel setText:@"Deactivate"];
+            [cell.textLabel setText:NSLocalizedString(@"DeactivatePassword",@"")];
         } else {
-            [cell.textLabel setText:@"Activate"];
+            [cell.textLabel setText:NSLocalizedString(@"ActivatePassword",@"")];
         }
     } else {
-        [cell.textLabel setText:@"Change password"];
+        [cell.textLabel setText:NSLocalizedString(@"ChangePassword",@"")];
     }
     return cell;
 }

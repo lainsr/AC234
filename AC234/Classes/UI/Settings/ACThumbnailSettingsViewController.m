@@ -66,9 +66,9 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     int sectionIndex = [indexPath indexAtPosition:0];
     if(sectionIndex == 0) {
-        [cell.textLabel setText:@"Complete"];
+        [cell.textLabel setText:NSLocalizedString(@"CompleteThumbnails",@"")];
     } else {
-        [cell.textLabel setText:@"Delete"];
+        [cell.textLabel setText:NSLocalizedString(@"ResetThumbnails",@"")];
     }
     return cell;
 }

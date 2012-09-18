@@ -8,19 +8,6 @@ Version: 1.0
 #import "ACAppDelegate.h"
 #import "ACScaler.h"
 
-/*
-#include <mach/mach.h>
-#include <mach/mach_time.h>
-	uint64_t start = mach_absolute_time();
-	
-	uint64_t end = mach_absolute_time();
-	uint64_t elapsed = end - start;
-	mach_timebase_info_data_t sTimebaseInfo;
-	(void)mach_timebase_info(&sTimebaseInfo);
-	uint64_t elapsedMilli = (elapsed * sTimebaseInfo.numer / sTimebaseInfo.denom) / 1000000;
-	printf("Take (ns): %i\n",elapsedMilli);
-*/
-
 @interface ACImageAndPath : NSObject {
 	NSString *path;
 	UIImage *image;

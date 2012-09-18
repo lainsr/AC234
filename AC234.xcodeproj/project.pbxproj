@@ -61,6 +61,7 @@
 		06BB995915BDDFC4007B6685 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994315BDD148007B6685 /* CoreData.framework */; };
 		06BF84751603B019002F59C2 /* ACPasswordSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */; };
 		06BF84791603B03D002F59C2 /* ACThumbnailSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */; };
+		06BFE2B61609147700A1E479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06BFE2B41609147700A1E479 /* Localizable.strings */; };
 		06C7378B15F7E89000C52EA0 /* ACSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */; };
 		06CB54DC15FE72EA005AB1A9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */; };
 		06CB54E015FE74F3005AB1A9 /* ACSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB54DF15FE74F3005AB1A9 /* ACSearchViewController.m */; };
@@ -188,6 +189,7 @@
 		06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPasswordSettingsViewController.m; path = Classes/UI/Settings/ACPasswordSettingsViewController.m; sourceTree = "<group>"; };
 		06BF84771603B03D002F59C2 /* ACThumbnailSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACThumbnailSettingsViewController.h; path = Classes/UI/Settings/ACThumbnailSettingsViewController.h; sourceTree = "<group>"; };
 		06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACThumbnailSettingsViewController.m; path = Classes/UI/Settings/ACThumbnailSettingsViewController.m; sourceTree = "<group>"; };
+		06BFE2B51609147700A1E479 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSettingsViewController.h; path = Classes/UI/Settings/ACSettingsViewController.h; sourceTree = "<group>"; };
 		06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSettingsViewController.m; path = Classes/UI/Settings/ACSettingsViewController.m; sourceTree = "<group>"; };
 		06CB54DE15FE74F3005AB1A9 /* ACSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSearchViewController.h; path = Classes/UI/Search/ACSearchViewController.h; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				06BB993315BDCE09007B6685 /* AC234.xcdatamodel */,
 				065E442315B9DE0700EEECD8 /* ACAppDelegate.h */,
 				065E442415B9DE0700EEECD8 /* ACAppDelegate.m */,
+				06BFE2B41609147700A1E479 /* Localizable.strings */,
 				0632522A16010C4700D46FF6 /* Settings.bundle */,
 				065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */,
 				065E441B15B9DE0700EEECD8 /* Supporting Files */,
@@ -623,6 +626,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 065E440515B9DE0600EEECD8;
 			productRefGroup = 065E441115B9DE0700EEECD8 /* Products */;
@@ -642,6 +646,7 @@
 			files = (
 				065E441F15B9DE0700EEECD8 /* InfoPlist.strings in Resources */,
 				065E442815B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard in Resources */,
+				06BFE2B61609147700A1E479 /* Localizable.strings in Resources */,
 				06F8019B15BF2CA4000DD680 /* ACPasswordView.xib in Resources */,
 				06ADFAC215F003A100CD59EA /* Home.png in Resources */,
 				06ADFAC315F003A100CD59EA /* Home@2x.png in Resources */,
@@ -785,6 +790,14 @@
 				065E444A15B9DE0700EEECD8 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		06BFE2B41609147700A1E479 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06BFE2B51609147700A1E479 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

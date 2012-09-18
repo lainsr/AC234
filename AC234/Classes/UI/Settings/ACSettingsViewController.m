@@ -61,9 +61,9 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
-        case 0: return @"Password";
-        case 1: return @"Thumbnails";
-        case 2: return @"Servers";
+        case 0: return NSLocalizedString(@"Security",@"");
+        case 1: return NSLocalizedString(@"Thumbnails",@"");
+        case 2: return NSLocalizedString(@"Servers",@"");
         default: return NULL;
     }
 }
@@ -81,15 +81,15 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
     UITableViewCell *cell;
     if (sectionIndex == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:kDetailsCellIdentifier];
-        [cell.textLabel setText:@"Password"];
+        [cell.textLabel setText:NSLocalizedString(@"Password",@"")];
         if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
-            [cell.detailTextLabel setText:@"Active"];
+            [cell.detailTextLabel setText:NSLocalizedString(@"Active",@"")];
         } else {
-            [cell.detailTextLabel setText:@"Inactive"];
+            [cell.detailTextLabel setText:NSLocalizedString(@"Inactive",@"")];
         }
     } else if(sectionIndex == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:kDetailsCellIdentifier];
-        [cell.textLabel setText:@"Thumbnail"];
+        [cell.textLabel setText:NSLocalizedString(@"Thumbnail",@"")];
         [cell.detailTextLabel setText:@""];
     } else if(sectionIndex == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCellIdentifier];
@@ -97,9 +97,9 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
             cell = [[ACToggleSwitchCell alloc] initWithReuseIdentifier:kSwitchCellIdentifier];
         }
         if(rowIndex == 0) {
-            [cell.textLabel setText:@"FTP"];
+            [cell.textLabel setText:NSLocalizedString(@"ServerFTP",@"")];
         } else if(rowIndex == 1) {
-            [cell.textLabel setText:@"HTTP / WebDAV"];
+            [cell.textLabel setText:NSLocalizedString(@"ServerHTTPWebDAV",@"")];
         }
     }
     return cell;
