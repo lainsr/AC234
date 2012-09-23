@@ -6,16 +6,19 @@
 //
 //
 #import <Foundation/Foundation.h>
+#import "ACSettingsCellDelegate.h"
 
 @interface ACToggleSwitchCell : UITableViewCell {
     
     UISwitch *valueView;
+    NSObject<ACSettingsCellDelegate> *delegate;
 
 }
 
-
 @property (nonatomic, strong) UISwitch *valueView;
+@property (nonatomic, strong) NSObject<ACSettingsCellDelegate> *delegate;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+- (void)setValue:(NSNumber*) newvalue;
 
 @end

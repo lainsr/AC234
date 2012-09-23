@@ -31,7 +31,7 @@ typedef enum {
     NSString *folderPath;
     NSString *folderTildePath;
     NSMutableArray *folderList;
-        ACFileListController *subController;
+    ACFileListController *subController;
         
     UIBarButtonItem *backButtonBackup;
     UIBarButtonItem *rightButtonBackup;

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061FE253160CEB5800969659 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE252160CEB5800969659 /* Default-568h@2x.png */; };
+		061FE256160CED9600969659 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE254160CED9600969659 /* Default.png */; };
+		061FE257160CED9600969659 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE255160CED9600969659 /* Default@2x.png */; };
+		061FE259160CEE1300969659 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE258160CEE1300969659 /* Icon-72@2x.png */; };
 		06315DE0160A63440087901B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06315DDF160A63440087901B /* libxml2.dylib */; };
 		06315E27160A68B60087901B /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 06315DE8160A68B60087901B /* DDData.m */; };
 		06315E28160A68B60087901B /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 06315DEA160A68B60087901B /* DDNumber.m */; };
@@ -132,6 +136,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061FE252160CEB5800969659 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Art/Default-568h@2x.png"; sourceTree = "<group>"; };
+		061FE254160CED9600969659 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Art/Default.png; sourceTree = "<group>"; };
+		061FE255160CED9600969659 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Art/Default@2x.png"; sourceTree = "<group>"; };
+		061FE258160CEE1300969659 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Art/Icon-72@2x.png"; sourceTree = "<group>"; };
+		061FE25C160CEEFC00969659 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		06315DDF160A63440087901B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		06315DE7160A68B60087901B /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
 		06315DE8160A68B60087901B /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
@@ -223,6 +232,7 @@
 		065E444A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065E444C15B9DE0700EEECD8 /* AC234Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC234Tests.h; sourceTree = "<group>"; };
 		065E444D15B9DE0700EEECD8 /* AC234Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AC234Tests.m; sourceTree = "<group>"; };
+		066BFEC5160EE3D500127974 /* ACSettingsCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACSettingsCellDelegate.h; path = Classes/UI/Settings/ACSettingsCellDelegate.h; sourceTree = "<group>"; };
 		06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACScrollViewController.h; path = Classes/UI/FS/ACScrollViewController.h; sourceTree = "<group>"; };
 		06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACScrollViewController.m; path = Classes/UI/FS/ACScrollViewController.m; sourceTree = "<group>"; };
 		06ADFA8A15EE9AA000CD59EA /* ACFolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFolderListCell.h; path = Classes/UI/FS/ACFolderListCell.h; sourceTree = "<group>"; };
@@ -644,7 +654,11 @@
 		06ADFABF15F0039400CD59EA /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				061FE254160CED9600969659 /* Default.png */,
+				061FE255160CED9600969659 /* Default@2x.png */,
+				061FE252160CEB5800969659 /* Default-568h@2x.png */,
 				065A592415FA790100C88BBE /* Icon-72.png */,
+				061FE258160CEE1300969659 /* Icon-72@2x.png */,
 				065A592515FA790100C88BBE /* Icon-Small-50.png */,
 				065A592615FA790100C88BBE /* Icon-Small.png */,
 				065A592715FA790100C88BBE /* Icon-Small@2x.png */,
@@ -714,6 +728,7 @@
 				06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */,
 				06BF84771603B03D002F59C2 /* ACThumbnailSettingsViewController.h */,
 				06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */,
+				066BFEC5160EE3D500127974 /* ACSettingsCellDelegate.h */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -898,6 +913,10 @@
 				0632522B16010C4700D46FF6 /* Settings.bundle in Resources */,
 				06315E3B160A68B60087901B /* About.txt in Resources */,
 				06315E43160A68B60087901B /* README.txt in Resources */,
+				061FE253160CEB5800969659 /* Default-568h@2x.png in Resources */,
+				061FE256160CED9600969659 /* Default.png in Resources */,
+				061FE257160CED9600969659 /* Default@2x.png in Resources */,
+				061FE259160CEE1300969659 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,6 +1051,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				065E442715B9DE0700EEECD8 /* en */,
+				061FE25C160CEEFC00969659 /* fr */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";

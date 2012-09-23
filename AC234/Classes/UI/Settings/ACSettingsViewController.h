@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ACSettingsCellDelegate.h"
 
-@interface ACSettingsViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ACSettingsViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ACSettingsCellDelegate>
 
 @end

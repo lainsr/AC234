@@ -37,7 +37,7 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
     _deviceManager = [[ACDeviceManager alloc]init];
     
     BOOL startWebDAVServer = [[NSUserDefaults standardUserDefaults] boolForKey:@"isWebDAVServer"];
-	if(YES || startWebDAVServer) {
+	if(startWebDAVServer) {
 		[self startWebDAVServer];
 	}
 

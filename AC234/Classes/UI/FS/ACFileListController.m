@@ -30,8 +30,10 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 
 //headers variables
 @synthesize flipIndicatorButton, organizeButton, addButton, cancelEditButton;
-@synthesize folderList, folderTildePath, hasChanged;
+@synthesize rightButtonBackup, backButtonBackup, flipToolbar;
+@synthesize folderList, folderTildePath, folderPath, hasChanged;
 @synthesize subController;
+@synthesize lastSelectedRow, lastCellForRow, firstRowToThumbnail, numOfThumbnailPerCell, cellStyle, editMode;
 
 #pragma mark -
 #pragma mark View life cycle

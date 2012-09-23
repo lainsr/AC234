@@ -5,36 +5,27 @@
 //  Created by Stéphane Rossé on 05.09.12.
 //
 //
-
+#import "HTTPServer.h"
+#import "ACAppDelegate.h"
 #import "ACGlobalInfos.h"
 #import "ACToggleSwitchCell.h"
 #import "ACSettingsViewController.h"
 
-@interface ACSettingsViewController ()
-
-@end
-
 @implementation ACSettingsViewController
-
 
 static NSString *kSwitchCellIdentifier = @"MySwitchCellIdentifier";
 static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-#pragma mark .
-#pragma mark UITableViewDelegate
+#pragma mark - ACSettingsCellDelegate
+-(void)valueChanged {
+    [self.tableView reloadData];
+}
+
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     int sectionIndex = [indexPath indexAtPosition:0];
     if(sectionIndex == 0) {
@@ -44,19 +35,21 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
     }
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    int sectionIndex = [indexPath indexAtPosition:0];
+    if(sectionIndex == 2) {
+        return nil;
+    }
+    return indexPath;
+}
+
+#pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0: return 1;
-        case 1: return 1;
-        case 2: return 2;
-        default: return 0;
-    }
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -70,14 +63,22 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if(section == 2) {
-        return @"http://191.168.1.110:8080/ac234";
+        ACAppDelegate *appDelegate = (ACAppDelegate*)[[UIApplication sharedApplication] delegate];
+        if([appDelegate webdavServer] && [appDelegate.webdavServer isRunning]) {
+            HTTPServer *server = [appDelegate webdavServer];
+			NSMutableString *message = [NSMutableString stringWithCapacity:32];
+			[message appendString:@"http://"];
+            [message appendString:[appDelegate getAddress]];
+			[message appendString:@":"];
+            [message appendFormat:@"%i",[server listeningPort]];
+            return message;
+        }
     }
     return NULL;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     int sectionIndex = [indexPath indexAtPosition:0];
-    int rowIndex = [indexPath indexAtPosition:1];
     UITableViewCell *cell;
     if (sectionIndex == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:kDetailsCellIdentifier];
@@ -92,19 +93,20 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
         [cell.textLabel setText:NSLocalizedString(@"Thumbnail",@"")];
         [cell.detailTextLabel setText:@""];
     } else if(sectionIndex == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:kSwitchCellIdentifier];
-        if(cell == nil) {
-            cell = [[ACToggleSwitchCell alloc] initWithReuseIdentifier:kSwitchCellIdentifier];
+        ACToggleSwitchCell *toggleCell = (ACToggleSwitchCell*)[tableView dequeueReusableCellWithIdentifier:kSwitchCellIdentifier];
+        if(toggleCell == nil) {
+            toggleCell = [[ACToggleSwitchCell alloc] initWithReuseIdentifier:kSwitchCellIdentifier];
         }
-        if(rowIndex == 0) {
-            [cell.textLabel setText:NSLocalizedString(@"ServerFTP",@"")];
-        } else if(rowIndex == 1) {
-            [cell.textLabel setText:NSLocalizedString(@"ServerHTTPWebDAV",@"")];
+        [toggleCell.textLabel setText:NSLocalizedString(@"ServerHTTPWebDAV",@"")];
+        [toggleCell setDelegate:self];
+        
+        ACAppDelegate *appDelegate = (ACAppDelegate*)[[UIApplication sharedApplication] delegate];
+        if([appDelegate webdavServer] && [appDelegate.webdavServer isRunning]) {
+            [toggleCell setValue:[NSNumber numberWithBool:YES]];
         }
+        cell = toggleCell;
     }
     return cell;
 }
-
-
 
 @end

@@ -5,12 +5,12 @@
 //  Created by Stéphane Rossé on 05.09.12.
 //
 //
-
+#import "ACAppDelegate.h"
 #import "ACToggleSwitchCell.h"
 
 @implementation ACToggleSwitchCell
 
-@synthesize valueView;
+@synthesize valueView, delegate;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
@@ -22,14 +22,24 @@
 	return self;
 }
 
-- (void) setValue:(NSObject *)newvalue {
-	super.value = newvalue;
-    self.valueView.on = [(NSNumber *)newvalue boolValue];	
+- (void) setValue:(NSNumber*) newvalue {
+    self.valueView.on = [newvalue boolValue];
 }
 
 - (void) valueChanged {
-    NSLog(@"Value change");
-	//super.value = [NSNumber numberWithBool:[self.valueView on]];
+    BOOL val = [self.valueView isOn];
+    [[NSUserDefaults standardUserDefaults] setBool:val forKey:@"isWebDAVServer"];
+    
+    ACAppDelegate *appDelegate = (ACAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if(val) {
+        [appDelegate startWebDAVServer];
+    } else {
+        [appDelegate stopWebDAVServer];
+    }
+    
+    if ([self delegate] != NULL) {
+        [self.delegate valueChanged];
+    }
 }
 
 - (void)layoutSubviews {
