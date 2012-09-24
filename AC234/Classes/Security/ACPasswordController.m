@@ -33,7 +33,7 @@
 	[super viewDidLoad];
     UIColor *greenNoiseColor = [[UIColor alloc] initWithPatternImage:[ACStaticIcons cellPattern]];
 	[self.view setBackgroundColor:greenNoiseColor];
-	[message setText:NSLocalizedString(@"TypePassword",@"")];
+	[self.message setText:NSLocalizedString(@"TypePassword",@"")];
 	[passwordField becomeFirstResponder];
 }
 
