@@ -10,7 +10,7 @@
 #import "ACPasswordController.h"
 #import "ACPasswordSettingsViewController.h"
 
-#import "KeychainItemWrapper.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation ACPasswordSettingsViewController
 
@@ -43,21 +43,13 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
 
 -(BOOL)passwordSet:(NSString *)password {
     if(activate) {
-		KeychainItemWrapper *keychainActivationWrapper = [[ACGlobalInfos sharedInstance] keychainActivationWrapper];
 		if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
-			[keychainActivationWrapper setObject:@"NO" forKey:(__bridge_transfer id)kSecValueData];
+            [SFHFKeychainUtils deleteItemForUsername:@"me" andServiceName:@"AC234" error:nil];
 		} else {
-			[keychainActivationWrapper setObject:@"YES" forKey:(__bridge_transfer id)kSecValueData];
-			
-			//save password
-			KeychainItemWrapper *keychainPasswordWrapper = [[ACGlobalInfos sharedInstance] keychainPasswordWrapper];
-			[keychainPasswordWrapper setObject:@"AC234" forKey:(__bridge_transfer id)kSecAttrAccount];
-			[keychainPasswordWrapper setObject:password forKey:(__bridge_transfer id)kSecValueData];
+            [SFHFKeychainUtils storeUsername:@"me" andPassword:password forServiceName:@"AC234" updateExisting:YES error:nil];
 		}
 	} else {
-		KeychainItemWrapper *keychainPasswordWrapper = [[ACGlobalInfos sharedInstance] keychainPasswordWrapper];
-		[keychainPasswordWrapper setObject:@"AC234" forKey:(__bridge_transfer id)kSecAttrAccount];
-		[keychainPasswordWrapper setObject:password forKey:(__bridge_transfer id)kSecValueData];
+        [SFHFKeychainUtils storeUsername:@"me" andPassword:password forServiceName:@"AC234" updateExisting:YES error:nil];
 	}
     [self dismissModalViewControllerAnimated:YES];
 	[self.tableView reloadData];

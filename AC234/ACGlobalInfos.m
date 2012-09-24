@@ -6,26 +6,18 @@
 //  Copyright 2010 Cyberiacafe. All rights reserved.
 //
 #import "ACGlobalInfos.h"
+#import "SFHFKeychainUtils.h"
 
 static ACGlobalInfos *sharedInstance = nil;
 
 @implementation ACGlobalInfos
 
-@synthesize scale, keychainPasswordWrapper, keychainActivationWrapper;
+@synthesize scale;
 
 +(ACGlobalInfos*)sharedInstance {
 	@synchronized(self) {
 		if(sharedInstance == nil) {
 			sharedInstance = [[ACGlobalInfos alloc] init];
-			
-			KeychainItemWrapper *wrapperActive
-                = [[KeychainItemWrapper alloc] initWithIdentifier:@"activepassword" accessGroup:@"J6YUBY85D6.com.frentix.player.AC234"];
-			sharedInstance.keychainActivationWrapper = wrapperActive;
-
-			
-			KeychainItemWrapper *wrapperSecure
-                = [[KeychainItemWrapper alloc] initWithIdentifier:@"securepassword" accessGroup:@"J6YUBY85D6.com.frentix.player.AC234"];
-			sharedInstance.keychainPasswordWrapper = wrapperSecure;
 		}
 	}
 	return sharedInstance;
@@ -47,12 +39,12 @@ static ACGlobalInfos *sharedInstance = nil;
 }
 
 -(BOOL)isPasswordActivated {
-	NSString *activated = [keychainActivationWrapper objectForKey:(__bridge_transfer id)kSecValueData];
-	return activated != nil && [@"YES" isEqualToString:activated];
+    NSString *secpassword = [SFHFKeychainUtils getPasswordForUsername:@"me" andServiceName:@"AC234" error:nil];
+    return secpassword != nil;
 }
 
 -(BOOL)checkPassword:(NSString *)password {
-	NSString *secpassword = [keychainPasswordWrapper objectForKey:(__bridge_transfer id)kSecValueData];
+	NSString *secpassword = [SFHFKeychainUtils getPasswordForUsername:@"me" andServiceName:@"AC234" error:nil];
 	if(secpassword == nil) {
 		return YES;//something gone very BAD
 	}

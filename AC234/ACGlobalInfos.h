@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KeychainItemWrapper.h"
 
 enum {
 	kPasswordActivateSection,
@@ -17,13 +16,9 @@ enum {
 
 @interface ACGlobalInfos : NSObject {
 	CGFloat scale;
-	KeychainItemWrapper *keychainPasswordWrapper;
-	KeychainItemWrapper *keychainActivationWrapper;
 }
 
 @property (nonatomic, readonly) CGFloat scale;
-@property (nonatomic, retain) KeychainItemWrapper *keychainPasswordWrapper;
-@property (nonatomic, retain) KeychainItemWrapper *keychainActivationWrapper;
 
 +(ACGlobalInfos*)sharedInstance;
 
