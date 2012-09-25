@@ -33,7 +33,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 @synthesize rightButtonBackup, backButtonBackup, flipToolbar;
 @synthesize folderList, folderTildePath, folderPath, hasChanged;
 @synthesize subController;
-@synthesize lastSelectedRow, lastCellForRow, firstRowToThumbnail, numOfThumbnailPerCell, cellStyle, editMode;
+@synthesize lastSelectedRow, lastCellForRow, firstRowToThumbnail, numOfThumbnailPerCell, cellStyle;
 
 #pragma mark -
 #pragma mark View life cycle
@@ -49,6 +49,20 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         [self setTitle:@"Home"];
         [self loadFolder:[self folderTildePath]]; 
     }
+    
+    self.flipIndicatorButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,31,31)];
+    [self.flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"ListWithBack.png"] forState:UIControlStateNormal];
+    [self.flipIndicatorButton addTarget:self action:@selector(flipCurrentView) forControlEvents:(UIControlEventTouchDown)];
+    [self.flipIndicatorButton setOpaque:YES];
+    [self.flipIndicatorButton setAlpha:1.0];
+    
+	UIBarButtonItem *sButton=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];
+    
+    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
+    [buttons addObject:sButton];
+    [buttons addObject:self.organizeButton];
+    
+    [self.navigationItem setRightBarButtonItems:buttons animated:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -148,41 +162,43 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 }
 
 - (IBAction)organize {
-	if(self.editMode) {
-		[[self navigationItem] setLeftBarButtonItem:self.backButtonBackup];
-		[[self navigationItem] setRightBarButtonItem:self.rightButtonBackup];
-        
-	} else {
-		self.backButtonBackup = [[self navigationItem] leftBarButtonItem];
-		self.rightButtonBackup = [[self navigationItem] rightBarButtonItem];
+	[self setEditing:YES];
+	[self.tableView reloadData];
+    
+
+    self.backButtonBackup = [[self navigationItem] leftBarButtonItem];
+    self.rightButtonBackup = [[self navigationItem] rightBarButtonItems];
 		
-		if(self.addButton == nil) {
-			UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPhoto)];
-            self.addButton = add;
-			self.addButton.style = UIBarButtonItemStylePlain;
-		}
-		[[self navigationItem] setLeftBarButtonItem:self.addButton];
+    if(self.addButton == nil) {
+        UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPhoto)];
+        self.addButton = add;
+        self.addButton.style = UIBarButtonItemStylePlain;
+    }
+    [[self navigationItem] setLeftBarButtonItem:self.addButton];
         
-        if(self.cancelEditButton == nil) {
-            UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editFolder)];
-			self.cancelEditButton = cancel;
-			self.cancelEditButton.style = UIBarButtonItemStyleDone;
-		}
-		[[self navigationItem] setRightBarButtonItem:self.cancelEditButton];
-	}
-    self.editMode = !self.editMode;
+    if(self.cancelEditButton == nil) {
+        UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editingDone)];
+        self.cancelEditButton = cancel;
+        self.cancelEditButton.style = UIBarButtonItemStyleDone;
+    }
+    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:1];
+    [buttons addObject:self.cancelEditButton];
+    [[self navigationItem] setRightBarButtonItems:buttons];
+}
+
+- (IBAction)editingDone {
+    [[self navigationItem] setLeftBarButtonItem:self.backButtonBackup];
+    [[self navigationItem] setRightBarButtonItem:nil];
+    [[self navigationItem] setRightBarButtonItems:self.rightButtonBackup animated:NO];
+ 
+	[self setEditing:NO];
+	[self.tableView reloadData];
 }
 
 - (IBAction)addPhoto {
-    NSLog(@"Add photo");
-    
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 	[imagePicker setDelegate:(id)self];
 	[self presentModalViewController:imagePicker animated:YES];
-}
-
-- (IBAction)editFolder {
-    NSLog(@"Edit folder");
 }
 
 #pragma mark -

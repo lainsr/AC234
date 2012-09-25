@@ -64,6 +64,8 @@
 		065E444315B9DE0700EEECD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441615B9DE0700EEECD8 /* Foundation.framework */; };
 		065E444B15B9DE0700EEECD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065E444915B9DE0700EEECD8 /* InfoPlist.strings */; };
 		065E444E15B9DE0700EEECD8 /* AC234Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E444D15B9DE0700EEECD8 /* AC234Tests.m */; };
+		066119B4161234F900778810 /* LargeWithBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 066119B2161234F900778810 /* LargeWithBack@2x.png */; };
+		066119B5161234F900778810 /* ListWithBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 066119B3161234F900778810 /* ListWithBack@2x.png */; };
 		06630AD21610D9F9005FB2DA /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 06630AD11610D9F9005FB2DA /* SFHFKeychainUtils.m */; };
 		06ADFA8915EE9A7300CD59EA /* ACScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */; };
 		06ADFA8C15EE9AA000CD59EA /* ACFolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */; };
@@ -232,6 +234,8 @@
 		065E444A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065E444C15B9DE0700EEECD8 /* AC234Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC234Tests.h; sourceTree = "<group>"; };
 		065E444D15B9DE0700EEECD8 /* AC234Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AC234Tests.m; sourceTree = "<group>"; };
+		066119B2161234F900778810 /* LargeWithBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LargeWithBack@2x.png"; path = "Art/LargeWithBack@2x.png"; sourceTree = "<group>"; };
+		066119B3161234F900778810 /* ListWithBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ListWithBack@2x.png"; path = "Art/ListWithBack@2x.png"; sourceTree = "<group>"; };
 		06630AD01610D9F9005FB2DA /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Classes/Security/SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		06630AD11610D9F9005FB2DA /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Classes/Security/SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		066BFEC5160EE3D500127974 /* ACSettingsCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACSettingsCellDelegate.h; path = Classes/UI/Settings/ACSettingsCellDelegate.h; sourceTree = "<group>"; };
@@ -654,6 +658,8 @@
 		06ADFABF15F0039400CD59EA /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				066119B2161234F900778810 /* LargeWithBack@2x.png */,
+				066119B3161234F900778810 /* ListWithBack@2x.png */,
 				061FE254160CED9600969659 /* Default.png */,
 				061FE255160CED9600969659 /* Default@2x.png */,
 				061FE252160CEB5800969659 /* Default-568h@2x.png */,
@@ -917,6 +923,8 @@
 				061FE256160CED9600969659 /* Default.png in Resources */,
 				061FE257160CED9600969659 /* Default@2x.png in Resources */,
 				061FE259160CEE1300969659 /* Icon-72@2x.png in Resources */,
+				066119B4161234F900778810 /* LargeWithBack@2x.png in Resources */,
+				066119B5161234F900778810 /* ListWithBack@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

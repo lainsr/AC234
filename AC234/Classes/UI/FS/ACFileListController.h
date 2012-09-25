@@ -25,7 +25,6 @@ typedef enum {
     int numOfThumbnailPerCell;
       
     BOOL hasChanged;
-    BOOL editMode;
     CellRenderType cellStyle;
         
     NSString *folderPath;
@@ -34,7 +33,7 @@ typedef enum {
     ACFileListController *subController;
         
     UIBarButtonItem *backButtonBackup;
-    UIBarButtonItem *rightButtonBackup;
+    NSArray *rightButtonBackup;
         
     IBOutlet ACToolbar *flipToolbar;
     IBOutlet UIButton *flipIndicatorButton;
@@ -50,7 +49,6 @@ typedef enum {
 @property(readwrite) int numOfThumbnailPerCell;
 
 @property(readwrite) BOOL hasChanged;
-@property(readwrite) BOOL editMode;
 @property(readwrite) CellRenderType cellStyle;
 
 @property(readwrite, strong) NSString *folderPath;
@@ -59,7 +57,7 @@ typedef enum {
 @property(readwrite, strong) ACFileListController *subController;
 
 @property(readwrite, strong) UIBarButtonItem *backButtonBackup;
-@property(readwrite, strong) UIBarButtonItem *rightButtonBackup;
+@property(readwrite, strong) NSArray *rightButtonBackup;
 
 @property(readwrite, strong) IBOutlet ACToolbar *flipToolbar;
 @property(readwrite, strong) IBOutlet UIButton *flipIndicatorButton;
@@ -70,7 +68,7 @@ typedef enum {
 
 - (IBAction)organize;
 - (IBAction)addPhoto;
-- (IBAction)editFolder;
+- (IBAction)editingDone;
 - (IBAction)flipCurrentView;
 
 - (void)loadFolder:(NSString *)folder;
