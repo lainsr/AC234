@@ -16,13 +16,16 @@ enum {
 
 @interface ACGlobalInfos : NSObject {
 	CGFloat scale;
+    int thumbnailsPerLandscapeCell;
 }
 
 @property (nonatomic, readonly) CGFloat scale;
+@property (nonatomic, readonly) int thumbnailsPerLandscapeCell;
 
 +(ACGlobalInfos*)sharedInstance;
 
 -(CGFloat)scale;
+-(int)numberOfThumbnailPerLandscapeCell;
 
 -(BOOL)isPasswordActivated;
 -(BOOL)checkPassword:(NSString *)password;

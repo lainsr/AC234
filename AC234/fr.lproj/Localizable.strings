@@ -20,3 +20,7 @@
 "ServerHTTPWebDAV" = "HTTP / WebDAV";
 "Play" = "Visionner";
 "Documents" = "DDom";
+"Error" = "Erreur";
+"NoFilenameFound" = "Impossible de générer un nom de fichier valide";
+"CannotSaveImportedImage" = "Impossible de sauver l'image importée";
+"Ok" = "Ok";

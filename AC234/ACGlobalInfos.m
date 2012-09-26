@@ -12,7 +12,7 @@ static ACGlobalInfos *sharedInstance = nil;
 
 @implementation ACGlobalInfos
 
-@synthesize scale;
+@synthesize scale, thumbnailsPerLandscapeCell;
 
 +(ACGlobalInfos*)sharedInstance {
 	@synchronized(self) {
@@ -36,6 +36,19 @@ static ACGlobalInfos *sharedInstance = nil;
 		scale = 1.0f;
 	}
 	return scale;
+}
+
+
+-(int)numberOfThumbnailPerLandscapeCell {
+    if(thumbnailsPerLandscapeCell < 2) {
+        int screenHeight = [UIScreen mainScreen].bounds.size.height;
+        if(screenHeight < 568) {
+            thumbnailsPerLandscapeCell = 4;
+        } else {
+            thumbnailsPerLandscapeCell = 5;
+        }
+    }
+    return thumbnailsPerLandscapeCell;
 }
 
 -(BOOL)isPasswordActivated {

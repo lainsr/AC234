@@ -5,7 +5,7 @@
 //  Created by Stéphane Rossé on 02.09.12.
 //
 //
-
+#import "ACGlobalInfos.h"
 #import "ACAppDelegate.h"
 #import "ACFolderListCell.h"
 #import "ACFileListController.h"
@@ -17,6 +17,8 @@
 
 @interface ACFileListController (Private)
 
+-(NSString*)findUniqueName;
+-(void)generateName:(int)number andAppendTo:(NSMutableString *)string;
 -(void)fillThumbnailsBufferAt:(int)row size:(BOOL)large waitUntilFilled:(BOOL)wait;
 -(void)loadThumbnailInCell:(UITableViewCell<ACThumbnailCell>*)cell atRow:(int)row forImage:(NSString *)filename atSize:(BOOL)large;
 
@@ -107,17 +109,18 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     }
     
     double indexToSelect = -1.0;
+    int thumbnailsPerLandscapeCell = [[ACGlobalInfos sharedInstance] numberOfThumbnailPerLandscapeCell];
     UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-        if([self numOfThumbnailPerCell] != 4) {
+        if([self numOfThumbnailPerCell] != thumbnailsPerLandscapeCell) {
             if(indexPath != nil) {
-                indexToSelect = floor(((indexPath.row * 3.0) / 4.0) + 0.5);
+                indexToSelect = floor(((indexPath.row * 3.0) / (float)thumbnailsPerLandscapeCell) + 0.5);
             }
-            [self setNumOfThumbnailPerCell:4];
+            [self setNumOfThumbnailPerCell:thumbnailsPerLandscapeCell];
         }
     } else if ([self numOfThumbnailPerCell] != 3){
         if(indexPath != nil) {
-            indexToSelect = floor(((indexPath.row * 4.0) / 3.0) + 0.5);
+            indexToSelect = floor(((indexPath.row * (float)thumbnailsPerLandscapeCell) / 3.0) + 0.5);
         }
         [self setNumOfThumbnailPerCell:3];
     }
@@ -225,21 +228,80 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 		}
 	}
     
-    /*ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *lastViewed = [appDelegate getLastViewed:folder];
 	if(lastViewed != NULL) {
-		int index = [folderList indexOfObject:lastViewed];
-		[self selectAtIndex:index];
-	}*/
+		int indexToSelect = [folderList indexOfObject:lastViewed];
+        NSUInteger indexArr[] = {0, indexToSelect};
+        NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexArr length:2];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+	}
 }
 
 #pragma mark -
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)selectedImage editingInfo:(NSDictionary *)editingInfo {
-    // Make something
+
+    NSFileManager *defaultManager = [NSFileManager defaultManager];
+	NSString *filename = [self findUniqueName];
+    if(filename == nil) {
+        [[[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", @"Error")
+                        message: NSLocalizedString(@"NoFilenameFound", @"Error")
+                        delegate: nil cancelButtonTitle: NSLocalizedString(@"Ok", @"Ok") otherButtonTitles: nil] show];
+    } else {
+    
+        NSData *contents = UIImageJPEGRepresentation(selectedImage, 0.9f);
+        if([defaultManager createFileAtPath:filename contents:(NSData *)contents attributes:nil]) {
+            [self.folderList addObject:filename];
+            [self.tableView reloadData];
+        
+            int indexToSelect = [self.folderList indexOfObject:filename];
+            NSUInteger indexArr[] = {0, indexToSelect};
+            NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexArr length:2];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        } else {
+            [[[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", @"Error")
+                            message: NSLocalizedString(@"CannotSaveImportedImage", @"Error")
+                            delegate: nil cancelButtonTitle: NSLocalizedString(@"Ok", @"Ok") otherButtonTitles: nil] show];
+        }
+    }
+    
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+-(NSString*)findUniqueName {
+    NSFileManager *defaultManager = [NSFileManager defaultManager];
+    for(int i=0; i<100; i++) {
+		NSMutableString *potentialName = [NSMutableString stringWithCapacity:30];
+		[potentialName appendString:@"img_"];
+		[self generateName:i andAppendTo:potentialName];
+		[potentialName appendString:@".jpg"];
+		NSString *potentialPath = [folderPath stringByAppendingPathComponent:potentialName];
+		if(![defaultManager fileExistsAtPath:potentialPath]) {
+            return potentialPath;
+        }
+    }
+    return NULL;
+}
+
+- (void)generateName:(int)number andAppendTo:(NSMutableString *)string {
+	NSNumber *n = [NSNumber numberWithInt:number];
+	NSString *s = [n stringValue];
+	switch ([s length]) {
+		case 1:
+			[string appendString:@"000"];
+			break;
+		case 2:
+			[string appendString:@"00"];
+			break;
+		case 3:
+			[string appendString:@"0"];
+			break;
+		default:
+			break;
+	}
+	[string appendString:s];
+}
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
 	// The user canceled -- simply dismiss the image picker.

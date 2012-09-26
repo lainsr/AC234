@@ -395,6 +395,7 @@
 
 - (void)load {
     int kNumberOfPages = [filteredImageFullPathArray count];
+
     self.scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, 200);
     self.pageControl.numberOfPages = kNumberOfPages;
   

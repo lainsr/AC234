@@ -16,3 +16,7 @@
 "CompleteThumbnails" = "Complete thumbnails";
 "ResetThumbnails" = "Reset thumbnails";
 "Cancel" = "Cancel";
+"Error" = "Error";
+"NoFilenameFound" = "Cannot generate a valid filename";
+"CannotSaveImportedImage" = "Cannot save the imported image";
+"Ok" = "Ok";
