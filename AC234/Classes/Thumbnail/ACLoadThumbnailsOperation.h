@@ -27,8 +27,6 @@
 -(id)initWithPaths:(NSArray *)paths size:(BOOL)large;
 -(id)initWithPath:(NSString *)tildePath subSet:(NSArray *)filenames size:(BOOL)large;
 
-- (void)mergeChanges:(NSNotification *)notification;
-
 @end
 
 @protocol ACLoadThumbnailsOperationDelegate<NSObject>

@@ -21,7 +21,6 @@
 
 - (void)updateThumbnails:(NSMutableArray *)collector withContext:(NSManagedObjectContext *)localContext;
 - (void)collectThumbnailsPathIn:(NSMutableArray *)collector at:(NSString *)dir;
-- (void)mergeChanges:(NSNotification *)notification;
 
 @end
 

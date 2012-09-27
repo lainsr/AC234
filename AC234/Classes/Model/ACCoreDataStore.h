@@ -23,10 +23,11 @@
 @property (strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+
 - (id)initWithFile:(NSString*)name;
 - (NSString *)applicationCachesDirectory;
 
-- (void)deleteStore;
+- (void)mergeChanges:(NSNotification *)notification;
 - (void)stopStore;
 
 @end

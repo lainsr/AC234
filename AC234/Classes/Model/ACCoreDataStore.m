@@ -33,6 +33,16 @@
     }
 }
 
+/**
+ * Perform the merge on the main thread
+**/
+- (void)mergeChanges:(NSNotification *)notification {
+    if(_managedObjectContext == NULL) return;
+    // Merge changes into the main context on the main thread
+    [self.managedObjectContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+                                  withObject:notification waitUntilDone:NO];
+}
+
 - (NSManagedObjectContext *) managedObjectContext {
 	if (_managedObjectContext != nil) {
 		return _managedObjectContext;

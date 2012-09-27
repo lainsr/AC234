@@ -23,6 +23,5 @@ Version: 1.0
 @property (copy) NSString *loadedImagePath;
 
 - (NSString *)healPath:(NSString*)dirtyPath;
-- (void)mergeChanges:(NSNotification *)notification;
 
 @end

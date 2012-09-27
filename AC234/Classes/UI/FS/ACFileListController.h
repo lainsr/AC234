@@ -71,6 +71,7 @@ typedef enum {
 - (IBAction)editingDone;
 - (IBAction)flipCurrentView;
 
+- (void)clear;
 - (void)loadFolder:(NSString *)folder;
 
 @end

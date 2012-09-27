@@ -41,6 +41,16 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
     if(self.progressBarController != NULL) {
         [self.progressBarController.progressView setProgress:1.0];
     }
+
+[self dismissModalViewControllerAnimated:YES];
+    //[self performSelector:@selector(dissmissProgress) withObject:nil afterDelay:0.5];
+}
+
+/**
+ * Prevent: "Warning: Attempt to dismiss from view controller <UITabBarController:>
+ * while a presentation or dismiss is in progress!"
+ */
+-(void)dissmissProgress {
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -77,7 +87,8 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	int section = [indexPath section];
 	if(section == 0 || section == 1) {
-		ACUpdateThumbnailsOperation	*updateOp = [[ACUpdateThumbnailsOperation alloc] init];
+        
+        ACUpdateThumbnailsOperation	*updateOp = [[ACUpdateThumbnailsOperation alloc] init];
 		[updateOp setDelegate:self];		// set the delegate
 		[updateOp setReset:(section == 1)];
         

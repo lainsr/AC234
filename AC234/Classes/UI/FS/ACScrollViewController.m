@@ -71,6 +71,9 @@
     self.movieController1 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
     self.movieController2 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
     self.movieController3 = [[self storyboard] instantiateViewControllerWithIdentifier:@"MovieView"];
+    [self.movieController1 setScrollViewNavigation:[self navigationController]];
+    [self.movieController2 setScrollViewNavigation:[self navigationController]];
+    [self.movieController3 setScrollViewNavigation:[self navigationController]];
     
 	[self setWantsFullScreenLayout:YES];
     [self load];
@@ -86,6 +89,10 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	[self clearViewControllers];
+    
+    [self.movieController1 setScrollViewNavigation:nil];
+    [self.movieController2 setScrollViewNavigation:nil];
+    [self.movieController3 setScrollViewNavigation:nil];
 }
 
 - (void)clearViewControllers {
@@ -229,7 +236,7 @@
     [self hideHUDView];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 
-    myTimer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(next:) userInfo:nil repeats:YES];
+    myTimer = [NSTimer timerWithTimeInterval:5.0 target:self selector:@selector(next) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
         
     NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, pauseButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
@@ -313,7 +320,7 @@
 }
 
 -(void)deviceConnected {
-    UIImage *airplayIcon = [UIImage imageNamed:@"display_on.png"];
+    UIImage *airplayIcon = [UIImage imageNamed:@"DisplayOn.png"];
     [self.airplayButton setImage:airplayIcon];
     
     if([NSThread isMainThread]) {
@@ -334,7 +341,7 @@
 }
 
 -(void)deviceDisconnected {
-    UIImage *airplayIcon = [UIImage imageNamed:@"display_off.png"];
+    UIImage *airplayIcon = [UIImage imageNamed:@"DisplayOff.png"];
     [self.airplayButton setImage:airplayIcon];
 }
 

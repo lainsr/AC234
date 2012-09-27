@@ -94,6 +94,10 @@
 		06BB994A15BDD196007B6685 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994815BDD196007B6685 /* AVFoundation.framework */; };
 		06BB994B15BDD196007B6685 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994915BDD196007B6685 /* Security.framework */; };
 		06BB995915BDDFC4007B6685 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994315BDD148007B6685 /* CoreData.framework */; };
+		06BE0FCA1614E85C00825676 /* DisplayOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 06BE0FC61614E85C00825676 /* DisplayOff.png */; };
+		06BE0FCB1614E85C00825676 /* DisplayOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06BE0FC71614E85C00825676 /* DisplayOff@2x.png */; };
+		06BE0FCC1614E85C00825676 /* DisplayOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 06BE0FC81614E85C00825676 /* DisplayOn.png */; };
+		06BE0FCD1614E85C00825676 /* DisplayOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06BE0FC91614E85C00825676 /* DisplayOn@2x.png */; };
 		06BF84751603B019002F59C2 /* ACPasswordSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */; };
 		06BF84791603B03D002F59C2 /* ACThumbnailSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */; };
 		06BFE2B61609147700A1E479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06BFE2B41609147700A1E479 /* Localizable.strings */; };
@@ -288,6 +292,10 @@
 		06BB994915BDD196007B6685 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		06BB994C15BDD1F6007B6685 /* libxml2.2.7.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.7.3.dylib; path = usr/lib/libxml2.2.7.3.dylib; sourceTree = SDKROOT; };
 		06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		06BE0FC61614E85C00825676 /* DisplayOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisplayOff.png; path = Art/DisplayOff.png; sourceTree = "<group>"; };
+		06BE0FC71614E85C00825676 /* DisplayOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DisplayOff@2x.png"; path = "Art/DisplayOff@2x.png"; sourceTree = "<group>"; };
+		06BE0FC81614E85C00825676 /* DisplayOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisplayOn.png; path = Art/DisplayOn.png; sourceTree = "<group>"; };
+		06BE0FC91614E85C00825676 /* DisplayOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DisplayOn@2x.png"; path = "Art/DisplayOn@2x.png"; sourceTree = "<group>"; };
 		06BF84731603B019002F59C2 /* ACPasswordSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPasswordSettingsViewController.h; path = Classes/UI/Settings/ACPasswordSettingsViewController.h; sourceTree = "<group>"; };
 		06BF84741603B019002F59C2 /* ACPasswordSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPasswordSettingsViewController.m; path = Classes/UI/Settings/ACPasswordSettingsViewController.m; sourceTree = "<group>"; };
 		06BF84771603B03D002F59C2 /* ACThumbnailSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACThumbnailSettingsViewController.h; path = Classes/UI/Settings/ACThumbnailSettingsViewController.h; sourceTree = "<group>"; };
@@ -658,6 +666,10 @@
 		06ADFABF15F0039400CD59EA /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				06BE0FC61614E85C00825676 /* DisplayOff.png */,
+				06BE0FC71614E85C00825676 /* DisplayOff@2x.png */,
+				06BE0FC81614E85C00825676 /* DisplayOn.png */,
+				06BE0FC91614E85C00825676 /* DisplayOn@2x.png */,
 				066119B2161234F900778810 /* LargeWithBack@2x.png */,
 				066119B3161234F900778810 /* ListWithBack@2x.png */,
 				061FE254160CED9600969659 /* Default.png */,
@@ -925,6 +937,10 @@
 				061FE259160CEE1300969659 /* Icon-72@2x.png in Resources */,
 				066119B4161234F900778810 /* LargeWithBack@2x.png in Resources */,
 				066119B5161234F900778810 /* ListWithBack@2x.png in Resources */,
+				06BE0FCA1614E85C00825676 /* DisplayOff.png in Resources */,
+				06BE0FCB1614E85C00825676 /* DisplayOff@2x.png in Resources */,
+				06BE0FCC1614E85C00825676 /* DisplayOn.png in Resources */,
+				06BE0FCD1614E85C00825676 /* DisplayOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

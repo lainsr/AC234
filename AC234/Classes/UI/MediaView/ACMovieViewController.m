@@ -34,7 +34,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 @implementation ACMovieViewController
 
-@synthesize moviePlayer, moviePlayerView, screenshotView, playButton;
+@synthesize scrollViewNavigation, moviePlayer, moviePlayerView, screenshotView, playButton;
 @synthesize imagePath, movieURL, stopped, playing;
 
 
@@ -94,7 +94,7 @@ CGFloat kMovieViewOffsetY = 20.0;
     if(self.moviePlayer != NULL) {
         [self setStopped:NO];
         [self setPlaying:YES];
-        [self.navigationController presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
+        [self.scrollViewNavigation presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
         return;
     }
 	
@@ -112,7 +112,7 @@ CGFloat kMovieViewOffsetY = 20.0;
         }
         [self setStopped:NO];
         [self setPlaying:YES];
-        [self.navigationController presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
+        [self.scrollViewNavigation presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
 	}
 }
 
@@ -295,7 +295,6 @@ CGFloat kMovieViewOffsetY = 20.0;
         // Add an overlay view on top of the movie view
         //[self addOverlayView];
         //NSLog(@"Load OK");
-        
         //[overlayController setLoadStateDisplayString:@"playthrough ok"];
 	}
 	
@@ -322,75 +321,10 @@ CGFloat kMovieViewOffsetY = 20.0;
 #pragma mark -
 #pragma mark Settings
 -(void)setMoviePlayerUserSettings {
-	/* First get the movie player settings defaults (scaling, controller type and background color)
-	set by the user via the built-in iPhone Settings application */
-	 
-	NSString *testValue = [[NSUserDefaults standardUserDefaults] stringForKey:kScalingModeKey];
-	if (testValue == nil){
-		// No default movie player settings values have been set, create them here based on our 
-		// settings bundle info.
-		//
-		// The values to be set for movie playback are:
-		//
-		//    - scaling mode (None, Aspect Fill, Aspect Fit, Fill)
-		//    - controller mode (Standard Controls, Volume Only, Hidden)
-		//    - background color (Any UIColor value)
-		//
-        
-		NSString *pathStr = [[NSBundle mainBundle] bundlePath];
-		NSString *settingsBundlePath = [pathStr stringByAppendingPathComponent:@"Settings.bundle"];
-		NSString *finalPath = [settingsBundlePath stringByAppendingPathComponent:@"Root.plist"];
-        
-		NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfFile:finalPath];
-		NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
-        
-		NSNumber *controlModeDefault = nil;
-		NSNumber *scalingModeDefault = nil;
-		NSNumber *backgroundColorDefault = nil;
-        
-		NSDictionary *prefItem;
-		for (prefItem in prefSpecifierArray) {
-			NSString *keyValueStr = [prefItem objectForKey:@"Key"];
-			id defaultValue = [prefItem objectForKey:@"DefaultValue"];
-			if ([keyValueStr isEqualToString:kScalingModeKey]) {
-				scalingModeDefault = defaultValue;
-			} else if ([keyValueStr isEqualToString:kControlModeKey]) {
-				controlModeDefault = defaultValue;
-			} else if ([keyValueStr isEqualToString:kBackgroundColorKey]) {
-				backgroundColorDefault = defaultValue;
-			}
-		}
-        
-		// since no default values have been set, create them here
-		NSDictionary *appDefaults =  [NSDictionary dictionaryWithObjectsAndKeys:
-			scalingModeDefault, kScalingModeKey,
-			controlModeDefault, kControlModeKey,
-			backgroundColorDefault, kBackgroundColorKey, nil];
-        
-		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-		[[NSUserDefaults standardUserDefaults] synchronize];
-	}
-
-	/* Now apply these settings to the active Movie Player (MPMoviePlayerController) object  */
-
-	/* 
-	Movie scaling mode can be one of: MPMovieScalingModeNone, MPMovieScalingModeAspectFit,
-		MPMovieScalingModeAspectFill, MPMovieScalingModeFill.
-	*/
-	//self.moviePlayer.scalingMode = [[NSUserDefaults standardUserDefaults] integerForKey:kScalingModeKey];
-    
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     self.moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
-    self.moviePlayer.allowsAirPlay = YES;
-    self.moviePlayer.view.backgroundColor = [UIColor blackColor];
-    
-	/* 
-	Movie control mode can be one of: MPMovieControlModeDefault, MPMovieControlModeVolumeOnly, MPMovieControlModeHidden.
-	*/
-	//self.moviePlayer.movieControlMode = [[NSUserDefaults standardUserDefaults] integerForKey:kControlModeKey];
-
-
-
+    [self.moviePlayer setAllowsAirPlay:YES];
+    self.moviePlayer.view.backgroundColor = [UIColor blueColor];
 }
 
 @end

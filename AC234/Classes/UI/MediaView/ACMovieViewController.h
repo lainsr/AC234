@@ -20,6 +20,7 @@
     
 	MPMoviePlayerController *moviePlayer;
     MPMoviePlayerViewController *moviePlayerView;
+    UINavigationController *scrollViewNavigation;
 
 	NSURL *movieURL;
 	NSString *imagePath;
@@ -30,6 +31,7 @@
 
 @property (readwrite, strong) MPMoviePlayerController *moviePlayer;
 @property (readwrite, strong) MPMoviePlayerViewController *moviePlayerView;
+@property (readwrite, strong) UINavigationController *scrollViewNavigation;
 
 @property (nonatomic, strong) IBOutlet UIButton *playButton;
 @property (nonatomic, strong) IBOutlet UIImageView *screenshotView;

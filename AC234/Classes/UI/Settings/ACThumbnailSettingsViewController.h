@@ -12,8 +12,11 @@
 @interface ACThumbnailSettingsViewController : UITableViewController <ACUpdateThumbnailsOperationDelegate> {
     
     ACProgressBarController *progressBarController;
+    
 }
 
 @property (strong) ACProgressBarController *progressBarController;
+
+-(void)dissmissProgress;
 
 @end

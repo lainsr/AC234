@@ -206,7 +206,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 
 #pragma mark -
 #pragma mark File management
-
 - (void)loadFolder:(NSString *)folder {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSArray *filenames = [fileManager contentsOfDirectoryAtPath:folder error:NULL];
@@ -228,6 +227,8 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 		}
 	}
     
+    [self.tableView reloadData];
+    
     ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *lastViewed = [appDelegate getLastViewed:folder];
 	if(lastViewed != NULL) {
@@ -236,6 +237,13 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexArr length:2];
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 	}
+}
+
+- (void)clear {
+    [self setFolderPath:NULL];
+    [self setFolderTildePath:NULL];
+    [self.folderList removeAllObjects];
+    [self.thumbnailBuffer removeAllObjects];
 }
 
 #pragma mark -
@@ -351,6 +359,8 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         } else {
             if([self subController] == NULL) {
                 self.subController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FileListA"];
+            } else {
+                [self.subController clear];
             }
             [[self navigationController] pushViewController:self.subController animated:YES];
             [self.subController loadFolder:selectedFolder];
@@ -392,8 +402,11 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
             }
             firstRowToThumbnail = -1;
         }
-
         
+        //a security
+        if([self.folderList count] <= rowIndex) {
+            rowIndex = [self.folderList count] - 1;
+        }
         NSString *filePath = [self.folderList objectAtIndex:rowIndex];
         NSString *filename = [filePath lastPathComponent];
         [cell setFilename:filename];

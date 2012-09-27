@@ -37,21 +37,11 @@
     [localContext setUndoManager:NULL];
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self selector:@selector(mergeChanges:)
+	[nc addObserver:thumbnailStore selector:@selector(mergeChanges:)
                name:NSManagedObjectContextDidSaveNotification object:localContext];
 	
 	[self updateThumbnails:collector withContext:localContext];
 	[self.delegate operationFinished:self];
-}
-
-- (void)mergeChanges:(NSNotification *)notification {
-    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
-    ACCoreDataStore *thumbnailStore = [appDelegate thumbnailStore];
-    NSManagedObjectContext *mainContext = [thumbnailStore managedObjectContext];
-    
-    // Merge changes into the main context on the main thread
-    [mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
-                                  withObject:notification waitUntilDone:NO];
 }
 
 - (void)collectThumbnailsPathIn:(NSMutableArray *)collector at:(NSString *)dir {
