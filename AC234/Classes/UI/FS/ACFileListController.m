@@ -59,7 +59,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     [self.flipIndicatorButton setAlpha:1.0];
     
 	UIBarButtonItem *sButton=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];
-    
     NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
     [buttons addObject:sButton];
     [buttons addObject:self.organizeButton];
@@ -110,6 +109,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     
     double indexToSelect = -1.0;
     int thumbnailsPerLandscapeCell = [[ACGlobalInfos sharedInstance] numberOfThumbnailPerLandscapeCell];
+
     UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
         if([self numOfThumbnailPerCell] != thumbnailsPerLandscapeCell) {

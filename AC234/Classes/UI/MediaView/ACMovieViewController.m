@@ -99,6 +99,7 @@ CGFloat kMovieViewOffsetY = 20.0;
     }
 	
 	MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+    [mp.moviePlayer setAllowsAirPlay:YES];
 	if (mp.moviePlayer) {
 		self.moviePlayer = mp.moviePlayer;
         self.moviePlayerView = mp;

@@ -20,6 +20,7 @@
 - (id) init {
 	if((self = [super init])) {
 		connected = NO;
+        okToSend = YES;
 		_imageQuality = 0.8;
 	}
 	return self;
@@ -65,7 +66,9 @@
 }
 
 - (void) sendImage:(UIImage *)image forceReady:(BOOL)ready {
-	if(ready) okToSend = YES;
+	if(ready) {
+        okToSend = YES;
+    }
 	[self sendImage:image];
 }
 

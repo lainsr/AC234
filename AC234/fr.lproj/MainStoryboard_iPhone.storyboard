@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1122" y="-154"/>
         </scene>
-        <!--Search View Controller - Search-->
+        <!--Search View Controller - Recherche-->
         <scene sceneID="X8u-w6-61b">
             <objects>
                 <tableViewController id="6pv-1H-Vzb" customClass="ACSearchViewController" sceneMemberID="viewController">
@@ -116,7 +116,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="UXa-du-feP"/>
+                    <navigationItem key="navigationItem" title="Recherche" id="UXa-du-feP"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="OJi-fY-GcE" id="0Hb-pF-WD4"/>
                         <segue destination="dOJ-Kp-7yz" kind="push" identifier="SearchMediaSegue" id="Nqb-a1-kdb"/>
@@ -181,7 +181,7 @@
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" id="JRy-3q-LiV" userLabel="Informations">
                                         <rect key="frame" x="10" y="5" width="300" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,7 +218,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XO6-Jx-brh"/>
-                        <barButtonItem title="Airplay" id="dtG-qb-cnU">
+                        <barButtonItem image="DisplayOff.png" style="plain" id="dtG-qb-cnU">
                             <connections>
                                 <action selector="airplay" destination="dOJ-Kp-7yz" id="gbP-NA-TKA"/>
                             </connections>
@@ -666,6 +666,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DisplayOff.png" width="24" height="24"/>
         <image name="Home.png" width="20" height="20"/>
         <image name="ListWithBack.png" width="32" height="32"/>
         <image name="PasswordField.png" width="40" height="39"/>
@@ -676,7 +677,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACFileListController.h"/>
             <relationships>
                 <relationship kind="action" name="addPhoto"/>
-                <relationship kind="action" name="editFolder"/>
+                <relationship kind="action" name="editingDone"/>
                 <relationship kind="action" name="flipCurrentView"/>
                 <relationship kind="action" name="organize"/>
                 <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>

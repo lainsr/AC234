@@ -41,20 +41,21 @@
 		GCDAsyncSocket *socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         NSError *error;
 		[socket connectToHost:device.hostname onPort:device.port error:&error];
-        NSLog(@"Error: %@", error);
+        if(error != nil) {
+            NSLog(@"Error: %@", error);
+        }
 	}
 }
 
 #pragma mark -
 #pragma mark Net Service Browser Delegate
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-	NSLog(@"Found service");
+	//NSLog(@"Found service");
 	[aNetService setDelegate:self];
 	[aNetService resolveWithTimeout:20.0];
 	[foundServices addObject:aNetService];
 	
-	if(!moreComing)
-	{
+	if(!moreComing) {
 		[serviceBrowser stop];
 		serviceBrowser = nil;
 	}
@@ -64,7 +65,7 @@
 #pragma mark Net Service Delegate
 
 - (void)netServiceDidResolveAddress:(NSNetService *)sender {
-	NSLog(@"Resolved service: %@:%d", sender.hostName, sender.port);
+	//NSLog(@"Resolved service: %@:%d", sender.hostName, sender.port);
 	AKDevice *device = [[AKDevice alloc] init];
 	device.hostname = sender.hostName;
 	device.port = sender.port;
@@ -82,7 +83,7 @@
 #pragma mark AsyncSocket Delegate
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
-	NSLog(@"Connected to device.");
+	//NSLog(@"Connected to device.");
 	
 	AKDevice *device = tempDevice;
 	device.socket = sock;
