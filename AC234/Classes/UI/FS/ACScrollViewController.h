@@ -37,8 +37,9 @@
 	IBOutlet UIBarButtonItem *fixItemRight;
 	
 	IBOutlet UIScrollView *scrollView;
-	IBOutlet UIPageControl *pageControl;
-    
+    IBOutlet UIPageControl *pageControl;
+    IBOutlet UIScrollView *miniScrollView;
+
     IBOutlet UILabel *informations;
 	IBOutlet ACHUDView *informationsHud;
     
@@ -75,6 +76,8 @@
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+
+@property (nonatomic, strong) IBOutlet UIScrollView *miniScrollView;
 
 @property (nonatomic, strong) IBOutlet UILabel *informations;
 @property (nonatomic, strong) IBOutlet ACHUDView *informationsHud;

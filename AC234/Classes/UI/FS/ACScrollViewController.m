@@ -25,6 +25,8 @@
 - (void)diUnloadScrollViewWithPage:(int)page controller:(UIViewController<ACController> *)controller;
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture;
+- (void)pushTheMainScrollView:(UISwipeGestureRecognizer *)gesture;
+- (void)popTheMainScrollView:(UISwipeGestureRecognizer *)gesture;
 
 - (CGRect)snapImageAt:(int)page;
 
@@ -35,8 +37,9 @@
 @implementation ACScrollViewController
 
 @synthesize deviceToSelect;
+
 @synthesize playButton, pauseButton, forwardButton, rewindButton, airplayButton, flexItemLeft, flexItemRight, fixItemLeft, fixItemRight;
-@synthesize scrollView, pageControl;
+@synthesize scrollView, pageControl, miniScrollView;
 @synthesize informations, informationsHud;
 @synthesize prevViewController, currentViewController, nextViewController;
 @synthesize pageControlUsed, rotating, currentDirPath, selectedFile, filteredImageFullPathArray;
@@ -53,6 +56,16 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
     [singleTap setDelegate:self];
     [self.scrollView addGestureRecognizer:singleTap];
+
+    UISwipeGestureRecognizer *pushTap =[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(pushTheMainScrollView:)];
+    [pushTap setDirection:UISwipeGestureRecognizerDirectionUp];
+    [pushTap setDelegate:self];
+    [self.scrollView addGestureRecognizer:pushTap];
+    
+    UISwipeGestureRecognizer *popTap =[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(popTheMainScrollView:)];
+    [popTap setDirection:UISwipeGestureRecognizerDirectionDown];
+    [popTap setDelegate:self];
+    [self.scrollView addGestureRecognizer:popTap];
     
     [self.informationsHud setHidden:YES];
 	
@@ -141,6 +154,13 @@
         int page = pageControl.currentPage;
         [self loadScrollViewWithPage:page controller:currentViewController async:YES];
     }
+    
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+	ACDeviceManager *deviceManager = [appDelegate deviceManager];
+    if([deviceManager deviceAvailable]) {
+        UIImage *airplayIcon = [UIImage imageNamed:@"DisplayOn.png"];
+        [self.airplayButton setImage:airplayIcon];
+    }
 }
 
 #pragma mark -
@@ -148,6 +168,31 @@
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture {
     if([gesture state] == UIGestureRecognizerStateEnded) {
         [self toggleInformations];
+    }
+}
+
+/**
+ *
+ **/
+- (void)pushTheMainScrollView:(UISwipeGestureRecognizer *)gesture {
+    CGRect currentPosition = self.scrollView.frame;
+    if(currentPosition.origin.y == 0) {
+        [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
+                    animations:^{
+                        self.scrollView.frame = CGRectMake(currentPosition.origin.x, currentPosition.origin.y - 100, currentPosition.size.width, currentPosition.size.height);
+
+                    }completion:^(BOOL finished){}];
+    }
+}
+
+- (void)popTheMainScrollView:(UISwipeGestureRecognizer *)gesture {
+    CGRect currentPosition = self.scrollView.frame;
+    if(currentPosition.origin.y != 0) {
+        [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
+                    animations:^{
+                        self.scrollView.frame = CGRectMake(0, 0, currentPosition.size.width, currentPosition.size.height);
+                        
+                    }completion:^(BOOL finished){}];
     }
 }
 
