@@ -133,6 +133,16 @@
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
+/**
+ * Reload the image if the app was put to sleep
+ **/
+- (void)viewWillAppear:(BOOL)animated {
+	if([self.currentViewController empty]) {
+        int page = pageControl.currentPage;
+        [self loadScrollViewWithPage:page controller:currentViewController async:YES];
+    }
+}
+
 #pragma mark -
 #pragma mark HUD view
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture {
@@ -300,10 +310,6 @@
 #pragma mark -
 #pragma mark ACDeviceManagerDelegate
 -(void)deviceDetected:(ACDevice *)device {
-    if(![NSThread isMainThread]) {
-        
-    }
-    
     [self setDeviceToSelect:device];
     NSString *cancelStr = NSLocalizedString(@"cancel", "Cancel");
 

@@ -61,6 +61,10 @@ Version: 1.0
 
 #pragma mark -
 #pragma mark ACController
+- (BOOL)empty {
+    return [self.imageView image] == NULL;
+}
+
 - (void)clearView {
 	[self setImagePath:NULL];
 	[self.imageView setImage:NULL];
@@ -93,13 +97,16 @@ Version: 1.0
 	[self performSelectorInBackground:@selector(performAsyncLoad:) withObject:path];
 }
 
-- (void)willUnload:(NSString *)path at:(int)index { }
+- (void)willUnload:(NSString *)path at:(int)index {
+    //nothing to do
+}
 
-- (void)didUnload:(NSString *)path at:(int)index { }
+- (void)didUnload:(NSString *)path at:(int)index {
+    //nothing to do
+}
 
 #pragma mark -
 #pragma mark Load datas
-
 - (NSString *)healPath:(NSString*)dirtyPath {
 	//wrong path??? try to heal it
 	if(dirtyPath != nil) {

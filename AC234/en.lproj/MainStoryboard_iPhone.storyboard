@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--File List Controller - Root View Controller-->
@@ -671,115 +671,6 @@
         <image name="PasswordField.png" width="40" height="39"/>
         <image name="Settings.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="ACFileListController" superclassName="ACThumbnailsTableController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACFileListController.h"/>
-            <relationships>
-                <relationship kind="action" name="addPhoto"/>
-                <relationship kind="action" name="editingDone"/>
-                <relationship kind="action" name="flipCurrentView"/>
-                <relationship kind="action" name="organize"/>
-                <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cancelEditButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="flipIndicatorButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flipToolbar" candidateClass="ACToolbar"/>
-                <relationship kind="outlet" name="organizeButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="ACFolderListCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACFolderListCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellContentView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ACHUDView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACHUDView.h"/>
-        </class>
-        <class className="ACImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACImageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityView" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="ACMovieViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACMovieViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="play"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="screenshotView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="ACPasswordController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACPasswordController.h"/>
-            <relationships>
-                <relationship kind="action" name="pressDoneKey"/>
-                <relationship kind="action" name="textFieldDidChange:"/>
-                <relationship kind="outlet" name="confirmationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="confirmationFieldView1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="confirmationFieldView2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="confirmationFieldView3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="confirmationFieldView4" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="confirmationFieldsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="message" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordFieldView1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="passwordFieldView2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="passwordFieldView3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="passwordFieldView4" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="passwordFieldsView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ACPasswordSettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACPasswordSettingsViewController.h"/>
-        </class>
-        <class className="ACProgressBarController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACProgressBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="filenameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="progressView" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="ACScrollViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACScrollViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="airplay"/>
-                <relationship kind="action" name="changePage:"/>
-                <relationship kind="action" name="next"/>
-                <relationship kind="action" name="pause"/>
-                <relationship kind="action" name="play"/>
-                <relationship kind="action" name="previous"/>
-                <relationship kind="outlet" name="airplayButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="fixItemLeft" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="fixItemRight" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="flexItemLeft" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="flexItemRight" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="informations" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="informationsHud" candidateClass="ACHUDView"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="pauseButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="rewindButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="ACSearchViewController" superclassName="ACThumbnailsTableController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSearchViewController.h"/>
-        </class>
-        <class className="ACSettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSettingsViewController.h"/>
-        </class>
-        <class className="ACThumbnailSettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACThumbnailSettingsViewController.h"/>
-        </class>
-        <class className="ACThumbnailsTableController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACThumbnailsTableController.h"/>
-        </class>
-        <class className="ACToolbar" superclassName="UIToolbar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACToolbar.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

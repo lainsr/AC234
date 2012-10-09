@@ -44,6 +44,10 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 #pragma mark -
 #pragma mark ACController
+- (BOOL)empty {
+    return [self imagePath] == NULL;
+}
+
 - (void)clearView {
 	//
 }
@@ -77,7 +81,9 @@ CGFloat kMovieViewOffsetY = 20.0;
     [self setMoviePlayerView:NULL];
 }
 
-- (void)didUnload:(NSString *)path at:(int)index { }
+- (void)didUnload:(NSString *)path at:(int)index {
+    //nothing to do
+}
 
 - (void)updateViewAfterOrientationChange:(BOOL)async { 
     /* Size movie view to fit parent view. */
@@ -228,7 +234,13 @@ CGFloat kMovieViewOffsetY = 20.0;
         
         [self.view addSubview:[self screenshotView]];
         [self.view addSubview:[self playButton]];
-        [self.screenshotView setImage:shot];
+        
+        UIImage *scaledShot = [ACScaler loadDbImage:imagePath withContext:appContext];
+        CGFloat height = (self.view.frame.size.height - scaledShot.size.height) / 2.0f;
+        CGFloat width = (self.view.frame.size.width - scaledShot.size.width) / 2.0f;
+        CGRect frame = CGRectMake(width, height, scaledShot.size.width, scaledShot.size.height);
+        [self.screenshotView setFrame:frame];
+        [self.screenshotView setImage:scaledShot];
 	}
 	/*  Playback is currently under way. */
 	else if (player.playbackState == MPMoviePlaybackStatePlaying)  {
