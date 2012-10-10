@@ -102,6 +102,10 @@
 		06BF84791603B03D002F59C2 /* ACThumbnailSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BF84781603B03D002F59C2 /* ACThumbnailSettingsViewController.m */; };
 		06BFE2B61609147700A1E479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06BFE2B41609147700A1E479 /* Localizable.strings */; };
 		06C7378B15F7E89000C52EA0 /* ACSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */; };
+		06CB1FFF1625F3230025EE6D /* MiniBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CB1FFD1625F3230025EE6D /* MiniBackground.png */; };
+		06CB20001625F3230025EE6D /* MiniBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06CB1FFE1625F3230025EE6D /* MiniBackground@2x.png */; };
+		06CB20131625F9BF0025EE6D /* ACHThumbnailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB20121625F9BF0025EE6D /* ACHThumbnailViewController.m */; };
+		06CB2016162601C40025EE6D /* ACThumbnailCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB2015162601C40025EE6D /* ACThumbnailCollectionView.m */; };
 		06CB54DC15FE72EA005AB1A9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06BB994D15BDD1F6007B6685 /* MediaPlayer.framework */; };
 		06CB54E015FE74F3005AB1A9 /* ACSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB54DF15FE74F3005AB1A9 /* ACSearchViewController.m */; };
 		06CB54E315FE7593005AB1A9 /* ACFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB54E215FE7593005AB1A9 /* ACFileInfo.m */; };
@@ -303,6 +307,12 @@
 		06BFE2B51609147700A1E479 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSettingsViewController.h; path = Classes/UI/Settings/ACSettingsViewController.h; sourceTree = "<group>"; };
 		06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSettingsViewController.m; path = Classes/UI/Settings/ACSettingsViewController.m; sourceTree = "<group>"; };
+		06CB1FFD1625F3230025EE6D /* MiniBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MiniBackground.png; path = Art/MiniBackground.png; sourceTree = "<group>"; };
+		06CB1FFE1625F3230025EE6D /* MiniBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MiniBackground@2x.png"; path = "Art/MiniBackground@2x.png"; sourceTree = "<group>"; };
+		06CB20111625F9BF0025EE6D /* ACHThumbnailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACHThumbnailViewController.h; path = Classes/UI/FS/ACHThumbnailViewController.h; sourceTree = "<group>"; };
+		06CB20121625F9BF0025EE6D /* ACHThumbnailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACHThumbnailViewController.m; path = Classes/UI/FS/ACHThumbnailViewController.m; sourceTree = "<group>"; };
+		06CB2014162601C40025EE6D /* ACThumbnailCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACThumbnailCollectionView.h; path = Classes/UI/FS/ACThumbnailCollectionView.h; sourceTree = "<group>"; };
+		06CB2015162601C40025EE6D /* ACThumbnailCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACThumbnailCollectionView.m; path = Classes/UI/FS/ACThumbnailCollectionView.m; sourceTree = "<group>"; };
 		06CB54DE15FE74F3005AB1A9 /* ACSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSearchViewController.h; path = Classes/UI/Search/ACSearchViewController.h; sourceTree = "<group>"; };
 		06CB54DF15FE74F3005AB1A9 /* ACSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSearchViewController.m; path = Classes/UI/Search/ACSearchViewController.m; sourceTree = "<group>"; };
 		06CB54E115FE7593005AB1A9 /* ACFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFileInfo.h; path = Classes/UI/Search/ACFileInfo.h; sourceTree = "<group>"; };
@@ -607,6 +617,10 @@
 				06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */,
 				06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */,
 				06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */,
+				06CB2014162601C40025EE6D /* ACThumbnailCollectionView.h */,
+				06CB2015162601C40025EE6D /* ACThumbnailCollectionView.m */,
+				06CB20111625F9BF0025EE6D /* ACHThumbnailViewController.h */,
+				06CB20121625F9BF0025EE6D /* ACHThumbnailViewController.m */,
 				06ED873615F396B500683933 /* ACFileListController.h */,
 				06ED873715F396B500683933 /* ACFileListController.m */,
 				06ADFA8D15EE9AD100CD59EA /* ACThumbnailsTableController.h */,
@@ -666,6 +680,8 @@
 		06ADFABF15F0039400CD59EA /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				06CB1FFD1625F3230025EE6D /* MiniBackground.png */,
+				06CB1FFE1625F3230025EE6D /* MiniBackground@2x.png */,
 				06BE0FC61614E85C00825676 /* DisplayOff.png */,
 				06BE0FC71614E85C00825676 /* DisplayOff@2x.png */,
 				06BE0FC81614E85C00825676 /* DisplayOn.png */,
@@ -941,6 +957,8 @@
 				06BE0FCB1614E85C00825676 /* DisplayOff@2x.png in Resources */,
 				06BE0FCC1614E85C00825676 /* DisplayOn.png in Resources */,
 				06BE0FCD1614E85C00825676 /* DisplayOn@2x.png in Resources */,
+				06CB1FFF1625F3230025EE6D /* MiniBackground.png in Resources */,
+				06CB20001625F3230025EE6D /* MiniBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1059,8 @@
 				06315E41160A68B60087901B /* ContextFilterLogFormatter.m in Sources */,
 				06315E42160A68B60087901B /* DispatchQueueLogFormatter.m in Sources */,
 				06630AD21610D9F9005FB2DA /* SFHFKeychainUtils.m in Sources */,
+				06CB20131625F9BF0025EE6D /* ACHThumbnailViewController.m in Sources */,
+				06CB2016162601C40025EE6D /* ACThumbnailCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

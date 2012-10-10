@@ -12,6 +12,7 @@
 + (UIImage*)folderIcon;
 + (UIImage*)folderLargeIcon;
 + (UIImage*)cellPattern;
++ (UIImage*)collectionPattern;
 
 + (UIColor*) darkBackground;
 + (UIColor*) lightBackground;

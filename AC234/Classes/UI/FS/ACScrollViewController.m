@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 
 #import "ACScrollViewController.h"
+#import "ACHThumbnailViewController.h"
 #import "ACImageViewController.h"
 #import "ACMovieViewController.h"
 #import "ACDeviceManager.h"
@@ -39,7 +40,7 @@
 @synthesize deviceToSelect;
 
 @synthesize playButton, pauseButton, forwardButton, rewindButton, airplayButton, flexItemLeft, flexItemRight, fixItemLeft, fixItemRight;
-@synthesize scrollView, pageControl, miniScrollView;
+@synthesize scrollView, pageControl, miniContainerView;
 @synthesize informations, informationsHud;
 @synthesize prevViewController, currentViewController, nextViewController;
 @synthesize pageControlUsed, rotating, currentDirPath, selectedFile, filteredImageFullPathArray;
@@ -146,6 +147,15 @@
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destinationController = [segue destinationViewController];
+    if([destinationController isKindOfClass: [ACHThumbnailViewController class]]) {
+        ACHThumbnailViewController *collectionController = (ACHThumbnailViewController*)destinationController;
+        [collectionController setFolderList:[self filteredImageFullPathArray]];
+        [collectionController setFolderTildePath:[self currentDirPath]];
+    }  
+}
+
 /**
  * Reload the image if the app was put to sleep
  **/
@@ -179,7 +189,7 @@
     if(currentPosition.origin.y == 0) {
         [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
                     animations:^{
-                        self.scrollView.frame = CGRectMake(currentPosition.origin.x, currentPosition.origin.y - 100, currentPosition.size.width, currentPosition.size.height);
+                        self.scrollView.frame = CGRectMake(currentPosition.origin.x, currentPosition.origin.y - 120, currentPosition.size.width, currentPosition.size.height);
 
                     }completion:^(BOOL finished){}];
     }

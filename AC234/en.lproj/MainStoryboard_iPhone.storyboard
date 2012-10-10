@@ -159,9 +159,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="QHE-vY-mdu">
-                                <rect key="frame" x="0.0" y="380" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="360" width="320" height="120"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.53940814729999997" green="0.81654679779999995" blue="0.27741071579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <containerView contentMode="scaleToFill" id="7Eb-18-tgY">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="td7-Ao-RJJ" kind="embed" id="Idm-JP-xNs"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1LJ-li-ZVw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -242,6 +251,7 @@
                         <outlet property="forwardButton" destination="83E-vE-O7m" id="bsH-ZJ-X9s"/>
                         <outlet property="informations" destination="JRy-3q-LiV" id="Hrc-EK-Plz"/>
                         <outlet property="informationsHud" destination="WyT-A1-gQI" id="i0D-8c-RXL"/>
+                        <outlet property="miniContainerView" destination="7Eb-18-tgY" id="2oH-uj-zMp"/>
                         <outlet property="pageControl" destination="mnR-Iw-hGH" id="d0A-gL-gg5"/>
                         <outlet property="pauseButton" destination="2TR-Vp-hwj" id="zjN-F6-XNQ"/>
                         <outlet property="playButton" destination="SPi-0P-WC0" id="cT9-Gt-Ff5"/>
@@ -254,6 +264,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VY6-g7-9Y2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1623" y="-154"/>
+        </scene>
+        <!--Thumbnail View Controller-->
+        <scene sceneID="1mQ-QI-fYs">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="td7-Ao-RJJ" customClass="ACHThumbnailViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="nQ4-Hk-0So">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="gMq-RD-2cH">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="sOL-tF-Vlv" customClass="ACThumbnailCollectionView">
+                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="100" height="100"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="td7-Ao-RJJ" id="E9K-Lb-0Wi"/>
+                            <outlet property="delegate" destination="td7-Ao-RJJ" id="vQA-Hq-0Bg"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="thumbnailCollectionViews" destination="nQ4-Hk-0So" id="K5B-cq-tyw"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egI-5V-fc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1713" y="451"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="j1P-TG-KSS">
@@ -697,6 +745,12 @@
                 <relationship kind="outlet" name="cellContentView" candidateClass="UIView"/>
             </relationships>
         </class>
+        <class className="ACHThumbnailViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACHThumbnailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="thumbnailCollectionViews" candidateClass="UICollectionView"/>
+            </relationships>
+        </class>
         <class className="ACHUDView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACHUDView.h"/>
         </class>
@@ -762,7 +816,7 @@
                 <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="informations" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="informationsHud" candidateClass="ACHUDView"/>
-                <relationship kind="outlet" name="miniScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="miniContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="pauseButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="playButton" candidateClass="UIBarButtonItem"/>
@@ -776,6 +830,9 @@
         <class className="ACSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACSettingsViewController.h"/>
         </class>
+        <class className="ACThumbnailCollectionView" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ACThumbnailCollectionView.h"/>
+        </class>
         <class className="ACThumbnailSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACThumbnailSettingsViewController.h"/>
         </class>
@@ -784,6 +841,18 @@
         </class>
         <class className="ACToolbar" superclassName="UIToolbar">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ACToolbar.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

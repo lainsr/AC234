@@ -43,14 +43,12 @@
     //
 }
 
-#pragma mark -
-#pragma mark ACUpdateThumbnailsOperationDelegate
+#pragma mark - ACUpdateThumbnailsOperationDelegate
 -(NSString*)currentVisibleFile{
     return nil;
 }
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 37.0;
 }
@@ -59,8 +57,7 @@
 	//
 }
 
-#pragma mark -
-#pragma mark ACLoadThumbnailsOperation
+#pragma mark - ACLoadThumbnailsOperation
 -(void) thumbnailFinished:(UIImage*)image forFile:(NSString*)filename {
 	[thumbnailBuffer setObject:image forKey:filename];
 	[thumbnailBuffer cancelReservationForKey:filename];

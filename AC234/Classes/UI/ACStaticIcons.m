@@ -15,6 +15,7 @@ static UIImage* unkonwIcon;
 static UIImage* folderIcon;
 static UIImage* folderLargeIcon;
 static UIImage* cellPattern;
+static UIImage* collectionPattern;
 
 static UIColor* darkBackground;
 static UIColor* lightBackground;
@@ -26,6 +27,7 @@ static UIColor* lightFontColor;
     folderIcon = [UIImage imageNamed:@"Folder.png"];
     folderLargeIcon = [UIImage imageNamed:@"FolderLarge.png"];
     cellPattern = [UIImage imageNamed:@"Green-noise.png"];
+    collectionPattern = [UIImage imageNamed:@"MiniBackground.png"];
 
     //list view
     darkBackground = [UIColor colorWithRed:10.0/255.0 green:12.0/255.0 blue:15.0/255.0 alpha:1.0];
@@ -48,6 +50,10 @@ static UIColor* lightFontColor;
 
 + (UIImage*)cellPattern {
     return cellPattern;
+}
+
++ (UIImage*)collectionPattern {
+    return collectionPattern;
 }
 
 + (UIColor*) darkBackground {
