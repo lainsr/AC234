@@ -20,8 +20,8 @@
 
     CGContextClipToRect(context, CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height));
     
-    CGFloat cellWidth = rect.size.width;
-    CGFloat cellHeight = rect.size.height;
+    CGFloat cellWidth = rect.size.width - 4.0f;
+    CGFloat cellHeight = rect.size.height - 4.0f;
 
     CGImageRef image = CGImageRetain([thumbnail CGImage]);
     size_t width = CGImageGetWidth(image) / scale;

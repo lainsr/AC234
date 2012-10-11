@@ -49,11 +49,11 @@
     ACThumbnailCollectionView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
 
     int rowIndex = [indexPath indexAtPosition:0];
-        
-
     NSString *filePath = [self.folderList objectAtIndex:rowIndex];
     NSString *filename = [filePath lastPathComponent];
+    
     [self loadThumbnailInCell:cell atRow:rowIndex forImage:filename atSize:YES];
+    [cell setNeedsDisplay];
 
     return cell;
 }

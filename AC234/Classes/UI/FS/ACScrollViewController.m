@@ -177,6 +177,7 @@
 #pragma mark HUD view
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture {
     if([gesture state] == UIGestureRecognizerStateEnded) {
+        [self popTheMainScrollView:nil];
         [self toggleInformations];
     }
 }
@@ -185,6 +186,7 @@
  *
  **/
 - (void)pushTheMainScrollView:(UISwipeGestureRecognizer *)gesture {
+    [self hideHUDView];
     CGRect currentPosition = self.scrollView.frame;
     if(currentPosition.origin.y == 0) {
         [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
