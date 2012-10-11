@@ -1,0 +1,54 @@
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "2sx-N5-hKg"; */
+"2sx-N5-hKg.text" = "Détail";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "3Cy-oi-sWb"; */
+"3Cy-oi-sWb.text" = "Titre";
+
+/* Class = "IBUITabBarItem"; title = "Files"; ObjectID = "3zv-ln-YfC"; */
+"3zv-ln-YfC.title" = "Fichiers";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "ABX-oZ-8Lw"; */
+"ABX-oZ-8Lw.text" = "Titre";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "E0k-fd-G82"; */
+"E0k-fd-G82.text" = "Label";
+
+/* Class = "IBUITableViewController"; title = "Settings"; ObjectID = "Ft9-dt-Wcg"; */
+"Ft9-dt-Wcg.title" = "Préférences";
+
+/* Class = "IBUITableViewController"; title = "Password"; ObjectID = "HQB-QC-fcK"; */
+"HQB-QC-fcK.title" = "Mot-de-passe";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "JRy-3q-LiV"; */
+"JRy-3q-LiV.text" = "Label";
+
+/* Class = "IBUINavigationItem"; title = "Search"; ObjectID = "UXa-du-feP"; */
+"UXa-du-feP.title" = "Recherche";
+
+/* Class = "IBUINavigationItem"; title = "Root View Controller"; ObjectID = "aSe-Eq-qWc"; */
+"aSe-Eq-qWc.title" = "Documents";
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "d6x-Qi-y7Y"; */
+"d6x-Qi-y7Y.title" = "Préférences";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "ivc-0Z-P1s"; */
+"ivc-0Z-P1s.text" = "Label";
+
+/* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "qoO-tW-2ai"; */
+"qoO-tW-2ai.title" = "Préférences";
+
+/* Class = "IBUIButton"; normalTitle = "Play"; ObjectID = "rN9-do-CQ5"; */
+"rN9-do-CQ5.normalTitle" = "Jouer";
+
+/* Class = "IBUISearchBar"; yeC-Zj-Zqw.scopeButtonTitles[0] = "All"; ObjectID = "yeC-Zj-Zqw"; */
+"yeC-Zj-Zqw.scopeButtonTitles[0]" = "Tout";
+
+/* Class = "IBUISearchBar"; yeC-Zj-Zqw.scopeButtonTitles[1] = "Images"; ObjectID = "yeC-Zj-Zqw"; */
+"yeC-Zj-Zqw.scopeButtonTitles[1]" = "Images";
+
+/* Class = "IBUISearchBar"; yeC-Zj-Zqw.scopeButtonTitles[2] = "Videos"; ObjectID = "yeC-Zj-Zqw"; */
+"yeC-Zj-Zqw.scopeButtonTitles[2]" = "Vidéos";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "z7O-Ni-gSn"; */
+"z7O-Ni-gSn.text" = "Titre";

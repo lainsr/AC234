@@ -90,7 +90,7 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
         }
     } else if(sectionIndex == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:kDetailsCellIdentifier];
-        [cell.textLabel setText:NSLocalizedString(@"Thumbnail",@"")];
+        [cell.textLabel setText:NSLocalizedString(@"Thumbnails",@"")];
         [cell.detailTextLabel setText:@""];
     } else if(sectionIndex == 2) {
         ACToggleSwitchCell *toggleCell = (ACToggleSwitchCell*)[tableView dequeueReusableCellWithIdentifier:kSwitchCellIdentifier];

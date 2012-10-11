@@ -3,10 +3,8 @@
 "Photo" = "Photo";
 "Security" = "Security";
 "Servers" = "Servers";
-"ServerHTTPWebDAV" = "Server HTTP/WebDAV";
 "Active"= "Active";
 "Inactive" = "Inactive";
-"Password" = "Password";
 "DeactivatePassword" = "Deactivate";
 "ActivatePassword" = "Activate";
 "ChangePassword" = "Change password";

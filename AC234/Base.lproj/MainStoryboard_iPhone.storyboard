@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
@@ -82,7 +81,7 @@
             </objects>
             <point key="canvasLocation" x="1122" y="-154"/>
         </scene>
-        <!--Search View Controller - Recherche-->
+        <!--Search View Controller - Search-->
         <scene sceneID="X8u-w6-61b">
             <objects>
                 <tableViewController id="6pv-1H-Vzb" customClass="ACSearchViewController" sceneMemberID="viewController">
@@ -116,7 +115,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recherche" id="UXa-du-feP"/>
+                    <navigationItem key="navigationItem" title="Search" id="UXa-du-feP"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="OJi-fY-GcE" id="0Hb-pF-WD4"/>
                         <segue destination="dOJ-Kp-7yz" kind="push" identifier="SearchMediaSegue" id="Nqb-a1-kdb"/>
@@ -159,6 +158,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="QHE-vY-mdu">
+                                <rect key="frame" x="0.0" y="360" width="320" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <containerView contentMode="scaleToFill" id="7Eb-18-tgY">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="td7-Ao-RJJ" kind="embed" id="Idm-JP-xNs"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1LJ-li-ZVw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,6 +251,7 @@
                         <outlet property="forwardButton" destination="83E-vE-O7m" id="bsH-ZJ-X9s"/>
                         <outlet property="informations" destination="JRy-3q-LiV" id="Hrc-EK-Plz"/>
                         <outlet property="informationsHud" destination="WyT-A1-gQI" id="i0D-8c-RXL"/>
+                        <outlet property="miniContainerView" destination="7Eb-18-tgY" id="2oH-uj-zMp"/>
                         <outlet property="pageControl" destination="mnR-Iw-hGH" id="d0A-gL-gg5"/>
                         <outlet property="pauseButton" destination="2TR-Vp-hwj" id="zjN-F6-XNQ"/>
                         <outlet property="playButton" destination="SPi-0P-WC0" id="cT9-Gt-Ff5"/>
@@ -250,6 +264,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VY6-g7-9Y2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1623" y="-154"/>
+        </scene>
+        <!--Thumbnail View Controller-->
+        <scene sceneID="1mQ-QI-fYs">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="td7-Ao-RJJ" customClass="ACHThumbnailViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="nQ4-Hk-0So">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="gMq-RD-2cH">
+                            <size key="itemSize" width="110" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="sOL-tF-Vlv" customClass="ACThumbnailCollectionView">
+                                <rect key="frame" x="0.0" y="10" width="110" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="110" height="100"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="td7-Ao-RJJ" id="E9K-Lb-0Wi"/>
+                            <outlet property="delegate" destination="td7-Ao-RJJ" id="vQA-Hq-0Bg"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="thumbnailCollectionViews" destination="nQ4-Hk-0So" id="K5B-cq-tyw"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egI-5V-fc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1713" y="451"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="j1P-TG-KSS">
@@ -579,7 +631,7 @@
                         <outlet property="confirmationFieldView3" destination="8Al-Gk-w4z" id="KFY-aw-niy"/>
                         <outlet property="confirmationFieldView4" destination="bAr-iE-KPh" id="eQD-jd-Jnt"/>
                         <outlet property="confirmationFieldsView" destination="Jw1-bf-O6C" id="mM1-5R-hte"/>
-                        <outlet property="message" destination="ivc-0Z-P1s" id="Z31-hw-5Td"/>
+                        <outlet property="message" destination="ivc-0Z-P1s" id="6Vn-aQ-wsU"/>
                         <outlet property="passwordField" destination="a0V-Pr-eDI" id="bwO-AL-aUO"/>
                         <outlet property="passwordFieldView1" destination="oia-Np-Znd" id="F9Z-e0-tQL"/>
                         <outlet property="passwordFieldView2" destination="uYw-rm-AyY" id="znl-aX-91F"/>
@@ -678,6 +730,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Nqb-a1-kdb"/>
+        <segue reference="wXw-bC-GFS"/>
     </inferredMetricsTieBreakers>
 </document>

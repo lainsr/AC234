@@ -130,6 +130,7 @@
 		06F0E6B515FFC0060010D5C6 /* AKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6B315FFC0060010D5C6 /* AKDevice.m */; };
 		06F0E6C215FFC2860010D5C6 /* ACDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6BF15FFC2860010D5C6 /* ACDevice.m */; };
 		06F0E6C315FFC2860010D5C6 /* ACDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6C115FFC2860010D5C6 /* ACDeviceManager.m */; };
+		06F2195C16276D690033254C /* AC234-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 065E441C15B9DE0700EEECD8 /* AC234-Info.plist */; };
 		06F8019715BF2C48000DD680 /* ACPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019615BF2C48000DD680 /* ACPasswordController.m */; };
 		06F8019B15BF2CA4000DD680 /* ACPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */; };
 		06F801A015BF2DE2000DD680 /* ACStaticIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019F15BF2DE2000DD680 /* ACStaticIcons.m */; };
@@ -150,7 +151,6 @@
 		061FE254160CED9600969659 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Art/Default.png; sourceTree = "<group>"; };
 		061FE255160CED9600969659 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Art/Default@2x.png"; sourceTree = "<group>"; };
 		061FE258160CEE1300969659 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Art/Icon-72@2x.png"; sourceTree = "<group>"; };
-		061FE25C160CEEFC00969659 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		06315DDF160A63440087901B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		06315DE7160A68B60087901B /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
 		06315DE8160A68B60087901B /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
@@ -211,7 +211,6 @@
 		06315E25160A68B60087901B /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		06315E26160A68B60087901B /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		0632522A16010C4700D46FF6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		064BC9F4160A45A100A61659 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		065A566A1608FFF100D4C3D9 /* ACProgressBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACProgressBarController.h; path = Classes/UI/Utils/ACProgressBarController.h; sourceTree = "<group>"; };
 		065A566B1608FFF100D4C3D9 /* ACProgressBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACProgressBarController.m; path = Classes/UI/Utils/ACProgressBarController.m; sourceTree = "<group>"; };
 		065A566E1609023500D4C3D9 /* ACUpdateThumbnailsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACUpdateThumbnailsOperation.h; path = Classes/Thumbnail/ACUpdateThumbnailsOperation.h; sourceTree = "<group>"; };
@@ -229,13 +228,12 @@
 		065E441415B9DE0700EEECD8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		065E441615B9DE0700EEECD8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		065E441815B9DE0700EEECD8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		065E441C15B9DE0700EEECD8 /* AC234-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AC234-Info.plist"; sourceTree = "<group>"; };
+		065E441C15B9DE0700EEECD8 /* AC234-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AC234-Info.plist"; sourceTree = "<group>"; };
 		065E441E15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		065E442015B9DE0700EEECD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		065E442215B9DE0700EEECD8 /* AC234-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AC234-Prefix.pch"; sourceTree = "<group>"; };
+		065E442015B9DE0700EEECD8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		065E442215B9DE0700EEECD8 /* AC234-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AC234-Prefix.pch"; sourceTree = "<group>"; };
 		065E442315B9DE0700EEECD8 /* ACAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppDelegate.h; sourceTree = "<group>"; };
 		065E442415B9DE0700EEECD8 /* ACAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppDelegate.m; sourceTree = "<group>"; };
-		065E442715B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		065E443F15B9DE0700EEECD8 /* AC234Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AC234Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		065E444015B9DE0700EEECD8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		065E444815B9DE0700EEECD8 /* AC234Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AC234Tests-Info.plist"; sourceTree = "<group>"; };
@@ -307,6 +305,7 @@
 		06BFE2B51609147700A1E479 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06C7378915F7E89000C52EA0 /* ACSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACSettingsViewController.h; path = Classes/UI/Settings/ACSettingsViewController.h; sourceTree = "<group>"; };
 		06C7378A15F7E89000C52EA0 /* ACSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACSettingsViewController.m; path = Classes/UI/Settings/ACSettingsViewController.m; sourceTree = "<group>"; };
+		06C9AFE41627668F0064D255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		06CB1FFD1625F3230025EE6D /* MiniBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MiniBackground.png; path = Art/MiniBackground.png; sourceTree = "<group>"; };
 		06CB1FFE1625F3230025EE6D /* MiniBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MiniBackground@2x.png"; path = "Art/MiniBackground@2x.png"; sourceTree = "<group>"; };
 		06CB20111625F9BF0025EE6D /* ACHThumbnailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACHThumbnailViewController.h; path = Classes/UI/FS/ACHThumbnailViewController.h; sourceTree = "<group>"; };
@@ -345,6 +344,9 @@
 		06F0E6BF15FFC2860010D5C6 /* ACDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACDevice.m; path = Classes/Devices/ACDevice.m; sourceTree = "<group>"; };
 		06F0E6C015FFC2860010D5C6 /* ACDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACDeviceManager.h; path = Classes/Devices/ACDeviceManager.h; sourceTree = "<group>"; };
 		06F0E6C115FFC2860010D5C6 /* ACDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACDeviceManager.m; path = Classes/Devices/ACDeviceManager.m; sourceTree = "<group>"; };
+		06F2195E16276ECB0033254C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainStoryboard_iPhone.strings; sourceTree = "<group>"; };
+		06F2195F16276ECB0033254C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06F2196016276ECB0033254C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06F8019515BF2C48000DD680 /* ACPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPasswordController.h; path = Classes/Security/ACPasswordController.h; sourceTree = "<group>"; };
 		06F8019615BF2C48000DD680 /* ACPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPasswordController.m; path = Classes/Security/ACPasswordController.m; sourceTree = "<group>"; };
 		06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ACPasswordView.xib; path = Resources/ACPasswordView.xib; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 			knownRegions = (
 				en,
 				fr,
+				Base,
 			);
 			mainGroup = 065E440515B9DE0600EEECD8;
 			productRefGroup = 065E441115B9DE0700EEECD8 /* Products */;
@@ -959,6 +962,7 @@
 				06BE0FCD1614E85C00825676 /* DisplayOn@2x.png in Resources */,
 				06CB1FFF1625F3230025EE6D /* MiniBackground.png in Resources */,
 				06CB20001625F3230025EE6D /* MiniBackground@2x.png in Resources */,
+				06F2195C16276D690033254C /* AC234-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1091,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				065E441E15B9DE0700EEECD8 /* en */,
+				06F2196016276ECB0033254C /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1094,8 +1099,8 @@
 		065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				065E442715B9DE0700EEECD8 /* en */,
-				061FE25C160CEEFC00969659 /* fr */,
+				06C9AFE41627668F0064D255 /* Base */,
+				06F2195E16276ECB0033254C /* fr */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -1112,7 +1117,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				06BFE2B51609147700A1E479 /* en */,
-				064BC9F4160A45A100A61659 /* fr */,
+				06F2195F16276ECB0033254C /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
