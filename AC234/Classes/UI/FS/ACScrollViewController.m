@@ -125,7 +125,7 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 	rotating = YES;
 	[self.nextViewController clearView];
-	[self.prevViewController clearView];
+	[self.prevViewController clearView];//prevent flashing during rotation
 	[self.currentViewController updateViewAfterOrientationChange:YES];
 	
 	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
@@ -139,9 +139,6 @@
 	self.nextViewController.view.frame = [self snapImageAt:pageControl.currentPage + 1];
 	self.prevViewController.view.frame = [self snapImageAt:pageControl.currentPage - 1];
 	
-	[self.nextViewController updateViewAfterOrientationChange:YES];
-	[self.prevViewController updateViewAfterOrientationChange:YES];
-	
 	self.rotating = NO;
 
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
@@ -153,6 +150,7 @@
         ACHThumbnailViewController *collectionController = (ACHThumbnailViewController*)destinationController;
         [collectionController setFolderList:[self filteredImageFullPathArray]];
         [collectionController setFolderTildePath:[self currentDirPath]];
+        [collectionController setParentController:self];
     }  
 }
 

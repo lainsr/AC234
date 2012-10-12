@@ -133,8 +133,8 @@ Version: 1.0
 }
 
 - (void)performAsyncLoad:(NSString *)path {
-	path = [self healPath:path];
-    
+	NSString *securedPath = [self healPath:path];
+
     ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
     ACCoreDataStore *thumbnailStore = [appDelegate thumbnailStore];
     NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -147,7 +147,7 @@ Version: 1.0
     
 	UIImage *image = [ACScaler loadDbImage:path withContext:localContext];
 
-    NSString *copyPath = [path copyWithZone:nil];
+    NSString *copyPath = [securedPath copyWithZone:nil];
 	ACImageAndPath *imageAndPath = [[ACImageAndPath alloc] initWithImage:image at:copyPath];
   
 	[self performSelectorOnMainThread:@selector(loadDidFinishWithData:) withObject:imageAndPath waitUntilDone:NO];
@@ -165,6 +165,9 @@ Version: 1.0
 }
 
 - (void)updateViewAfterOrientationChange:(BOOL)async {
+    if([self imagePath] == nil) {
+        return;
+    }
     rotating = YES;
 	if (async) {
 		[self performSelectorInBackground:@selector(performAsyncLoad:) withObject:imagePath];

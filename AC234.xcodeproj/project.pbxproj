@@ -130,7 +130,6 @@
 		06F0E6B515FFC0060010D5C6 /* AKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6B315FFC0060010D5C6 /* AKDevice.m */; };
 		06F0E6C215FFC2860010D5C6 /* ACDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6BF15FFC2860010D5C6 /* ACDevice.m */; };
 		06F0E6C315FFC2860010D5C6 /* ACDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F0E6C115FFC2860010D5C6 /* ACDeviceManager.m */; };
-		06F2195C16276D690033254C /* AC234-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 065E441C15B9DE0700EEECD8 /* AC234-Info.plist */; };
 		06F8019715BF2C48000DD680 /* ACPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019615BF2C48000DD680 /* ACPasswordController.m */; };
 		06F8019B15BF2CA4000DD680 /* ACPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F8019A15BF2CA4000DD680 /* ACPasswordView.xib */; };
 		06F801A015BF2DE2000DD680 /* ACStaticIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8019F15BF2DE2000DD680 /* ACStaticIcons.m */; };
@@ -892,7 +891,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AC;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 065E440A15B9DE0600EEECD8 /* Build configuration list for PBXProject "AC234" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -962,7 +961,6 @@
 				06BE0FCD1614E85C00825676 /* DisplayOn@2x.png in Resources */,
 				06CB1FFF1625F3230025EE6D /* MiniBackground.png in Resources */,
 				06CB20001625F3230025EE6D /* MiniBackground@2x.png in Resources */,
-				06F2195C16276D690033254C /* AC234-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

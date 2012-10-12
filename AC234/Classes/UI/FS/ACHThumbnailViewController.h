@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ACLRUDictionary.h"
+#import "ACScrollViewController.h"
 #import "ACLoadThumbnailsOperation.h"
 
 @interface ACHThumbnailViewController : UICollectionViewController <ACLoadThumbnailsOperationDelegate> {
@@ -18,6 +19,7 @@
     NSString *folderTildePath;
     
     ACLRUDictionary *thumbnailBuffer;
+    ACScrollViewController *parentController;
     
     IBOutlet UICollectionView *thumbnailCollectionViews;
 }
@@ -26,7 +28,9 @@
 @property (nonatomic, strong) NSString *currentDirPath;
 @property (nonatomic, strong) NSMutableArray *folderList;
 @property (nonatomic, strong) NSString *folderTildePath;
+
 @property(nonatomic, strong) ACLRUDictionary *thumbnailBuffer;
+@property(nonatomic, weak) ACScrollViewController *parentController;
 
 @property(nonatomic, strong) IBOutlet UICollectionView *thumbnailCollectionViews;
 

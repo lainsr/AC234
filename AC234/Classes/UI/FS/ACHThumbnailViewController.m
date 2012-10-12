@@ -18,7 +18,7 @@
 
 @implementation ACHThumbnailViewController
 
-@synthesize thumbnailBuffer, thumbnailCollectionViews;
+@synthesize thumbnailBuffer, thumbnailCollectionViews, parentController = _parentController;
 @synthesize folderList, selectedFile, currentDirPath, folderTildePath;
 
 
@@ -42,7 +42,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    int rowIndex = [indexPath indexAtPosition:0];
+    NSString *filePath = [self.folderList objectAtIndex:rowIndex];
+    [_parentController selectFile:filePath];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
