@@ -215,8 +215,8 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     self.folderTildePath = [folderPath_ stringByAbbreviatingWithTildeInPath];
     [self setTitle:[folderPath_ lastPathComponent]];
     
-    NSMutableArray *folderList_ = [[NSMutableArray alloc] initWithCapacity:[filenames count]];
-	self.folderList = folderList_;
+    self.folderList = [[NSMutableArray alloc] initWithCapacity:[filenames count]];
+	
     
 	for(NSString *filename in filenames) {
 		if([filename hasPrefix:@"."] || [filename hasPrefix:@"AC234.sqlite"] || [filename hasPrefix:@"tmp_transmit_time_offset"]) {
@@ -226,6 +226,13 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 			[self.folderList addObject:filePath];
 		}
 	}
+    static NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSWidthInsensitiveSearch | NSForcedOrderingSearch;
+    
+    //order by name
+    [self.folderList sortUsingComparator:^NSComparisonResult(NSString *string1, NSString *string2) {
+        return [string1 compare:string2 options:comparisonOptions];
+    }];
+    
     
     [self.tableView reloadData];
     
@@ -238,6 +245,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 	}
 }
+
 
 - (void)clear {
     [self setFolderPath:NULL];

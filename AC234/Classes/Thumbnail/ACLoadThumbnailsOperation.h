@@ -31,4 +31,5 @@
 
 @protocol ACLoadThumbnailsOperationDelegate<NSObject>
 -(void) thumbnailFinished:(UIImage*)image forFile:(NSString*)filename;
+-(void) thumbnailsFinished;
 @end

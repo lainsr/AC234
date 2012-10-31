@@ -73,6 +73,13 @@
 	}
 }
 
+- (id)lastObject {
+    if([lruArray count] > 0) {
+        return [lruArray objectAtIndex:[lruArray count] - 1];
+    }
+    return nil;
+}
+
 - (void)addLruCache:(id)aKey {
 	@synchronized(self) {
 		[lruArray removeObject:aKey];

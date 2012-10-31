@@ -67,7 +67,8 @@
 	[nc addObserver:thumbnailStore selector:@selector(mergeChanges:)
            name:NSManagedObjectContextDidSaveNotification object:localContext];
 
-    [self scale:localContext];	
+    [self scale:localContext];
+    [delegate thumbnailsFinished];
 }
 
 -(void)scale:(NSManagedObjectContext *) localContext {

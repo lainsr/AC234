@@ -69,6 +69,7 @@
     [self.scrollView addGestureRecognizer:popTap];
     
     [self.informationsHud setHidden:YES];
+    [self.miniContainerView setHidden:YES];
 	
 	// a page is the width of the scroll view
 	self.scrollView.pagingEnabled = YES;
@@ -185,6 +186,7 @@
  **/
 - (void)pushTheMainScrollView:(UISwipeGestureRecognizer *)gesture {
     [self hideHUDView];
+    [self.miniContainerView setHidden:NO];
     CGRect currentPosition = self.scrollView.frame;
     if(currentPosition.origin.y == 0) {
         [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
@@ -202,7 +204,9 @@
                     animations:^{
                         self.scrollView.frame = CGRectMake(0, 0, currentPosition.size.width, currentPosition.size.height);
                         
-                    }completion:^(BOOL finished){}];
+                    }completion:^(BOOL finished){
+                        [self.miniContainerView setHidden:YES];
+                    }];
     }
 }
 

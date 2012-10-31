@@ -33,6 +33,8 @@
 
 -(id)objectForKey:(id)aKey;
 
+-(id)lastObject;
+
 -(void)setObject:(id)anObject forKey:(id)aKey;
 
 -(void)removeObjectForKey:(id)aKey;

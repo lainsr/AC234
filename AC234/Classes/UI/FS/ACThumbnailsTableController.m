@@ -63,4 +63,8 @@
 	[thumbnailBuffer cancelReservationForKey:filename];
 }
 
+-(void) thumbnailsFinished {
+    //
+}
+
 @end
