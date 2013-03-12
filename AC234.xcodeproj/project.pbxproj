@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061BA78B16EFC8C7003C9785 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 061BA78916EFC8C7003C9785 /* Play.png */; };
+		061BA78C16EFC8C7003C9785 /* Play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 061BA78A16EFC8C7003C9785 /* Play@2x.png */; };
 		061FE253160CEB5800969659 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE252160CEB5800969659 /* Default-568h@2x.png */; };
 		061FE256160CED9600969659 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE254160CED9600969659 /* Default.png */; };
 		061FE257160CED9600969659 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 061FE255160CED9600969659 /* Default@2x.png */; };
@@ -146,6 +148,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061BA78916EFC8C7003C9785 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = Art/Play.png; sourceTree = "<group>"; };
+		061BA78A16EFC8C7003C9785 /* Play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Play@2x.png"; path = "Art/Play@2x.png"; sourceTree = "<group>"; };
 		061FE252160CEB5800969659 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Art/Default-568h@2x.png"; sourceTree = "<group>"; };
 		061FE254160CED9600969659 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Art/Default.png; sourceTree = "<group>"; };
 		061FE255160CED9600969659 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Art/Default@2x.png"; sourceTree = "<group>"; };
@@ -681,6 +685,8 @@
 		06ADFABF15F0039400CD59EA /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				061BA78916EFC8C7003C9785 /* Play.png */,
+				061BA78A16EFC8C7003C9785 /* Play@2x.png */,
 				06CB1FFD1625F3230025EE6D /* MiniBackground.png */,
 				06CB1FFE1625F3230025EE6D /* MiniBackground@2x.png */,
 				06BE0FC61614E85C00825676 /* DisplayOff.png */,
@@ -891,7 +897,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AC;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 065E440A15B9DE0600EEECD8 /* Build configuration list for PBXProject "AC234" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -961,6 +967,8 @@
 				06BE0FCD1614E85C00825676 /* DisplayOn@2x.png in Resources */,
 				06CB1FFF1625F3230025EE6D /* MiniBackground.png in Resources */,
 				06CB20001625F3230025EE6D /* MiniBackground@2x.png in Resources */,
+				061BA78B16EFC8C7003C9785 /* Play.png in Resources */,
+				061BA78C16EFC8C7003C9785 /* Play@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,6 +1137,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1156,6 +1168,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

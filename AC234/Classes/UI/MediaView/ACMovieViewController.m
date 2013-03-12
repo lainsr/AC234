@@ -34,7 +34,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 @implementation ACMovieViewController
 
-@synthesize scrollViewNavigation, moviePlayer, moviePlayerView, screenshotView, playButton;
+@synthesize scrollViewNavigation, moviePlayerView, screenshotView, playButton;
 @synthesize imagePath, movieURL, stopped, playing;
 
 
@@ -65,11 +65,8 @@ CGFloat kMovieViewOffsetY = 20.0;
 	[self setImagePath:path];
 	
     NSURL *url = [NSURL fileURLWithPath:path];
-	if(self.movieURL != NULL && [self.movieURL isEqual:url]) {
-		[self.moviePlayer play];
-	} else {
+	if(self.movieURL == NULL || ![self.movieURL isEqual:url]) {
         self.movieURL = url;
-        //[self playMovie];
     }
 }
 
@@ -77,7 +74,6 @@ CGFloat kMovieViewOffsetY = 20.0;
     [self deletePlayerAndNotificationObservers];
 	//resume don't work
 	[self setMovieURL:NULL];
-	[self setMoviePlayer:NULL];
     [self setMoviePlayerView:NULL];
 }
 
@@ -87,49 +83,62 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 - (void)updateViewAfterOrientationChange:(BOOL)async { 
     /* Size movie view to fit parent view. */
-    if([self moviePlayer] != NULL) {
-        CGRect viewInsetRect = CGRectInset ([self.view bounds], 0, 0 );
-        [[[self moviePlayer] view] setFrame:viewInsetRect];
+    if([self moviePlayerView] != NULL) {
+        CGRect viewInsetRect = CGRectInset([self.view bounds], 0, 0 );
+        [[[[self moviePlayerView] moviePlayer] view] setFrame:viewInsetRect];
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if([self playButton] != NULL) {
+        CGPoint playInsetRect;
+        CGSize viewSize = [[self view] bounds].size;
+        if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+            playInsetRect = CGPointMake(viewSize.height / 2.0f, viewSize.width / 2.0f);
+        } else {
+            //toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
+            playInsetRect = CGPointMake(viewSize.height / 2.0f, viewSize.width / 2.0f);
+        }
+        [[self playButton] setCenter:playInsetRect];
     }
 }
 
 #pragma mark -
 #pragma mark Movie
-
 - (void)playMovie {
-    if(self.moviePlayer != NULL) {
+    if([self moviePlayerView] != NULL) {
         [self setStopped:NO];
         [self setPlaying:YES];
-        [self.scrollViewNavigation presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
-        return;
-    }
-	
-	MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
-    [mp.moviePlayer setAllowsAirPlay:YES];
-	if (mp.moviePlayer) {
-		self.moviePlayer = mp.moviePlayer;
-        self.moviePlayerView = mp;
-        [self setMoviePlayerUserSettings];
-        [self.moviePlayer setMovieSourceType:MPMovieSourceTypeFile];
-        [self installMovieNotificationObservers];
-        
-        CGFloat time = [self retrievePlaybackTime];
-        if(time > 1.0f) {
-            self.moviePlayer.initialPlaybackTime = time;
+        [[[self moviePlayerView] moviePlayer] play];
+        [self.playButton setHidden:YES];
+    } else {
+        MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+        [mp.moviePlayer setAllowsAirPlay:YES];
+        if (mp.moviePlayer) {
+            [self setMoviePlayerView: mp];
+            [self setMoviePlayerUserSettings];
+            [self.moviePlayer setMovieSourceType:MPMovieSourceTypeFile];
+            [self installMovieNotificationObservers];
+            CGFloat time = [self retrievePlaybackTime];
+            if(time > 1.0f) {
+                self.moviePlayer.initialPlaybackTime = time;
+            }
+            [self setStopped:NO];
+            [self setPlaying:YES];
+            [[[self moviePlayerView] moviePlayer] play];
         }
-        [self setStopped:NO];
-        [self setPlaying:YES];
-        [self.scrollViewNavigation presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
-	}
+    }
 }
 
 - (void)stopMovie {
     if(self.stopped == NO) {
         [self setStopped:YES];
         [self setPlaying:NO];
-        [self.moviePlayer stop];
-        [self.moviePlayer.view removeFromSuperview];
-        [self deletePlayerAndNotificationObservers];
+        [self.playButton setHidden:NO];
+        [[[[self moviePlayerView] moviePlayer] view] removeFromSuperview];
+        [self.scrollViewNavigation dismissMoviePlayerViewControllerAnimated];
+
+        NSLog(@"stopMovie");
     }
 }
 
@@ -189,22 +198,22 @@ CGFloat kMovieViewOffsetY = 20.0;
 #pragma mark Notifications
 -(void)installMovieNotificationObservers {
     MPMoviePlayerController *player = [self moviePlayer];
-    
-	[[NSNotificationCenter defaultCenter] addObserver:self 
+    //MPMoviePlayerLoadStateDidChange
+	[[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadStateDidChange:) 
                                              name:MPMoviePlayerLoadStateDidChangeNotification
                                              object:player];
-    
+    //MPMoviePlayerPlaybackDidFinish
 	[[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(moviePlayBackDidFinish:) 
                                              name:MPMoviePlayerPlaybackDidFinishNotification
                                              object:player];
-    
+    //MPMediaPlaybackIsPreparedToPlayDidChange
 	[[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(mediaIsPreparedToPlayDidChange:) 
                                              name:MPMediaPlaybackIsPreparedToPlayDidChangeNotification 
                                              object:player];
-    
+    //MPMoviePlayerPlaybackStateDidChange
 	[[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(moviePlayBackStateDidChange:) 
                                              name:MPMoviePlayerPlaybackStateDidChangeNotification 
@@ -214,7 +223,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 /* Remove the movie notification observers from the movie object. */
 -(void)removeMovieNotificationHandlers {    
     MPMoviePlayerController *player = [self moviePlayer];
-    
     [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:player];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMediaPlaybackIsPreparedToPlayDidChangeNotification object:player];
@@ -232,15 +240,18 @@ CGFloat kMovieViewOffsetY = 20.0;
         NSManagedObjectContext *appContext = [[delegate thumbnailStore] managedObjectContext]; 
         [ACScaler saveDbImage:shot atPath:imagePath withContext:appContext];
         
-        [self.view addSubview:[self screenshotView]];
-        [self.view addSubview:[self playButton]];
-        
+        //[self.view addSubview:[self screenshotView]];
+        //[self.view addSubview:[self playButton]];
+        //[self.playButton setHidden:NO];
+        /*
         UIImage *scaledShot = [ACScaler loadDbImage:imagePath withContext:appContext];
         CGFloat height = (self.view.frame.size.height - scaledShot.size.height) / 2.0f;
         CGFloat width = (self.view.frame.size.width - scaledShot.size.width) / 2.0f;
         CGRect frame = CGRectMake(width, height, scaledShot.size.width, scaledShot.size.height);
         [self.screenshotView setFrame:frame];
         [self.screenshotView setImage:scaledShot];
+        */
+        NSLog(@"moviePlayBackStateDidChange: MPMoviePlaybackStateStopped");
 	}
 	/*  Playback is currently under way. */
 	else if (player.playbackState == MPMoviePlaybackStatePlaying)  {
@@ -264,6 +275,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 	switch ([reason integerValue])  {
         /* The end of the movie was reached. */
 		case MPMovieFinishReasonPlaybackEnded:
+            NSLog(@"moviePlayBackDidFinish: MPMovieFinishReasonPlaybackEnded");
             [self stopMovie];
 			break;
         /* An error was encountered during playback. */
@@ -274,6 +286,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 			break;
         /* The user stopped playback. */
 		case MPMovieFinishReasonUserExited: {
+            NSLog(@"moviePlayBackDidFinish: MPMovieFinishReasonUserExited");
             CGFloat time = [self.moviePlayer currentPlaybackTime];
             [self savePlaybackTime:time];
             [self stopMovie];
@@ -291,24 +304,20 @@ CGFloat kMovieViewOffsetY = 20.0;
     
 	/* The load state is not known at this time. */
 	if (loadState & MPMovieLoadStateUnknown) {
-        //[self.overlayController setLoadStateDisplayString:@"n/a"];
-        //[overlayController setLoadStateDisplayString:@"unknown"];
-        //NSLog(@"Load unkown");       
+        //NSLog(@"Load unkown");
 	}
 	
 	/* The buffer has enough data that playback can begin, but it 
 	 may run out of data before playback finishes. */
-	if (loadState & MPMovieLoadStatePlayable) {
-        //[overlayController setLoadStateDisplayString:@"playable"];
-       // NSLog(@"Load playable");
+	if (loadState & MPMovieLoadStatePlayable) { 
+        [self.view addSubview:[[[self moviePlayerView] moviePlayer] view]];
+        [self.scrollViewNavigation presentMoviePlayerViewControllerAnimated:[self moviePlayerView]];
+        //NSLog(@"Load playable");
 	}
 	
 	/* Enough data has been buffered for playback to continue uninterrupted. */
 	if (loadState & MPMovieLoadStatePlaythroughOK) {
-        // Add an overlay view on top of the movie view
-        //[self addOverlayView];
         //NSLog(@"Load OK");
-        //[overlayController setLoadStateDisplayString:@"playthrough ok"];
 	}
 	
 	/* The buffering of data has stalled. */
@@ -327,8 +336,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 /* Delete the movie player object, and remove the movie notification observers. */
 -(void)deletePlayerAndNotificationObservers {
     [self removeMovieNotificationHandlers];
-    [self setMoviePlayer:nil];
-    [self setMoviePlayerView:nil];
 }
 
 #pragma mark -

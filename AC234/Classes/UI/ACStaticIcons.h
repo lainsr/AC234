@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Cyberiacafe. All rights reserved.
 //
 
-@interface ACStaticIcons
+@interface ACStaticIcons : NSObject 
 
 + (UIImage*)unkownIcon;
 + (UIImage*)folderIcon;

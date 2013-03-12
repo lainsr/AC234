@@ -18,7 +18,6 @@
     IBOutlet UIButton *playButton;
     IBOutlet UIImageView *screenshotView;
     
-	MPMoviePlayerController *moviePlayer;
     MPMoviePlayerViewController *moviePlayerView;
     UINavigationController *scrollViewNavigation;
 
