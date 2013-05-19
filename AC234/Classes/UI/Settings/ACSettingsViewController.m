@@ -103,6 +103,8 @@ static NSString *kDetailsCellIdentifier = @"DetailsCellIdentifier";
         ACAppDelegate *appDelegate = (ACAppDelegate*)[[UIApplication sharedApplication] delegate];
         if([appDelegate webdavServer] && [appDelegate.webdavServer isRunning]) {
             [toggleCell setValue:[NSNumber numberWithBool:YES]];
+        } else {
+            NSLog(@"Egg");
         }
         cell = toggleCell;
     }

@@ -137,8 +137,6 @@ CGFloat kMovieViewOffsetY = 20.0;
         [self.playButton setHidden:NO];
         [[[[self moviePlayerView] moviePlayer] view] removeFromSuperview];
         [self.scrollViewNavigation dismissMoviePlayerViewControllerAnimated];
-
-        NSLog(@"stopMovie");
     }
 }
 
@@ -153,7 +151,6 @@ CGFloat kMovieViewOffsetY = 20.0;
 	[request setEntity:entity];
 	[request setPredicate:[NSPredicate predicateWithFormat:@"(path == %@)", moviePath]];
 	
-    
     NSError *error;
 	NSArray *result = [appContext executeFetchRequest:request error:&error];
     
@@ -251,7 +248,7 @@ CGFloat kMovieViewOffsetY = 20.0;
         [self.screenshotView setFrame:frame];
         [self.screenshotView setImage:scaledShot];
         */
-        NSLog(@"moviePlayBackStateDidChange: MPMoviePlaybackStateStopped");
+        //NSLog(@"moviePlayBackStateDidChange: MPMoviePlaybackStateStopped");
 	}
 	/*  Playback is currently under way. */
 	else if (player.playbackState == MPMoviePlaybackStatePlaying)  {
@@ -275,7 +272,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 	switch ([reason integerValue])  {
         /* The end of the movie was reached. */
 		case MPMovieFinishReasonPlaybackEnded:
-            NSLog(@"moviePlayBackDidFinish: MPMovieFinishReasonPlaybackEnded");
+            //NSLog(@"moviePlayBackDidFinish: MPMovieFinishReasonPlaybackEnded");
             [self stopMovie];
 			break;
         /* An error was encountered during playback. */
@@ -286,7 +283,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 			break;
         /* The user stopped playback. */
 		case MPMovieFinishReasonUserExited: {
-            NSLog(@"moviePlayBackDidFinish: MPMovieFinishReasonUserExited");
+            //NSLog(@"moviePlayBackDidFinish: MPMovieFinishReasonUserExited");
             CGFloat time = [self.moviePlayer currentPlaybackTime];
             [self savePlaybackTime:time];
             [self stopMovie];

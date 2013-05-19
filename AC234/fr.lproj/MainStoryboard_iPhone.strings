@@ -38,9 +38,6 @@
 /* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "qoO-tW-2ai"; */
 "qoO-tW-2ai.title" = "Préférences";
 
-/* Class = "IBUIButton"; normalTitle = "Play"; ObjectID = "rN9-do-CQ5"; */
-"rN9-do-CQ5.normalTitle" = "Jouer";
-
 /* Class = "IBUISearchBar"; yeC-Zj-Zqw.scopeButtonTitles[0] = "All"; ObjectID = "yeC-Zj-Zqw"; */
 "yeC-Zj-Zqw.scopeButtonTitles[0]" = "Tout";
 

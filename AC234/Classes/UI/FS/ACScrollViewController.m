@@ -50,6 +50,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     NSArray *items = [NSArray arrayWithObjects: flexItemLeft, rewindButton, fixItemLeft, playButton, fixItemRight, forwardButton, flexItemRight, airplayButton, nil];
 	[self setToolbarItems:items animated:NO];
@@ -92,6 +96,18 @@
     
 	[self setWantsFullScreenLayout:YES];
     [self load];
+
+	if([self.currentViewController empty]) {
+        int page = pageControl.currentPage;
+        [self loadScrollViewWithPage:page controller:currentViewController async:YES];
+    }
+    
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+	ACDeviceManager *deviceManager = [appDelegate deviceManager];
+    if([deviceManager deviceAvailable]) {
+        UIImage *airplayIcon = [UIImage imageNamed:@"DisplayOn.png"];
+        [self.airplayButton setImage:airplayIcon];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -140,7 +156,7 @@
 	self.currentViewController.view.frame = [self snapImageAt:pageControl.currentPage];
 	self.nextViewController.view.frame = [self snapImageAt:pageControl.currentPage + 1];
 	self.prevViewController.view.frame = [self snapImageAt:pageControl.currentPage - 1];
-	
+
 	self.rotating = NO;
 
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
@@ -154,23 +170,6 @@
         [collectionController setFolderTildePath:[self currentDirPath]];
         [collectionController setParentController:self];
     }  
-}
-
-/**
- * Reload the image if the app was put to sleep
- **/
-- (void)viewWillAppear:(BOOL)animated {
-	if([self.currentViewController empty]) {
-        int page = pageControl.currentPage;
-        [self loadScrollViewWithPage:page controller:currentViewController async:YES];
-    }
-    
-    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
-	ACDeviceManager *deviceManager = [appDelegate deviceManager];
-    if([deviceManager deviceAvailable]) {
-        UIImage *airplayIcon = [UIImage imageNamed:@"DisplayOn.png"];
-        [self.airplayButton setImage:airplayIcon];
-    }
 }
 
 #pragma mark -
@@ -469,9 +468,9 @@
 - (void)load {
     int kNumberOfPages = [filteredImageFullPathArray count];
 
-    self.scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, 200);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * kNumberOfPages, 200);
     self.pageControl.numberOfPages = kNumberOfPages;
-  
+
     int index = 0;
     if([self selectedFile] != nil) {
         int count = 0;
