@@ -109,5 +109,6 @@
 - (IBAction)airplay;
 
 - (void)clearViewControllers;
+- (void)changeBackgroundColor:(UIColor *)color;
 
 @end

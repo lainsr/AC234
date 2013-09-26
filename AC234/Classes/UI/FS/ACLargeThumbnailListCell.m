@@ -34,7 +34,7 @@
         shadowColor = [[UIColor alloc] initWithRed:0.141f green:0.141f blue:0.141f alpha:1.0f];
         selectionColor = [[UIColor alloc] initWithRed:3.0/255.0 green:125.0/255.0 blue:241.0/255.0 alpha:1.0f];
 		self.opaque = YES;
-        UIColor *background = [[UIColor alloc] initWithRed:0.404f green:0.404f blue:0.404f alpha:1.0f];
+        UIColor *background = [UIColor whiteColor];// [[UIColor alloc] initWithRed:0.404f green:0.404f blue:0.404f alpha:1.0f];
 		self.backgroundColor = background;
         self.userInteractionEnabled = YES;
 	}
@@ -70,11 +70,11 @@
             CGContextTranslateCTM(context, hhOffset - 2.0f, vOffset - 2.0f);
             CGContextSetRGBFillColor(context, 3.0/255.0, 125.0/255.0, 241.0/255.0, 1.0f);
             CGContextFillRect(context, CGRectMake(0.0f, 0.0f, width + 4.0f, height + 4.0f));
-            CGContextSetShadowWithColor(context, CGSizeMake(0.0f, 0.0f), 8.0f, [selectionColor CGColor]);
+            //CGContextSetShadowWithColor(context, CGSizeMake(0.0f, 0.0f), 8.0f, [selectionColor CGColor]);
             CGContextTranslateCTM(context, 2.0f, 2.0f);
         } else {
             CGContextTranslateCTM(context, hhOffset, vOffset);
-            CGContextSetShadowWithColor(context, CGSizeMake(2.0f, 2.0f), 1.0f, [shadowColor CGColor]);
+            //CGContextSetShadowWithColor(context, CGSizeMake(2.0f, 2.0f), 1.0f, [shadowColor CGColor]);
         }
         
         CGContextDrawImage(context, imageRect, image);
@@ -136,7 +136,11 @@
 }
 
 -(void)selectAnImage:(NSNumber*)iconIndex {
-    UITableView *tableView = (UITableView *)[_cell superview];
+    id view = [_cell superview];
+    while ([view isKindOfClass:[UITableView class]] == NO) {
+        view = [view superview];
+    }
+    UITableView *tableView = (UITableView *)view;
     NSIndexPath *indexPath = [tableView indexPathForCell:_cell];
     NSIndexPath *exactIndexPath = [indexPath indexPathByAddingIndex:[iconIndex intValue]];
     [[tableView delegate] tableView:tableView didSelectRowAtIndexPath:exactIndexPath];

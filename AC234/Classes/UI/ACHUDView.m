@@ -23,24 +23,24 @@
 #pragma mark Drawing
 - (void)fillRect:(CGRect)rect inContext:(CGContextRef)context {
 	CGContextBeginPath(context);
-	CGContextSetRGBFillColor(context, 0.1f, 0.1f, 0.1f, 0.75f);
+	CGContextSetRGBFillColor(context, 0.99f, 0.99f, 0.99f, 0.75f);
 	CGContextFillRect(context, rect);
 	
     
     // Drawing lines with light stroke color
 	CGContextSetRGBStrokeColor(context, 0.35f, 0.35f, 0.35f, 0.75f);
-	CGContextSetLineWidth(context, 1.0f);
-    CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect) - 1.5f);
-	CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect) - 1.5f);
+	CGContextSetLineWidth(context, 0.5f);
+    CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect) - 0.25f);
+	CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect) - 0.25f);
 	CGContextStrokePath(context);
 
     
     // Drawing lines with stronger stroke color
-	CGContextSetRGBStrokeColor(context, 0.05f, 0.05f, 0.05f, 0.75f);
+	/*CGContextSetRGBStrokeColor(context, 0.05f, 0.05f, 0.05f, 0.75f);
 	CGContextSetLineWidth(context, 0.5f);
     CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect) - 0.5f);
 	CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect) - 0.5f);
-	CGContextStrokePath(context);
+	CGContextStrokePath(context);*/
 }
 
 - (void)fillRoundedRect:(CGRect)rect inContext:(CGContextRef)context {

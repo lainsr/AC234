@@ -112,10 +112,11 @@ CGFloat kMovieViewOffsetY = 20.0;
         [[[self moviePlayerView] moviePlayer] play];
         [self.playButton setHidden:YES];
     } else {
-        MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
-        [mp.moviePlayer setAllowsAirPlay:YES];
-        if (mp.moviePlayer) {
-            [self setMoviePlayerView: mp];
+        UIGraphicsBeginImageContext(CGSizeMake(1,1));//Prevent <Error>: CGContextSaveGState: invalid context 0x0
+        self.moviePlayerView = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+        if (self.moviePlayerView.moviePlayer) {
+            //[self setMoviePlayerView: mp];
+            [self.moviePlayerView.moviePlayer setAllowsAirPlay:YES];
             [self setMoviePlayerUserSettings];
             [self.moviePlayer setMovieSourceType:MPMovieSourceTypeFile];
             [self installMovieNotificationObservers];
@@ -268,7 +269,7 @@ CGFloat kMovieViewOffsetY = 20.0;
 
 /*  Notification called when the movie finished playing. */
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    NSNumber *reason = [[notification userInfo] objectForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey]; 
+    NSNumber *reason = [[notification userInfo] objectForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey];
 	switch ([reason integerValue])  {
         /* The end of the movie was reached. */
 		case MPMovieFinishReasonPlaybackEnded:

@@ -43,7 +43,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 	[super viewDidLoad];
     [self setCellStyle:kList];
     [self setNumOfThumbnailPerCell:3];
-	[self setWantsFullScreenLayout:NO];
+	//[self setWantsFullScreenLayout:NO];
     
     if(self.folderList == NULL) {
         ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -52,7 +52,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         [self loadFolder:[self folderTildePath]]; 
     }
     
-    self.flipIndicatorButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,31,31)];
+    self.flipIndicatorButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,22,22)];
     [self.flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"ListWithBack.png"] forState:UIControlStateNormal];
     [self.flipIndicatorButton addTarget:self action:@selector(flipCurrentView) forControlEvents:(UIControlEventTouchDown)];
     [self.flipIndicatorButton setOpaque:YES];
@@ -82,13 +82,15 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         
         //hide bars and set them as transparent
         [self.navigationController setNavigationBarHidden:YES animated:NO];
-		[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlackTranslucent];
-		[[self.navigationController toolbar] setBarStyle:UIBarStyleBlackTranslucent];
+		//[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlackTranslucent];
+		[[self.navigationController navigationBar] setTranslucent:YES];
+        //[[self.navigationController toolbar] setBarStyle:UIBarStyleBlackTranslucent];
+        [[self.navigationController toolbar] setTranslucent:YES];
 		[self.navigationController setDelegate:self];
 		
         UIApplication *sharedApp = [UIApplication sharedApplication];
         [sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-		[sharedApp setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+		[sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 }
 
@@ -330,12 +332,12 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
       willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
 	if ([viewController isKindOfClass:[ACFileListController class]]) {
         [self.navigationController setNavigationBarHidden:NO animated:NO];
-		[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlack];
+		[[self.navigationController navigationBar] setTranslucent:NO];
 		[self.navigationController setToolbarHidden:YES animated:NO];
 		
         UIApplication *sharedApp = [UIApplication sharedApplication];
         [sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 	}
 }
 

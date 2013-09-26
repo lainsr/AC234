@@ -11,6 +11,6 @@ AirplayKit (I don't think its compatible with the Apple Guidelines) which I adap
 
 https://github.com/rothacr/AirplayKit
 
-CocoaHTTPServer which works fats and great!
+CocoaHTTPServer which works fast and great!
 
 https://github.com/robbiehanson/CocoaHTTPServer

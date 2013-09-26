@@ -51,7 +51,6 @@ Version: 1.0
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self.view addSubview:activityView];
-	[self setWantsFullScreenLayout:YES];
 }
 
 - (void)viewDidUnload {

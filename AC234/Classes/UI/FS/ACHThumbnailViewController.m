@@ -28,8 +28,8 @@
     
     [super viewDidLoad];
     
-    UIColor *backgroundColor = [[UIColor alloc] initWithPatternImage:[ACStaticIcons collectionPattern]];
-	[self.thumbnailCollectionViews setBackgroundColor:backgroundColor]; 
+    //UIColor *backgroundColor = [[UIColor alloc] initWithPatternImage:[ACStaticIcons collectionPattern]];
+	//[self.thumbnailCollectionViews setBackgroundColor:backgroundColor];
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -56,7 +56,7 @@ static NSString *kCellID = @"cellID";
 		[self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];
 
         UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 		[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     }
 }
@@ -82,7 +82,7 @@ static NSString *kCellID = @"cellID";
 		[navigationCtlr setToolbarHidden:YES animated:NO];
  
         UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 		[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	}
 }
@@ -123,7 +123,7 @@ static NSString *kCellID = @"cellID";
 		[self.navigationController setToolbarHidden:YES animated:NO];
 		
         UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 		[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     }
 }

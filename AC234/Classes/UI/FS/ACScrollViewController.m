@@ -33,6 +33,7 @@
 
 - (void)sendToDevice:(int)page;
 
+
 @end
 
 @implementation ACScrollViewController
@@ -94,7 +95,7 @@
     [self.movieController2 setScrollViewNavigation:[self navigationController]];
     [self.movieController3 setScrollViewNavigation:[self navigationController]];
     
-	[self setWantsFullScreenLayout:YES];
+	//[self setWantsFullScreenLayout:YES];
     [self load];
 
 	if([self.currentViewController empty]) {
@@ -253,6 +254,7 @@
 		NSString *fileName = [[self currentFile] lastPathComponent];
 		if(fileName == nil) {
 			[self hideHUDView];
+            [self changeBackgroundColor:[UIColor blackColor]];
 		} else {
 			NSMutableString *infos = [[NSMutableString alloc] initWithString:fileName];
 			[infos appendString:@"\n"];
@@ -268,16 +270,22 @@
             [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
             
             UIApplication *sharedApp = [UIApplication sharedApplication];
-			[sharedApp setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+			[sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 			[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-			[self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
 			[self.navigationController setNavigationBarHidden:NO animated:YES];
-			[self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];
 			[self.navigationController setToolbarHidden:NO animated:YES];
+            [self changeBackgroundColor:[UIColor whiteColor]];
 		}
 	} else {
 		[self hideHUDView];
+        [self changeBackgroundColor:[UIColor blackColor]];
 	}
+}
+
+- (void)changeBackgroundColor:(UIColor *)color {
+    [[self.imageController1 imageView] setBackgroundColor:color];
+    [[self.imageController2 imageView] setBackgroundColor:color];
+    [[self.imageController3 imageView] setBackgroundColor:color];
 }
 
 - (void)showHUDView:(NSTimer *)timer {

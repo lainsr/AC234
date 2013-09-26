@@ -33,30 +33,37 @@
 
 - (void)drawRect:(CGRect)rect {
 	[_cell.fontColor set];
-	[_cell.filename drawAtPoint:CGPointMake(45.0f, 5.0f) withFont:[UIFont systemFontOfSize:12.0]];
+    
+    NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                           [UIFont fontWithName:@"HelveticaNeue" size:11], NSFontAttributeName,
+                           nil];
+	[_cell.filename drawAtPoint:CGPointMake(45.0f, 5.0f) withAttributes:attrs];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetLineWidth(context, 1.0f);
-	
-	CGColorRef sepColor = [_cell.separatorColor CGColor];
-	int numComponents = CGColorGetNumberOfComponents(sepColor);
-	if (numComponents == 4) {
+	CGContextSetLineWidth(context, 0.5f);
+    
+    //CGColorRef sepColor = [_cell.separatorColor CGColor];
+	//int numComponents = CGColorGetNumberOfComponents(sepColor);
+	/*if (numComponents == 7) {
 		const CGFloat *components = CGColorGetComponents(sepColor);
 		CGFloat red = components[0];
 		CGFloat green = components[1];
 		CGFloat blue = components[2];
 		CGFloat aleph = components[3];
 		CGContextSetRGBStrokeColor(context, red, green, blue, aleph);
-	} else {
-        CGFloat red = 45.0/255.0;
-        CGFloat green = 47.0/255.0;
-        CGFloat blue = 49.0/255.0 ;
+	} else {*/
+        CGFloat red = 200.0/255.0;
+        CGFloat green = 202.0/255.0;
+        CGFloat blue = 204.0/255.0 ;
         CGFloat aleph = 1.0;
         CGContextSetRGBStrokeColor(context, red, green, blue, aleph);
-    }
-
-	CGContextMoveToPoint(context, 36.5f, 0.0f);
-	CGContextAddLineToPoint(context, 36.5f, rect.size.height);
+    //}
+    
+    //x,y
+	CGContextMoveToPoint(context, 41.0f, 0.25f);
+    // -> x,y
+	//CGContextAddLineToPoint(context, 36.25f, rect.size.height);
+	CGContextAddLineToPoint(context, rect.size.width - 33.0f, 0.25);
 	CGContextStrokePath(context);
 
 	CGFloat scale = [[ACGlobalInfos sharedInstance] scale];
@@ -96,8 +103,8 @@
 	if (self) {
 		cellContentView = [[FolderListCellContentView alloc] initWithFrame:CGRectZero cell:self];
 		cellContentView.opaque = YES;
-		[self setLightBackground:[ACStaticIcons lightBackground]];
-		[self setDarkBackground:[ACStaticIcons darkBackground]];
+		[self setLightBackground:[UIColor whiteColor]];//[ACStaticIcons lightBackground]
+		[self setDarkBackground:[UIColor whiteColor]];//[ACStaticIcons darkBackground]
 		[self setFontColor:[ACStaticIcons lightFontColor]];
 		[self setSeparatorColor:[ACStaticIcons sepBackground]];
 		[self addSubview:cellContentView];
