@@ -48,16 +48,6 @@ static NSString *kCellID = @"cellID";
 		}
         ACScrollViewController *scrollController = (ACScrollViewController *)destinationController;
         [scrollController setFile:file inFolder:NULL withContent:folderList];
-        
-        //show bars
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-        [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
-		[self.navigationController setToolbarHidden:YES animated:NO];
-		[self.navigationController.toolbar setBarStyle:UIBarStyleBlackTranslucent];
-
-        UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
-		[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     }
 }
 
@@ -66,7 +56,6 @@ static NSString *kCellID = @"cellID";
 }
 
 - (void)hideNavbarAndKeepHidden {
-	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];   
 }
@@ -75,21 +64,29 @@ static NSString *kCellID = @"cellID";
 #pragma mark UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationCtlr
 	willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-	
-	if ([viewController isKindOfClass:[ACSearchViewController class]]) {
-		[navigationCtlr.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-		[navigationCtlr setNavigationBarHidden:YES animated:NO];
-		[navigationCtlr setToolbarHidden:YES animated:NO];
- 
+    
+   if([viewController isKindOfClass:[ACSearchViewController class]]) {
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [[self.navigationController navigationBar] setTranslucent:NO];
+        [self.navigationController setToolbarHidden:YES animated:NO];
         UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
-		[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-	}
+        [sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+   }
 }
 
 - (void)navigationController:(UINavigationController *)navigationCtlr
 	didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    //do nothing
+    if([viewController isKindOfClass:[ACScrollViewController class]] || [viewController isKindOfClass:[ACFileListController class]] ) {
+        UIApplication *sharedApp = [UIApplication sharedApplication];
+        [sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+        //hide bars and set them as transparent
+		[[self.navigationController navigationBar] setTranslucent:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+        //prepare the toolbar but hide it
+        [[self.navigationController toolbar] setTranslucent:YES];
+        [self.navigationController setToolbarHidden:YES animated:NO];
+		[self.navigationController setDelegate:self];
+    }
 }
 
 #pragma mark -
@@ -115,16 +112,6 @@ static NSString *kCellID = @"cellID";
         }
         [[self navigationController] pushViewController:self.subController animated:YES];
         [self.subController loadFolder:filename];
-        
-        //show the bars
-        [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-		[self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
-		[self.navigationController setToolbarHidden:YES animated:NO];
-		
-        UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
-		[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     }
 }
 

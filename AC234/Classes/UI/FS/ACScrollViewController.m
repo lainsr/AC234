@@ -263,7 +263,6 @@
             [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
             
             UIApplication *sharedApp = [UIApplication sharedApplication];
-			[sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 			[sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 			[self.navigationController setNavigationBarHidden:NO animated:YES];
 			[self.navigationController setToolbarHidden:NO animated:YES];

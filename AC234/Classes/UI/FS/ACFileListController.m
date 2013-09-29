@@ -43,7 +43,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 	[super viewDidLoad];
     [self setCellStyle:kList];
     [self setNumOfThumbnailPerCell:3];
-	//[self setWantsFullScreenLayout:NO];
     
     if(self.folderList == NULL) {
         ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -81,18 +80,12 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         }
         
         //hide bars and set them as transparent
-        //[self.navigationController setNavigationBarHidden:YES animated:NO];
-		//[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlackTranslucent];
 		[[self.navigationController navigationBar] setTranslucent:YES];
-        [[self.navigationController toolbar] setBarStyle:UIBarStyleDefault];
+        //[[self.navigationController toolbar] setBarStyle:UIBarStyleDefault];
         [[self.navigationController toolbar] setTranslucent:YES];
         //prepare the toolbar but hide it
         [self.navigationController setToolbarHidden:YES animated:NO];
 		[self.navigationController setDelegate:self];
-		
-        //UIApplication *sharedApp = [UIApplication sharedApplication];
-        //[sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-		//[sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 }
 
@@ -341,7 +334,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 		
         UIApplication *sharedApp = [UIApplication sharedApplication];
         [sharedApp setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-        [sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
 	}
 }
 
