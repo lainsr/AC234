@@ -81,16 +81,18 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
         }
         
         //hide bars and set them as transparent
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        //[self.navigationController setNavigationBarHidden:YES animated:NO];
 		//[[self.navigationController navigationBar] setBarStyle:UIBarStyleBlackTranslucent];
 		[[self.navigationController navigationBar] setTranslucent:YES];
-        //[[self.navigationController toolbar] setBarStyle:UIBarStyleBlackTranslucent];
+        [[self.navigationController toolbar] setBarStyle:UIBarStyleDefault];
         [[self.navigationController toolbar] setTranslucent:YES];
+        //prepare the toolbar but hide it
+        [self.navigationController setToolbarHidden:YES animated:NO];
 		[self.navigationController setDelegate:self];
 		
-        UIApplication *sharedApp = [UIApplication sharedApplication];
-        [sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-		[sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
+        //UIApplication *sharedApp = [UIApplication sharedApplication];
+        //[sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+		//[sharedApp setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 }
 
@@ -242,9 +244,11 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     NSString *lastViewed = [appDelegate getLastViewed:folder];
 	if(lastViewed != NULL) {
 		int indexToSelect = [folderList indexOfObject:lastViewed];
-        NSUInteger indexArr[] = {0, indexToSelect};
-        NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexArr length:2];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        if([self.tableView numberOfRowsInSection:0] < indexToSelect) {
+            NSUInteger indexArr[] = {0, indexToSelect};
+            NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexArr length:2];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        }
 	}
 }
 

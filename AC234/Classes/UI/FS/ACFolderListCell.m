@@ -11,11 +11,16 @@
 #import "ACFolderListCell.h"
 
 #define ACCESSORY_RECT CGRectMake(0.0f, 0.0f, 40.0f, 36.0f)
+#define SEP_LINE_RGB_R 0.7843f
+#define SEP_LINE_RGB_G 0.7922f
+#define SEP_LINE_RGB_B 0.8f
 
 @interface FolderListCellContentView : UIView {
     ACFolderListCell *_cell;
-    BOOL _highlighted;
+    BOOL _firstRow;
 }
+
+- (void)setFirstRow:(BOOL)firstRow;
 
 @end
 
@@ -26,7 +31,7 @@
 	if (self) {
 		_cell = cell;
 		self.opaque = YES;
-		self.backgroundColor = _cell.backgroundColor;
+        [self setBackgroundColor:[UIColor whiteColor]];
 	}
 	return self;
 }
@@ -40,31 +45,16 @@
 	[_cell.filename drawAtPoint:CGPointMake(45.0f, 5.0f) withAttributes:attrs];
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetLineWidth(context, 0.5f);
-    
-    //CGColorRef sepColor = [_cell.separatorColor CGColor];
-	//int numComponents = CGColorGetNumberOfComponents(sepColor);
-	/*if (numComponents == 7) {
-		const CGFloat *components = CGColorGetComponents(sepColor);
-		CGFloat red = components[0];
-		CGFloat green = components[1];
-		CGFloat blue = components[2];
-		CGFloat aleph = components[3];
-		CGContextSetRGBStrokeColor(context, red, green, blue, aleph);
-	} else {*/
-        CGFloat red = 200.0/255.0;
-        CGFloat green = 202.0/255.0;
-        CGFloat blue = 204.0/255.0 ;
-        CGFloat aleph = 1.0;
-        CGContextSetRGBStrokeColor(context, red, green, blue, aleph);
-    //}
-    
+	//draw the separator line
+    CGContextSetLineWidth(context, 0.5f);
+    CGContextSetRGBStrokeColor(context, SEP_LINE_RGB_R, SEP_LINE_RGB_G, SEP_LINE_RGB_B, 1.0f);
     //x,y
 	CGContextMoveToPoint(context, 41.0f, 0.25f);
     // -> x,y
-	//CGContextAddLineToPoint(context, 36.25f, rect.size.height);
-	CGContextAddLineToPoint(context, rect.size.width - 33.0f, 0.25);
-	CGContextStrokePath(context);
+	if (![self isFirstRow]) {
+        CGContextAddLineToPoint(context, rect.size.width - 33.0f, 0.25);
+    }
+    CGContextStrokePath(context);
 
 	CGFloat scale = [[ACGlobalInfos sharedInstance] scale];
 	
@@ -81,13 +71,12 @@
 	CGImageRelease(image);
 }
 
-- (void)setHighlighted:(BOOL)highlighted {
-	_highlighted = highlighted;
-	[self setNeedsDisplay];
+- (void)setFirstRow:(BOOL)firstRow {
+	_firstRow  = firstRow;
 }
 
-- (BOOL)isHighlighted {
-	return _highlighted;
+- (BOOL)isFirstRow {
+	return _firstRow;
 }
 
 @end
@@ -95,18 +84,14 @@
 
 @implementation ACFolderListCell
 
-@synthesize fontColor,lightBackground, darkBackground, separatorColor;
+@synthesize fontColor, cellContentView;
 @synthesize filename, thumbnail;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 	if (self) {
-		cellContentView = [[FolderListCellContentView alloc] initWithFrame:CGRectZero cell:self];
-		cellContentView.opaque = YES;
-		[self setLightBackground:[UIColor whiteColor]];//[ACStaticIcons lightBackground]
-		[self setDarkBackground:[UIColor whiteColor]];//[ACStaticIcons darkBackground]
-		[self setFontColor:[ACStaticIcons lightFontColor]];
-		[self setSeparatorColor:[ACStaticIcons sepBackground]];
+		self.cellContentView = [[FolderListCellContentView alloc] initWithFrame:CGRectZero cell:self];
+		self.cellContentView.opaque = YES;
 		[self addSubview:cellContentView];
 		[self setContentMode:UIViewContentModeLeft];
         [self setAutoresizesSubviews:YES];
@@ -116,13 +101,9 @@
 }
 
 - (void)setRow:(int)row {
-	if((row  % 2) == 0) {
-		cellContentView.backgroundColor = lightBackground;
-		self.backgroundColor = lightBackground;
-	} else {
-		cellContentView.backgroundColor = darkBackground;
-		self.backgroundColor = lightBackground;
-	}
+	if(row == 0) {
+        //self.cellContentView;
+    }
 }
 
 - (void)addThumbnail:(UIImage *)image {
@@ -132,7 +113,7 @@
 
 - (void) setNeedsLayout {
     [super setNeedsLayout];
-    [cellContentView setNeedsDisplay];
+    [self.cellContentView setNeedsDisplay];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -143,7 +124,7 @@
 		b.size.width -= 40;
 		b.origin.x = 40;
 	}
-	[cellContentView setFrame:b];
+	[self.cellContentView setFrame:b];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -160,7 +141,7 @@
 			b.size.height -= 1; // leave room for the seperator line
 			b.size.width -= 40;
 			b.origin.x = 40;
-			[cellContentView setFrame:b];
+			[self.cellContentView setFrame:b];
 		}
 	}
 	

@@ -251,18 +251,11 @@
 	}
 	
 	if (informationsHud.hidden) {
-		NSString *fileName = [[self currentFile] lastPathComponent];
-		if(fileName == nil) {
+		if([self currentFile] == nil) {
 			[self hideHUDView];
             [self changeBackgroundColor:[UIColor blackColor]];
 		} else {
-			NSMutableString *infos = [[NSMutableString alloc] initWithString:fileName];
-			[infos appendString:@"\n"];
-			[infos appendFormat:@"%i",[pageControl currentPage]];
-			[infos appendString:@" / "];
-			[infos appendFormat:@"%i",[pageControl numberOfPages]];
-            
-			self.informations.text = infos;
+            [self setInformationsOnHUDView:[self currentFile]];
 			self.informationsHud.hidden = NO;
 			self.informationsHud.alpha = 0.00;//usefull for the first time only
             
@@ -280,6 +273,16 @@
 		[self hideHUDView];
         [self changeBackgroundColor:[UIColor blackColor]];
 	}
+}
+
+- (void)setInformationsOnHUDView:(NSString *)file {
+    NSString *fileName = [[self currentFile] lastPathComponent];
+    NSMutableString *infos = [[NSMutableString alloc] initWithString:fileName];
+    [infos appendString:@"\n"];
+    [infos appendFormat:@"%i",[pageControl currentPage]];
+    [infos appendString:@" / "];
+    [infos appendFormat:@"%i",[pageControl numberOfPages]];
+    [self.informations setText:infos];
 }
 
 - (void)changeBackgroundColor:(UIColor *)color {
@@ -449,6 +452,7 @@
 }
 
 
+
 - (void)setFile:(NSString *)file inFolder:(NSString*)dirPath withContent:(NSMutableArray *)imageFullPathArray {
     [self setSelectedFile:file];
     if(currentDirPath == nil || ![currentDirPath isEqualToString:dirPath]) {
@@ -471,6 +475,8 @@
             self.currentDirPath = newDirPath;
         }
 	}
+    
+    //show hud
 }
 
 - (void)load {
@@ -686,7 +692,6 @@
  
     currentPageFraction = pageFraction;
     if(page != currentPage) {
-        [self hideHUDView];
 		pageControl.currentPage = page;
 	}
 	
@@ -713,6 +718,7 @@
 	[self loadScrollViewWithPage:page controller:currentViewController async:YES];
 	[self loadScrollViewWithPage:page + 1 controller:nextViewController async:YES];
 	[self willUnloadScrollViewWithPage:page - 1 controller:prevViewController];
+    [self setInformationsOnHUDView:[self currentFile]];
 }
 
 - (void)rotateControllersToPreviousImage {
@@ -725,6 +731,8 @@
 	[self loadScrollViewWithPage:page controller:currentViewController async:YES];
 	[self loadScrollViewWithPage:page - 1 controller:prevViewController async:YES];
 	[self willUnloadScrollViewWithPage:page + 1 controller:nextViewController];
+    [self setInformationsOnHUDView:[self currentFile]];
+    
 }
 
 // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl

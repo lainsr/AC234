@@ -16,7 +16,7 @@
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SingleIconCell" id="Xxo-Vb-iav" customClass="ACFolderListCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxo-Vb-iav" id="UTn-gQ-V6Y">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxo-Vb-iav" id="UTn-gQ-V6Y">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
@@ -187,7 +187,7 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" id="WyT-A1-gQI" userLabel="HUD View" customClass="ACHUDView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="64"/>
+                                <rect key="frame" x="0.0" y="63.999999999999993" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" id="JRy-3q-LiV" userLabel="Informations">
@@ -716,13 +716,6 @@
         <image name="DisplayOff.png" width="24" height="24"/>
         <image name="Home.png" width="20" height="20"/>
         <image name="ListWithBack.png" width="22" height="22"/>
-        <image name="PasswordField.png" width="40" height="39"/>
-        <image name="PasswordField.png" width="40" height="39"/>
-        <image name="PasswordField.png" width="40" height="39"/>
-        <image name="PasswordField.png" width="40" height="39"/>
-        <image name="PasswordField.png" width="40" height="39"/>
-        <image name="PasswordField.png" width="40" height="39"/>
-        <image name="PasswordField.png" width="40" height="39"/>
         <image name="PasswordField.png" width="40" height="39"/>
         <image name="Play.png" width="128" height="128"/>
         <image name="Settings.png" width="26" height="26"/>

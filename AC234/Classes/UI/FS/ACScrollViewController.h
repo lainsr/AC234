@@ -111,4 +111,6 @@
 - (void)clearViewControllers;
 - (void)changeBackgroundColor:(UIColor *)color;
 
+- (void)setInformationsOnHUDView:(NSString *)file;
+
 @end
