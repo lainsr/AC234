@@ -66,6 +66,13 @@
 	}
 }
 
+- (id)containsObjectForKey:(id)aKey {
+	@synchronized(self) {
+		[self addLruCache:aKey];
+		return [mainDictionary objectForKey:aKey];
+	}
+}
+
 - (void)setObject:(id)anObject forKey:(id)aKey {
 	@synchronized(self) {
 		[self addLruCache:aKey];

@@ -509,7 +509,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 			for(int i=row; i<nextStop && i<[self.folderList count];i++) {
 				NSString *path = [self.folderList objectAtIndex:i];
 				NSString *filename = [path lastPathComponent];
-				if (![thumbnailBuffer reserved:filename]) {
+				if (![thumbnailBuffer reserved:filename] && [thumbnailBuffer objectForKey:filename] == NULL) {
 					[thumbnailBuffer reservationForKey:filename];
 					[filenames addObject:filename];
 					if(!wait && i - row > 20) {
@@ -524,7 +524,7 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
 			for(int i=row; i>=nextStop && i>=0; i--) {
 				NSString *path = [self.folderList objectAtIndex:i];
 				NSString *filename = [path lastPathComponent];
-				if(![thumbnailBuffer reserved:filename]) {
+				if(![thumbnailBuffer reserved:filename] && [thumbnailBuffer objectForKey:filename] == NULL) {
 					[thumbnailBuffer reservationForKey:filename];
 					[filenames addObject:filename];
 					if(!wait && row - i > 20) {

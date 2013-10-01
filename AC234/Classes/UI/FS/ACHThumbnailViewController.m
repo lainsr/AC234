@@ -111,21 +111,36 @@
 	NSMutableArray *filenames = [NSMutableArray arrayWithCapacity:DEFAULT_CACHE_SIZE];
 	@synchronized(thumbnailBuffer) {
 		BOOL cancel = NO;
-        
-
-			int nextStop = row - DEFAULT_CACHE_SIZE;
-			for(int i=row; i>=nextStop && i>=0; i--) {
-				NSString *path = [self.folderList objectAtIndex:i];
-				NSString *filename = [path lastPathComponent];
-				if(![thumbnailBuffer reserved:filename]) {
-					[thumbnailBuffer reservationForKey:filename];
-					[filenames addObject:filename];
-					if(!wait && row - i > 20) {
-						cancel = YES;
-						break;
-					}
-				}
-			}
+        BOOL backwards = NO;
+        if(backwards) {
+            int nextStop = row + DEFAULT_CACHE_SIZE;
+            for(int i=row; i>=nextStop && i>=0; i--) {
+                NSString *path = [self.folderList objectAtIndex:i];
+                NSString *filename = [path lastPathComponent];
+                if(![thumbnailBuffer reserved:filename] && [thumbnailBuffer objectForKey:filename] == NULL) {
+                    [thumbnailBuffer reservationForKey:filename];
+                    [filenames addObject:filename];
+                    if(!wait && row - i > 20) {
+                        cancel = YES;
+                        break;
+                    }
+                }
+            }
+        } else {
+            int nextStop = row + DEFAULT_CACHE_SIZE;
+            for(int i=row; i<nextStop && i<[self.folderList count];i++) {
+                NSString *path = [self.folderList objectAtIndex:i];
+                NSString *filename = [path lastPathComponent];
+                if (![thumbnailBuffer reserved:filename] && [thumbnailBuffer objectForKey:filename] == NULL) {
+                    [thumbnailBuffer reservationForKey:filename];
+                    [filenames addObject:filename];
+                    if(!wait && i - row > 20) {
+                        cancel = YES;
+                        break;
+                    }
+                }
+            }
+        }
 		
 		if(cancel) {
 			for(int i=[filenames count]; i-->0; ) {

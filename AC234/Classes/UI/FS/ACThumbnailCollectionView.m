@@ -32,11 +32,9 @@
     CGRect imageRect = CGRectMake(0.0f, 0.0f, width, height);
         
     CGContextTranslateCTM(context, wOffset, hOffset);
-    //CGContextSetShadowWithColor(context, CGSizeMake(2.0f, 2.0f), 1.0f, [[ACStaticIcons darkBackground] CGColor]);
-        
+   
     CGContextDrawImage(context, imageRect, image);
     CGImageRelease(image);
-
 }
 
 @end
