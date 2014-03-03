@@ -188,13 +188,13 @@
 - (void)pushTheMainScrollView:(UISwipeGestureRecognizer *)gesture {
     [self hideHUDView];
     [self.miniContainerView setHidden:NO];
+    NSArray *subviews = [self.miniContainerView subviews];
     CGRect currentPosition = self.scrollView.frame;
     if(currentPosition.origin.y == 0) {
         [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
                     animations:^{
                         self.scrollView.frame = CGRectMake(currentPosition.origin.x, currentPosition.origin.y - 120, currentPosition.size.width, currentPosition.size.height);
-
-                    }completion:^(BOOL finished){}];
+                    } completion:^(BOOL finished){}];
     }
 }
 
@@ -233,10 +233,10 @@
 }
 
 - (void)hideHUDView {
-	if (informationsHud.hidden) return;
-	
-	informationsHud.alpha = 0.00;
-    informationsHud.hidden = YES;
+	if (!informationsHud.hidden) {
+        informationsHud.alpha = 0.00;
+        informationsHud.hidden = YES;
+    }
 	
     UIApplication *sharedApp = [UIApplication sharedApplication];
 	[sharedApp setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];

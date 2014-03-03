@@ -30,7 +30,6 @@
     CGFloat hOffset = (cellHeight - height) / 2.0f;
         
     CGRect imageRect = CGRectMake(0.0f, 0.0f, width, height);
-        
     CGContextTranslateCTM(context, wOffset, hOffset);
    
     CGContextDrawImage(context, imageRect, image);

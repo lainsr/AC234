@@ -11,6 +11,7 @@
 #import "ACAppDelegate.h"
 #import "ACGlobalInfos.h"
 #import "DAVConnection.h"
+#import "ACNoBackupOperation.h"
 
 
 static int MAX_OPERATION_QUEUE_SIZE = 1;
@@ -30,6 +31,14 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
     _thumbnailStore = [[ACCoreDataStore alloc] initWithFile:@"AC234.sqlite"];
     [_thumbnailStore managedObjectContext];
     
+    //check if App.name/Library/Application Support exists
+	NSString *documentDir = [self applicationDocumentsDirectory];
+    NSFileManager *fileManager= [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:documentDir isDirectory:NULL]) {
+        if(![fileManager createDirectoryAtPath:documentDir withIntermediateDirectories:YES attributes:nil error:NULL]) {
+            NSLog(@"Error: Create folder failed %@", documentDir);
+        }
+    }
     
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
@@ -40,6 +49,10 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
 	if(startWebDAVServer) {
 		[self startWebDAVServer];
 	}
+    
+    //update no backup hint
+    ACNoBackupOperation	*updateOp = [[ACNoBackupOperation alloc] init];
+    [thumbnailQueue addOperation:updateOp];
 
     return YES;
 }
@@ -248,7 +261,8 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
  Returns the path to the application's Documents directory.
  */
 - (NSString *)applicationDocumentsDirectory {
-	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    //[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+	return [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 - (NSString *)applicationCachesDirectory {
