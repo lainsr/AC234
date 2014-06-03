@@ -7,6 +7,7 @@
 //
 
 #import "File.h"
+#import "ACScaler.h"
 #import "ACStaticIcons.h"
 #import "ACFileInfo.h"
 #import "ACFolderListCell.h"
@@ -142,7 +143,9 @@ static NSString *kCellID = @"cellID";
 	ACFolderListCell *cell = (ACFolderListCell *)[tableView dequeueReusableCellWithIdentifier:kCellID];
 	if (cell == nil) {
 		cell = [[ACFolderListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellID];
-	}
+	} else {
+        [cell addThumbnail:NULL];
+    }
 	
 	ACFileInfo *info = [self.filteredListContent objectAtIndex:indexPath.row];
 	NSString *filename = [info filename];
@@ -158,78 +161,33 @@ static NSString *kCellID = @"cellID";
 		firstRowToThumbnail = -1;
 	}
 	
-	UIImage *thumbnail = [thumbnailBuffer objectForKey:fullPath];
-	if(thumbnail == nil) {
-		//check if the next
-		
-		ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
-		if([[[appDelegate thumbnailQueue]operations]count] > PANIC_OPERATION_QUEUE_SIZE) {
-			[[appDelegate thumbnailQueue] waitUntilAllOperationsAreFinished];
-			thumbnail = [thumbnailBuffer objectForKey:fullPath];
-			if(thumbnail == nil) {
-				//miss the right thumbnails
-				[thumbnailBuffer removeAllObjects];
-				[self fillThumbnailsBufferAt:[indexPath row] waitUntilFilled:YES];
-			}
-		} else {
-			[self fillThumbnailsBufferAt:[indexPath row] waitUntilFilled:YES];
-		}
-		thumbnail = [thumbnailBuffer objectForKey:fullPath];
-	} else if ([thumbnailBuffer count] < PANIC_SIZE) {
-		[self fillThumbnailsBufferAt:[indexPath row] waitUntilFilled:NO];
-	}
-	if([cell thumbnail] != NULL) {
-		[cell setThumbnail:NULL];
-	}
-	if(thumbnail == NULL) {
-		NSLog(@"Null thumbnail %@",fullPath);
-	} else {
-		[cell setThumbnail:thumbnail];
-	}
-	
-	[thumbnailBuffer removeObjectForKey:filename];
+    ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [[appDelegate thumbnailQueue] addOperationWithBlock:^{
+        
+        ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
+        ACCoreDataStore *thumbnailStore = [appDelegate thumbnailStore];
+        NSManagedObjectContext *localContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [localContext setPersistentStoreCoordinator: [thumbnailStore persistentStoreCoordinator]];
+        [localContext setUndoManager:NULL];
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:thumbnailStore selector:@selector(mergeChanges:)
+                   name:NSManagedObjectContextDidSaveNotification object:localContext];
+        
+        UIImage *thumbnail = [ACScaler scale:localContext atPath:fullPath size:NO];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if(thumbnail == NULL) {
+                NSLog(@"Null thumbnail %@",filename);
+            } else if([cell.filename isEqualToString:filename]) {
+                [cell addThumbnail:thumbnail];
+                [cell setNeedsLayout];
+            }
+        }];
+    }];
 	
 	lastCellForRow = indexPath.row;
 	return cell;
-}
-
-#pragma mark -
-#pragma mark Thumbnails
-- (void)fillThumbnailsBufferAt:(int)row waitUntilFilled:(BOOL)wait {
-	NSMutableArray *files = [NSMutableArray arrayWithCapacity:DEFAULT_CACHE_SIZE];
-	if(lastCellForRow <= row) {
-		int nextStop = row + DEFAULT_CACHE_SIZE;
-		
-		for(int i=row; i<nextStop && i<[self.filteredListContent count];i++) {
-			ACFileInfo *info = [self.filteredListContent objectAtIndex:i];
-			NSString *file = [info fullPath];
-			[thumbnailBuffer reservationForKey:file];
-			if ([thumbnailBuffer objectForKey:file] == NULL) {
-				[files addObject:file];
-			}
-		}
-	} else {
-		int nextStop = row - DEFAULT_CACHE_SIZE;
-
-		for(int i=row; i>=nextStop && i>=0; i--) {
-			ACFileInfo *info = [self.filteredListContent objectAtIndex:i];
-			NSString *file = [info fullPath];
-			[thumbnailBuffer reservationForKey:file];
-			if([thumbnailBuffer objectForKey:file] == NULL) {
-				[files addObject:file];
-			}
-		}
-	}
-	
-	if([files count] > 0) {
-		ACLoadThumbnailsOperation *loadBatch = [[ACLoadThumbnailsOperation alloc] initWithPaths:files size:NO];
-		loadBatch.delegate	= self;		// set the delegate
-		ACAppDelegate *appDelegate = (ACAppDelegate *)[[UIApplication sharedApplication] delegate];
-		[[appDelegate thumbnailQueue] addOperation:loadBatch];
-		if(wait) {
-			[[appDelegate thumbnailQueue] waitUntilAllOperationsAreFinished];
-		}
-	}
 }
 
 #pragma mark -

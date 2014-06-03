@@ -11,9 +11,12 @@
 @interface ACThumbnailCollectionView : UICollectionViewCell {
 
     UIImage *thumbnail;
-
+    NSString *filename;
 }
 
 @property (nonatomic, strong) UIImage *thumbnail;
+@property (nonatomic, strong) NSString *filename;
+
+- (void)addThumbnail:(UIImage *)image;
 
 @end

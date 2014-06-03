@@ -11,8 +11,12 @@
 
 @implementation ACThumbnailCollectionView
 
-@synthesize thumbnail;
+@synthesize thumbnail, filename;
 
+- (void)addThumbnail:(UIImage *)image {
+    [self setThumbnail:NULL];
+    [self setThumbnail:image];
+}
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -23,7 +27,7 @@
     CGFloat cellWidth = rect.size.width - 4.0f;
     CGFloat cellHeight = rect.size.height - 4.0f;
 
-    CGImageRef image = CGImageRetain([thumbnail CGImage]);
+    CGImageRef image = CGImageRetain([self.thumbnail CGImage]);
     size_t width = CGImageGetWidth(image) / scale;
     CGFloat wOffset = (cellWidth - width) / 2.0f;
     size_t height = CGImageGetHeight(image) / scale;

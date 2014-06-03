@@ -110,6 +110,13 @@ static const size_t kImageMaxBPC = 8;		// Image maximum bits-per-component
     return thumbnail;
 }
 
++ (UIImage *)scale:(NSManagedObjectContext *) localContext atPath:(NSString*)filePath size:(BOOL)large {
+    NSString *expandedPath = [filePath stringByDeletingLastPathComponent];
+	NSString *dirTildePath = [expandedPath stringByAbbreviatingWithTildeInPath];
+	NSString *name = [filePath lastPathComponent];
+    return [ACScaler scale:localContext atFolderPath:dirTildePath image:name size:large];
+}
+
 + (NSArray *)scale:(NSManagedObjectContext *) localContext atFolderPath:(NSString*)dirTildePath subSet:(NSArray *)imageNames size:(BOOL)large {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"File" inManagedObjectContext:localContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];

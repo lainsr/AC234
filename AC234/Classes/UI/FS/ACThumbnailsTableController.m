@@ -10,13 +10,7 @@
 
 @implementation ACThumbnailsTableController
 
-@synthesize thumbnailBuffer, renderedOrientation;
-
-- (void)viewDidLoad {
-    ACLRUDictionary *thumbnails = [[ACLRUDictionary alloc] initWithCapacity:DEFAULT_CACHE_SIZE * 2 + 1];
-	self.thumbnailBuffer = thumbnails;
-	[super viewDidLoad];
-}
+@synthesize renderedOrientation;
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -55,16 +49,6 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 	//
-}
-
-#pragma mark - ACLoadThumbnailsOperation
--(void) thumbnailFinished:(UIImage*)image forFile:(NSString*)filename {
-	[thumbnailBuffer setObject:image forKey:filename];
-	[thumbnailBuffer cancelReservationForKey:filename];
-}
-
--(void) thumbnailsFinished {
-    //
 }
 
 @end

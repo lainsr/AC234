@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ACScrollViewController.h"
-#import "ACLoadThumbnailsOperation.h"
 #import "ACThumbnailsTableController.h"
 #import "ACFileListController.h"
 
@@ -26,8 +25,6 @@
 - (void)hideNavbarAndKeepHidden;
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
-
-- (void)fillThumbnailsBufferAt:(int)row waitUntilFilled:(BOOL)wait;
 
 - (NSString *)healPath:(NSString*)dirtyPath operation:(NSNumber **)needed;
 

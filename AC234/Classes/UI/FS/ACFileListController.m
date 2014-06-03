@@ -152,7 +152,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     //flip the tableview
     [UIView transitionWithView:self.view  duration:0.75 options:UIViewAnimationOptionTransitionFlipFromRight
                     animations:^{
-                        [[self thumbnailBuffer] removeAllObjects];
                         if (self.cellStyle == kList) {
                             [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
                         } else {
@@ -249,7 +248,6 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     [self setFolderPath:NULL];
     [self setFolderTildePath:NULL];
     [self.folderList removeAllObjects];
-    [self.thumbnailBuffer removeAllObjects];
 }
 
 #pragma mark -
@@ -516,10 +514,5 @@ static NSString *kLargeCellIdentifier = @"CustomMultiIconCell";
     
     return cell;
 }
-
--(void) thumbnailFinished:(UIImage*)image forFile:(NSString*)filename {
-	[super thumbnailFinished:image forFile:filename];
-}
-
 
 @end
