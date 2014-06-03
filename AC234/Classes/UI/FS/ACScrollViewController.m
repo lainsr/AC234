@@ -188,7 +188,6 @@
 - (void)pushTheMainScrollView:(UISwipeGestureRecognizer *)gesture {
     [self hideHUDView];
     [self.miniContainerView setHidden:NO];
-    NSArray *subviews = [self.miniContainerView subviews];
     CGRect currentPosition = self.scrollView.frame;
     if(currentPosition.origin.y == 0) {
         [UIView transitionWithView:self.view  duration:0.1 options:UIViewAnimationOptionTransitionNone
@@ -627,7 +626,9 @@
 			case 3: replacementController = movieController3; break;
 			default: NSLog(@"Movie pool exhausted");
 		}
-	} else if ([extension isEqualToString:@"png"] || [extension isEqualToString:@"jpg"] || [extension isEqualToString:@"jpeg"]) {
+	} else if ([extension isEqualToString:@"png"]
+               || [extension isEqualToString:@"jpg"] || [extension isEqualToString:@"jpeg"]
+               || [extension isEqualToString:@"tif"] || [extension isEqualToString:@"tiff"]) {
 		switch (poolPosition) {
 			case 1: replacementController = imageController1; break;
 			case 2: replacementController = imageController2; break;

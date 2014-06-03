@@ -70,11 +70,9 @@
             CGContextTranslateCTM(context, hhOffset - 2.0f, vOffset - 2.0f);
             CGContextSetRGBFillColor(context, 3.0/255.0, 125.0/255.0, 241.0/255.0, 1.0f);
             CGContextFillRect(context, CGRectMake(0.0f, 0.0f, width + 4.0f, height + 4.0f));
-            //CGContextSetShadowWithColor(context, CGSizeMake(0.0f, 0.0f), 8.0f, [selectionColor CGColor]);
             CGContextTranslateCTM(context, 2.0f, 2.0f);
         } else {
             CGContextTranslateCTM(context, hhOffset, vOffset);
-            //CGContextSetShadowWithColor(context, CGSizeMake(2.0f, 2.0f), 1.0f, [shadowColor CGColor]);
         }
         
         CGContextDrawImage(context, imageRect, image);
@@ -154,6 +152,7 @@
 @implementation ACLargeThumbnailListCell
 
 @synthesize thumbnails, row;
+@synthesize firstFilename;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
@@ -183,6 +182,10 @@
 
 - (void)addThumbnail:(UIImage *)thumbnail {
     [[self thumbnails] addObject:thumbnail];
+}
+
+- (void)removeAllThumbnails {
+    [[self thumbnails] removeAllObjects];
 }
 
 - (void) setNeedsLayout {

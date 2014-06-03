@@ -65,7 +65,7 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
     if([[ACGlobalInfos sharedInstance] isPasswordActivated]) {
         _passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
         [_passwordController setPasswordDelegate:self];
-        [_window.rootViewController presentModalViewController:_passwordController animated:NO];
+        [_window.rootViewController presentViewController:_passwordController animated:NO completion:^(){}];
     }
 }
 
@@ -78,7 +78,7 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
     if(_passwordController == NULL && [[ACGlobalInfos sharedInstance] isPasswordActivated]) {
         _passwordController = [[ACPasswordController alloc] initWithNibName:@"ACPasswordView" bundle:nil];
         [_passwordController setPasswordDelegate:self];
-        [_window.rootViewController presentModalViewController:_passwordController animated:NO];
+        [_window.rootViewController presentViewController:_passwordController animated:NO completion:^(){}];
     }
 }
 
@@ -91,9 +91,10 @@ static int MAX_OPERATION_QUEUE_SIZE = 1;
 #pragma mark ACPasswordDelegate
 -(BOOL)passwordSet:(NSString *)password {
 	if([[ACGlobalInfos sharedInstance] checkPassword:password]) {
-        [_window.rootViewController dismissModalViewControllerAnimated:NO];
-        [_passwordController setPasswordDelegate:NULL];
-        _passwordController = NULL;
+        [_window.rootViewController dismissViewControllerAnimated:NO completion:^(){
+            [_passwordController setPasswordDelegate:NULL];
+            _passwordController = NULL;
+        }];
 		return YES;
 	}
 	return NO;

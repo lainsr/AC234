@@ -11,6 +11,7 @@
 #import "ACScaler.h"
 #import "ACGlobalInfos.h"
 #import "ACAppDelegate.h"
+#import "ACStaticIcons.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -20,10 +21,196 @@
 static const size_t kImageMaxSPP = 4;		// Image maximum samples-per-pixel
 static const size_t kImageMaxBPC = 8;		// Image maximum bits-per-component
 
-static int IMAGE = 0;
-static int FOLDER = 1;
-static int MOVIE = 2;
-static int UNKOWN = 3;
+//static int IMAGE = 0;
+//static int FOLDER = 1;
+//static int MOVIE = 2;
+//static int UNKOWN = 3;
+
+#define IMAGE 0
+#define FOLDER 1
+#define MOVIE 2
+#define UNKOWN 3
+
++ (UIImage *)scale:(NSManagedObjectContext *) localContext atFolderPath:(NSString*)dirTildePath image:(NSString *)name size:(BOOL)large {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"File" inManagedObjectContext:localContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+
+    [request setEntity:entity];
+    [request setResultType:NSDictionaryResultType];
+    [request setReturnsDistinctResults:YES];
+        
+    NSString *loadByAttr = @"name" ;
+    if(large) {
+        [request setPropertiesToFetch:[NSArray arrayWithObjects:loadByAttr, @"type", @"thumbnailLargeImage", nil]];
+    } else {
+        [request setPropertiesToFetch:[NSArray arrayWithObjects:loadByAttr, @"type", @"thumbnailImage", nil]];
+    }
+    [request setFetchBatchSize:10];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"(name ==[c] %@) AND (path == %@)", name, dirTildePath]];
+   
+    NSError *error = NULL;
+    NSArray *results = [localContext executeFetchRequest:request error:&error];
+    
+    UIImage *thumbnail;
+    if([results count] > 0) {
+        NSDictionary *resultDict =[results objectAtIndex:0];
+        NSNumber *type = [resultDict objectForKey:@"type"];
+        switch ([type intValue]) {
+            case FOLDER: {
+                if(large) {
+                    thumbnail = [ACStaticIcons folderLargeIcon];
+                } else {
+                    thumbnail = [ACStaticIcons folderIcon];
+                }
+                break;
+            }
+            case UNKOWN: {
+                thumbnail = [ACStaticIcons unkownIcon];
+                break;
+            } default: {
+                if(large) {
+                    thumbnail = [resultDict objectForKey:@"thumbnailLargeImage"];
+                } else {
+                    thumbnail = [resultDict objectForKey:@"thumbnailImage"];
+                }
+            }
+        }
+    } else {
+        File *savedFile = [NSEntityDescription insertNewObjectForEntityForName:@"File" inManagedObjectContext:localContext];
+        NSString *expandedPath = [dirTildePath stringByExpandingTildeInPath];
+        savedFile.path = dirTildePath;
+        savedFile.name = name;
+        savedFile.fullPath = [expandedPath stringByAppendingPathComponent:name];
+                    
+        BOOL isDir;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:[savedFile fullPath] isDirectory:&isDir] && !isDir) {
+            [ACScaler extractThumbnailFrom:[savedFile fullPath] toFile:savedFile];
+            if(large) {
+                thumbnail = [savedFile thumbnailLargeImage];
+            } else {
+                thumbnail = [savedFile thumbnailImage];
+            }
+                        
+        } else if (isDir) {
+            savedFile.type = [NSNumber numberWithInt:FOLDER];
+            if(large) {
+                thumbnail = [ACStaticIcons folderLargeIcon];
+            } else {
+                thumbnail = [ACStaticIcons folderIcon];
+            }
+        } else {
+            thumbnail = [ACStaticIcons unkownIcon];
+        }
+                    
+        if(![[savedFile managedObjectContext] save:&error]) {
+            NSLog(@"Cannot save thumbnail %@, %@", error, [error userInfo]);
+        }
+    }
+    return thumbnail;
+}
+
++ (NSArray *)scale:(NSManagedObjectContext *) localContext atFolderPath:(NSString*)dirTildePath subSet:(NSArray *)imageNames size:(BOOL)large {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"File" inManagedObjectContext:localContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    [request setEntity:entity];
+    [request setResultType:NSDictionaryResultType];
+    [request setReturnsDistinctResults:YES];
+    
+    NSString *loadByAttr = @"name" ;
+    if(large) {
+        [request setPropertiesToFetch:[NSArray arrayWithObjects:loadByAttr, @"type", @"thumbnailLargeImage", nil]];
+    } else {
+        [request setPropertiesToFetch:[NSArray arrayWithObjects:loadByAttr, @"type", @"thumbnailImage", nil]];
+    }
+    [request setFetchBatchSize:10];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"(name IN %@) AND (path == %@)", imageNames, dirTildePath]];
+    
+    NSError *error = NULL;
+    NSArray *results = [localContext executeFetchRequest:request error:&error];
+    
+    int numOfFiles = [imageNames count];
+    NSMutableDictionary *thumbnailDict = [NSMutableDictionary dictionaryWithCapacity:numOfFiles];
+    for(int i=[results count]; i-->0; ) {
+        NSDictionary *resultDict =[results objectAtIndex:i];
+        NSNumber *type = [resultDict objectForKey:@"type"];
+        NSString *name = [resultDict objectForKey:@"name"];
+       
+        UIImage *thumbnail;
+        switch ([type intValue]) {
+            case FOLDER: {
+                if(large) {
+                    thumbnail = [ACStaticIcons folderLargeIcon];
+                } else {
+                    thumbnail = [ACStaticIcons folderIcon];
+                }
+                break;
+            }
+            case UNKOWN: {
+                thumbnail = [ACStaticIcons unkownIcon];
+                break;
+            } default: {
+                if(large) {
+                    thumbnail = [resultDict objectForKey:@"thumbnailLargeImage"];
+                } else {
+                    thumbnail = [resultDict objectForKey:@"thumbnailImage"];
+                }
+            }
+        }
+        if(thumbnail != nil) {
+            [thumbnailDict setObject:thumbnail forKey:name];
+        }
+    }
+    
+    NSString *expandedPath = NULL;
+    NSMutableArray *thumbnails = [NSMutableArray arrayWithCapacity:numOfFiles];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    for(int i=0; i<numOfFiles; i++) {
+        UIImage *thumbnail;
+        NSString *file = [imageNames objectAtIndex:i];
+        if([thumbnailDict valueForKey:file] == nil) {
+            File *savedFile = [NSEntityDescription insertNewObjectForEntityForName:@"File" inManagedObjectContext:localContext];
+            if(expandedPath == NULL) {
+                    expandedPath = [dirTildePath stringByExpandingTildeInPath];
+            }
+            savedFile.path = dirTildePath;
+            savedFile.name = file;
+            savedFile.fullPath = [expandedPath stringByAppendingPathComponent:file];
+                
+            BOOL isDir;
+            if ([fileManager fileExistsAtPath:[savedFile fullPath] isDirectory:&isDir] && !isDir) {
+                [ACScaler extractThumbnailFrom:[savedFile fullPath] toFile:savedFile];
+                if(large) {
+                    thumbnail = [savedFile thumbnailLargeImage];
+                } else {
+                    thumbnail = [savedFile thumbnailImage];
+                }
+            } else if (isDir) {
+                savedFile.type = [NSNumber numberWithInt:FOLDER];
+                if(large) {
+                    thumbnail = [ACStaticIcons folderLargeIcon];
+                } else {
+                    thumbnail = [ACStaticIcons folderIcon];
+                }
+            } else {
+                thumbnail = [ACStaticIcons unkownIcon];
+            }
+                
+            if(![[savedFile managedObjectContext] save:&error]) {
+                NSLog(@"Cannot save thumbnail %@, %@", error, [error userInfo]);
+            }
+        } else {
+            thumbnail = [thumbnailDict valueForKey:file];
+        }
+        
+        if(thumbnail != nil) {
+            [thumbnails addObject:thumbnail];
+        }
+    }
+  
+    return thumbnails;
+}
 
 + (void)createThumbnail:(NSString *)imagePath withContext:(NSManagedObjectContext *)localContext {
 	NSString *expandedPath = [imagePath stringByDeletingLastPathComponent];

@@ -42,7 +42,7 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
         [self.progressBarController.progressView setProgress:1.0];
     }
 
-[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(){}];
     //[self performSelector:@selector(dissmissProgress) withObject:nil afterDelay:0.5];
 }
 
@@ -51,7 +51,7 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
  * while a presentation or dismiss is in progress!"
  */
 -(void)dissmissProgress {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(){}];
 }
 
 - (void)updateThumbnailsInDocumentsProgress:(ACUpdateInfos *)infos {

@@ -13,6 +13,10 @@
 
 }
 
++ (UIImage *)scale:(NSManagedObjectContext *) localContext atFolderPath:(NSString*)dirTildePath image:(NSString *)name size:(BOOL)large;
+
++ (NSArray *)scale:(NSManagedObjectContext *) localContext atFolderPath:(NSString*)dirTildePath subSet:(NSArray *)imageNames size:(BOOL)large;
+    
 + (void)extractThumbnailFrom:(NSString*)imagePath toFile:(File*)savedFile;
 + (void)extractMovieThumbnailAt:(NSString*)imagePath toFile:(File*)savedFile;
 + (void)extractPictureThumbnailAt:(NSString*)imagePath toFile:(File*)savedFile;

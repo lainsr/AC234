@@ -61,7 +61,6 @@
 		065E442115B9DE0700EEECD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E442015B9DE0700EEECD8 /* main.m */; };
 		065E442515B9DE0700EEECD8 /* ACAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E442415B9DE0700EEECD8 /* ACAppDelegate.m */; };
 		065E442815B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */; };
-		065E444115B9DE0700EEECD8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E444015B9DE0700EEECD8 /* SenTestingKit.framework */; };
 		065E444215B9DE0700EEECD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441415B9DE0700EEECD8 /* UIKit.framework */; };
 		065E444315B9DE0700EEECD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065E441615B9DE0700EEECD8 /* Foundation.framework */; };
 		065E444B15B9DE0700EEECD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065E444915B9DE0700EEECD8 /* InfoPlist.strings */; };
@@ -238,8 +237,7 @@
 		065E442215B9DE0700EEECD8 /* AC234-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AC234-Prefix.pch"; sourceTree = "<group>"; };
 		065E442315B9DE0700EEECD8 /* ACAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppDelegate.h; sourceTree = "<group>"; };
 		065E442415B9DE0700EEECD8 /* ACAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppDelegate.m; sourceTree = "<group>"; };
-		065E443F15B9DE0700EEECD8 /* AC234Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AC234Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		065E444015B9DE0700EEECD8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		065E443F15B9DE0700EEECD8 /* AC234Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AC234Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		065E444815B9DE0700EEECD8 /* AC234Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AC234Tests-Info.plist"; sourceTree = "<group>"; };
 		065E444A15B9DE0700EEECD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		065E444C15B9DE0700EEECD8 /* AC234Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AC234Tests.h; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				065E444115B9DE0700EEECD8 /* SenTestingKit.framework in Frameworks */,
 				065E444215B9DE0700EEECD8 /* UIKit.framework in Frameworks */,
 				065E444315B9DE0700EEECD8 /* Foundation.framework in Frameworks */,
 			);
@@ -538,7 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				065E441015B9DE0700EEECD8 /* AC234.app */,
-				065E443F15B9DE0700EEECD8 /* AC234Tests.octest */,
+				065E443F15B9DE0700EEECD8 /* AC234Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -557,7 +554,6 @@
 				065E441415B9DE0700EEECD8 /* UIKit.framework */,
 				065E441615B9DE0700EEECD8 /* Foundation.framework */,
 				065E441815B9DE0700EEECD8 /* CoreGraphics.framework */,
-				065E444015B9DE0700EEECD8 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -892,8 +888,8 @@
 			);
 			name = AC234Tests;
 			productName = AC234Tests;
-			productReference = 065E443F15B9DE0700EEECD8 /* AC234Tests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 065E443F15B9DE0700EEECD8 /* AC234Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -902,6 +898,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AC;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					065E440F15B9DE0700EEECD8 = {
@@ -1249,14 +1246,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AC234.app/AC234";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AC234/AC234-Prefix.pch";
 				INFOPLIST_FILE = "AC234Tests/AC234Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1266,14 +1262,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AC234.app/AC234";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AC234/AC234-Prefix.pch";
 				INFOPLIST_FILE = "AC234Tests/AC234Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

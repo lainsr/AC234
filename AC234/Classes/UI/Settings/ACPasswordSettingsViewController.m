@@ -51,7 +51,7 @@ static NSString *kCellIdentifier = @"MyCellIdentifier";
 	} else {
         [SFHFKeychainUtils storeUsername:@"me" andPassword:password forServiceName:@"AC234" updateExisting:YES error:nil];
 	}
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(){}];
 	[self.tableView reloadData];
     return YES;
 }
