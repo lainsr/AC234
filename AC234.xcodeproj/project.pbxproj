@@ -68,6 +68,7 @@
 		066119B4161234F900778810 /* LargeWithBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 066119B2161234F900778810 /* LargeWithBack@2x.png */; };
 		066119B5161234F900778810 /* ListWithBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 066119B3161234F900778810 /* ListWithBack@2x.png */; };
 		06630AD21610D9F9005FB2DA /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 06630AD11610D9F9005FB2DA /* SFHFKeychainUtils.m */; };
+		067E0EDB226C657F00C7EE6E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 067E0ED9226C657F00C7EE6E /* Launch Screen.storyboard */; };
 		06ADFA8915EE9A7300CD59EA /* ACScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */; };
 		06ADFA8C15EE9AA000CD59EA /* ACFolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8B15EE9AA000CD59EA /* ACFolderListCell.m */; };
 		06ADFA8F15EE9AD100CD59EA /* ACThumbnailsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ADFA8E15EE9AD100CD59EA /* ACThumbnailsTableController.m */; };
@@ -245,6 +246,7 @@
 		06630AD01610D9F9005FB2DA /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = Classes/Security/SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		06630AD11610D9F9005FB2DA /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = Classes/Security/SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		066BFEC5160EE3D500127974 /* ACSettingsCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACSettingsCellDelegate.h; path = Classes/UI/Settings/ACSettingsCellDelegate.h; sourceTree = "<group>"; };
+		067E0EDA226C657F00C7EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AC234/Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		06ADFA8515EE9A7300CD59EA /* ACScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACScrollViewController.h; path = Classes/UI/FS/ACScrollViewController.h; sourceTree = "<group>"; };
 		06ADFA8615EE9A7300CD59EA /* ACScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACScrollViewController.m; path = Classes/UI/FS/ACScrollViewController.m; sourceTree = "<group>"; };
 		06ADFA8A15EE9AA000CD59EA /* ACFolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACFolderListCell.h; path = Classes/UI/FS/ACFolderListCell.h; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				06BFE2B41609147700A1E479 /* Localizable.strings */,
 				0632522A16010C4700D46FF6 /* Settings.bundle */,
 				065E442615B9DE0700EEECD8 /* MainStoryboard_iPhone.storyboard */,
+				067E0ED9226C657F00C7EE6E /* Launch Screen.storyboard */,
 				065E441B15B9DE0700EEECD8 /* Supporting Files */,
 			);
 			path = AC234;
@@ -889,10 +892,11 @@
 			attributes = {
 				CLASSPREFIX = AC;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 1000;
 				TargetAttributes = {
 					065E440F15B9DE0700EEECD8 = {
-						DevelopmentTeam = 7A2YYR9T2Y;
+						DevelopmentTeam = M8P4XF8733;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -901,6 +905,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				fr,
 				Base,
@@ -965,6 +970,7 @@
 				06CB1FFF1625F3230025EE6D /* MiniBackground.png in Resources */,
 				06CB20001625F3230025EE6D /* MiniBackground@2x.png in Resources */,
 				061BA78B16EFC8C7003C9785 /* Play.png in Resources */,
+				067E0EDB226C657F00C7EE6E /* Launch Screen.storyboard in Resources */,
 				061BA78C16EFC8C7003C9785 /* Play@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1115,6 +1121,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		067E0ED9226C657F00C7EE6E /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				067E0EDA226C657F00C7EE6E /* Base */,
+			);
+			name = "Launch Screen.storyboard";
+			sourceTree = "<group>";
+		};
 		06BFE2B41609147700A1E479 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1131,18 +1145,33 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lain.iwakura@mac.com (ZR36T86R7P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lain.iwakura@mac.com (ZR36T86R7P)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1157,7 +1186,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1170,17 +1199,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lain.iwakura@mac.com (ZR36T86R7P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lain.iwakura@mac.com (ZR36T86R7P)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1189,7 +1232,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1204,12 +1247,17 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = M8P4XF8733;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AC234/AC234-Prefix.pch";
 				INFOPLIST_FILE = "AC234/AC234-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.cyberiacafe.AC235;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1219,11 +1267,16 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = M8P4XF8733;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AC234/AC234-Prefix.pch";
 				INFOPLIST_FILE = "AC234/AC234-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.cyberiacafe.AC235;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1239,6 +1292,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AC234/AC234-Prefix.pch";
 				INFOPLIST_FILE = "AC234Tests/AC234Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.frentix.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -1255,6 +1309,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AC234/AC234-Prefix.pch";
 				INFOPLIST_FILE = "AC234Tests/AC234Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.frentix.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};

@@ -14,18 +14,6 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>FTP Server</string>
-			<key>DefaultValue</key>
-			<false/>
-			<key>Key</key>
-			<string>isFtpServer</string>
-			<key>Hidden</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
 			<string>WebDAV Server</string>
 			<key>DefaultValue</key>
 			<false/>

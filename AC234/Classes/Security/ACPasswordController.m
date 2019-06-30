@@ -49,7 +49,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 	NSString *value = [textField text];
-	int textLength = [value length] + [string length] - range.length;
+	long textLength = [value length] + [string length] - range.length;
 	if([passwordField isEqual:textField]) {
 		if(textLength == 0) {
 			[self updatePasswordFieldView:NO field2:NO field3:NO field4:NO];

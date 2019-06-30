@@ -20,6 +20,7 @@ CGFloat kMovieViewOffsetX = 20.0;
 CGFloat kMovieViewOffsetY = 20.0;
 
 @interface ACMovieViewController(MovieControllerInternal)
+-(void)updatePlayButtonPosition:(UIInterfaceOrientation)toInterfaceOrientation;
 -(void)createAndPlayMovieForURL:(NSURL *)movieURL sourceType:(MPMovieSourceType)sourceType;
 -(void)applyUserSettingsToMoviePlayer;
 -(void)moviePlayBackDidFinish:(NSNotification*)notification;
@@ -81,7 +82,7 @@ CGFloat kMovieViewOffsetY = 20.0;
     //nothing to do
 }
 
-- (void)updateViewAfterOrientationChange:(BOOL)async { 
+- (void)updateViewAfterOrientationChange { 
     /* Size movie view to fit parent view. */
     if([self moviePlayerView] != NULL) {
         CGRect viewInsetRect = CGRectInset([self.view bounds], 0, 0 );
@@ -90,16 +91,21 @@ CGFloat kMovieViewOffsetY = 20.0;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self updatePlayButtonPosition:toInterfaceOrientation];
+}
+
+-(void)updatePlayButtonPosition:(UIInterfaceOrientation)toInterfaceOrientation {
     if([self playButton] != NULL) {
         CGPoint playInsetRect;
         CGSize viewSize = [[self view] bounds].size;
         if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
             playInsetRect = CGPointMake(viewSize.height / 2.0f, viewSize.width / 2.0f);
         } else {
-            //toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
             playInsetRect = CGPointMake(viewSize.height / 2.0f, viewSize.width / 2.0f);
         }
         [[self playButton] setCenter:playInsetRect];
+        [self.screenshotView setNeedsLayout];
+        [self.screenshotView setNeedsDisplay];
     }
 }
 
@@ -234,6 +240,17 @@ CGFloat kMovieViewOffsetY = 20.0;
 	if (player.playbackState == MPMoviePlaybackStateStopped) {
         NSTimeInterval playbackTime = [self.moviePlayer currentPlaybackTime];
         UIImage *shot = [self.moviePlayer thumbnailImageAtTime:playbackTime timeOption:MPMovieTimeOptionNearestKeyFrame];  
+        
+        /*
+        AVURLAsset *asset1 = [[AVURLAsset alloc] initWithURL:partOneUrl options:nil];
+        AVAssetImageGenerator *generate1 = [[AVAssetImageGenerator alloc] initWithAsset:asset1];
+        generate1.appliesPreferredTrackTransform = YES;
+        NSError *err = NULL;
+        CMTime time = CMTimeMake(1, 2);
+        CGImageRef oneRef = [generate1 copyCGImageAtTime:time actualTime:NULL error:&err];
+        UIImage *one = [[UIImage alloc] initWithCGImage:oneRef];
+        */
+        
         ACAppDelegate *delegate = (ACAppDelegate*)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *appContext = [[delegate thumbnailStore] managedObjectContext]; 
         [ACScaler saveDbImage:shot atPath:imagePath withContext:appContext];
@@ -259,11 +276,15 @@ CGFloat kMovieViewOffsetY = 20.0;
 	else if (player.playbackState == MPMoviePlaybackStatePaused) {
         //NSLog(@"Paused");
         [self.playButton setHidden:NO];
+        [self.screenshotView setNeedsLayout];
+        [self.screenshotView setNeedsDisplay];
 	}
 	/* Playback is temporarily interrupted, perhaps because the buffer ran out of content. */
 	else if (player.playbackState == MPMoviePlaybackStateInterrupted)  {
         //NSLog(@"Interrupted");
         [self.playButton setHidden:NO];
+        [self.screenshotView setNeedsLayout];
+        [self.screenshotView setNeedsDisplay];
 	}
 }
 

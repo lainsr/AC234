@@ -22,7 +22,7 @@
 
 - (void)didUnload:(NSString *)path at:(int)index;
 
-- (void)updateViewAfterOrientationChange:(BOOL)async;
+- (void)updateViewAfterOrientationChange;
 
 @end
 

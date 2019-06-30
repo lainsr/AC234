@@ -144,7 +144,7 @@
 	rotating = YES;
 	[self.nextViewController clearView];
 	[self.prevViewController clearView];//prevent flashing during rotation
-	[self.currentViewController updateViewAfterOrientationChange:YES];
+	[self.currentViewController updateViewAfterOrientationChange];
 	[self.currentViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 	
 	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
